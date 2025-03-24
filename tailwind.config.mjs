@@ -9,9 +9,9 @@ export default {
 	theme: {
 		extend: {
 			backgroundImage: {
-				bg1: "url('../assets/bg1.png')",
-				bg2: "url('../assets/bg2.jpg')",
-				bg3: "url('../assets/bg3.png')"
+				bg1: "url('/backgrounds/bg1.png')",
+				bg2: "url('/backgrounds/bg2.jpg')",
+				bg3: "url('/backgrounds/bg3.png')"
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

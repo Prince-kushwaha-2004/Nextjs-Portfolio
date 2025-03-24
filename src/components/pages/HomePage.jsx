@@ -5,12 +5,10 @@ import { MdEmail } from "react-icons/md";
 import { ReactTyped } from "react-typed";
 import Button1 from "../Buttons/Button1";
 
-
 import Nav from "../Nav/Nav";
 import Ring from "../Spline/Ring";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 export default function HomePage() {
-
     return (
         <div className={`w-screen min-h-screen bg-bg1 bg-cover relative`} id="Home">
             <HoverBorderGradient children={<Nav />} className="bg-transparent px-8 text-xl border-slate-700" containerClassName="border-slate-700 bg-transparent relative z-[100] top-5  left-1/2 transform -translate-x-1/2 " />
