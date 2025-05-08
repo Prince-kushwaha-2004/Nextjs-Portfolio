@@ -80,7 +80,7 @@ export default function Contact() {
                         <div className="flex gap-16 mx-8 xl:mx-32  flex-wrap lg:flex-nowrap mt-16 justify-center ">
                             <div className="lg:w-1/2">
                                 <h1 className="text-3xl sm:text-4xl font-bold">Let's Talk</h1>
-                                <p className="text-sm sm:text-xl text-slate-200 mt-4">Have some big idea or brand to develop and need help? Then reach out we'd love to hear about your project and provide help.</p>
+                                <p className="text-sm sm:text-xl text-slate-200 mt-4">Have a project in mind or just want to say hello? I'd love to hear from you! Whether you're looking to build a website from scratch, improve your current one, or collaborate on something cool, feel free to reach out.</p>
                                 <div className="flex gap-4 items-center mt-8">
                                     <MdEmail className="text-4xl sm:text-5xl text-blue-400 bg-[#1764694b] rounded-full p-2 hover:scale-110 transition-all " />
                                     <p className="text-sm sm:text-xl">princekk102004@gmail.com</p>
