@@ -28,7 +28,7 @@ const Modal = ({ isOpen, onClose, project }) => {
                         ✖
                     </button>
 
-                    <div className='flex flex-wrap justify-between items-center w-full h-full '>
+                    <div className='flex flex-wrap justify-between items-center w-full h-full overflow-y-scroll hide-scroll'>
                         <div className='w-full lg:w-1/2 '>
                             <h2 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-8">{name}</h2>
                             <p className="text-gray-200 text-sm sm:text-lg lg:text-xl mb-4">{description}</p>
