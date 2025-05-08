@@ -28,12 +28,12 @@ const Modal = ({ isOpen, onClose, project }) => {
                         ✖
                     </button>
 
-                    <div className='flex flex-wrap justify-between items-center w-full h-full overflow-y-scroll hide-scroll'>
+                    <div className='flex flex-wrap justify-between items-center w-full h-full hide-scroll'>
                         <div className='w-full lg:w-1/2 '>
                             <h2 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-8">{name}</h2>
                             <p className="text-gray-200 text-sm sm:text-lg lg:text-xl mb-4">{description}</p>
 
-                            <ul className="list-disc mb-4 text-gray-300">
+                            <ul className="!list-disc mb-4 text-gray-300 ">
                                 {details.map((point, index) => (
 
                                     <li className='text-sm sm:text-lg mt-2 lg:text-lg text-white' key={index}>{point}</li>
@@ -42,16 +42,7 @@ const Modal = ({ isOpen, onClose, project }) => {
 
                             <div className="mb-4 lg:mt-8">
                                 <h3 className="font-semibold  text-2xl lg:text-4xl">Tech Stack:</h3>
-                                {/* <div className="flex flex-wrap gap-2 mt-1">
-                                    {techStack.map((tech, index) => (
-                                        <span
-                                            key={index}
-                                            className="bg-blue-800 text-blue-100 px-2 py-1 rounded text-sm"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div> */}
+
                                 <div className="flex gap-4 mt-2 lg:mt-4">
                                     {
                                         techStack.map((tech, index) => {
@@ -96,17 +87,17 @@ const Modal = ({ isOpen, onClose, project }) => {
                             <img
                                 src={screenshots[currentImage]}
                                 alt={`Screenshot ${currentImage + 1}`}
-                                className="w-full p-16 object-contain rounded "
+                                className="w-full p-8 md:p-16 object-contain rounded "
                             />
                             <button
                                 onClick={prevImage}
-                                className="absolute left-2 top-1/2 transform -translate-y-1/2 rounded-full p-2 shadow"
+                                className="absolute left-0 md:left-2 top-1/2 transform -translate-y-1/2 rounded-full p-2 shadow text-sm md:text-4xl"
                             >
                                 ◀
                             </button>
                             <button
                                 onClick={nextImage}
-                                className="absolute right-2 top-1/2 transform -translate-y-1/2  rounded-full p-2 shadow"
+                                className="absolute right-0 md:right-2 top-1/2 transform -translate-y-1/2  rounded-full p-2 shadow text-sm md:text-4xl"
                             >
                                 ▶
                             </button>

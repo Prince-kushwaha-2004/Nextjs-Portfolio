@@ -77,5 +77,11 @@ body {
   display: none;
 }
 .hide-scroll{
+  overflow: scroll;
   scrollbar-width: none;
+}
+ul{
+  padding: 16px;
+
+  text-align: left;
 }
