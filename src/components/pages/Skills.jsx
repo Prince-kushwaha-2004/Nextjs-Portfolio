@@ -1,26 +1,14 @@
 "use client"
-import img1 from '@/assets/skills/1.webp'
-import img10 from '@/assets/skills/10.png'
-import img12 from '@/assets/skills/12.png'
-import img13 from '@/assets/skills/13.png'
-import img14 from '@/assets/skills/14.webp'
-import img15 from '@/assets/skills/15.png'
-import img16 from '@/assets/skills/16.png'
-import img17 from '@/assets/skills/17.webp'
-import img18 from '@/assets/skills/18.webp'
-import img19 from '@/assets/skills/19.png'
-import img2 from '@/assets/skills/2.png'
-import img20 from '@/assets/skills/20.png'
-import img3 from '@/assets/skills/3.webp'
-import img4 from '@/assets/skills/4.png'
-import img5 from '@/assets/skills/5.png'
-import img6 from '@/assets/skills/6.webp'
-import img7 from '@/assets/skills/7.png'
-import img8 from '@/assets/skills/8.png'
-import img9 from '@/assets/skills/9.webp'
+
 import Ring from '../Spline/Ring'
 import Image from 'next/image'
 export default function Skills() {
+    const row1 = ["html.webp", "css.webp", "js.webp"];
+    const row2 = ["tailwind.webp", "bootstrap.webp", "nodejs.webp", "react.webp"];
+    const row3 = ["express.webp", "mongodb.webp", "github.webp", "git.webp", "next.webp"];
+    const row4 = ["docker.webp", "c.webp", "cpp.webp", "python.webp"];
+    const row5 = ["firebase.webp", "nginx.webp", "angular.webp"];
+
     return (
         <div className='min-h-screen h-auto bg-bg2 bg-cover xl:relative' id="Skills">
             <div className="hidden xl:block xl:absolute w-full h-full right-[80rem] z-0">
@@ -53,74 +41,51 @@ export default function Skills() {
                             </h1>
                             <div className="flex flex-col scale-50 sm:scale-75 md:scale-100  justify-center items-center">
                                 <div className="flex gap-5 *:p-3">
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img1} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img2} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img3} className="w-[3rem]" alt="" />
-                                    </div>
+                                    {row1.map((img, index) => {
+                                        return (
+                                            <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] hover:scale-110 h-[4rem] rounded-full  hover:-translate-y-2 transition-all hover:border border-slate-600" key={index}>
+                                                <Image src={`/skills/${img}`} className="w-[3rem]" alt="img" width={700} height={200} />
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                                 <div className="flex gap-5 *:p-3">
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img4} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img5} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img6} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img7} className="w-[3rem]" alt="" />
-                                    </div>
+                                    {row2.map((img, index) => {
+                                        return (
+                                            <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] hover:scale-110 h-[4rem] rounded-full  hover:-translate-y-2 transition-all hover:border border-slate-600" key={index}>
+                                                <Image src={`/skills/${img}`} className="w-[3rem]" alt="img" width={700} height={200} />
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                                 <div className="flex gap-5 *:p-3">
 
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img8} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img9} className="w-[3rem]" alt="" />
-                                    </div>
-
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img10} className="w-[3rem] rounded-full bg-white" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img12} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img13} className="w-[3rem]" alt="" />
-                                    </div>
+                                    {row3.map((img, index) => {
+                                        return (
+                                            <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] hover:scale-110 h-[4rem] rounded-full  hover:-translate-y-2 transition-all hover:border border-slate-600" key={index}>
+                                                <Image src={`/skills/${img}`} className="w-[3rem]" alt="img" width={700} height={200} />
+                                            </div>
+                                        )
+                                    })}
                                 </div>
                                 <div className="flex gap-5">
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img14} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img15} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img16} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img17} className="w-[3rem]" alt="" />
-                                    </div>
+                                    {row4.map((img, index) => {
+                                        return (
+                                            <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] hover:scale-110 h-[4rem] rounded-full  hover:-translate-y-2 transition-all hover:border border-slate-600" key={index}>
+                                                <Image src={`/skills/${img}`} className="w-[3rem]" alt="img" width={700} height={200} />
+                                            </div>
+                                        )
+                                    })}
 
                                 </div>
                                 <div className="flex gap-5 *:p-3">
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img18} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img19} className="w-[3rem]" alt="" />
-                                    </div>
-                                    <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] h-[4rem] rounded-full">
-                                        <Image src={img20} className="w-[3rem]" alt="" />
-                                    </div>
+                                    {row5.map((img, index) => {
+                                        return (
+                                            <div className="flex flex-col gap-4 justify-center items-center m-4 bg-gray-900 w-[4rem] hover:scale-110 h-[4rem] rounded-full  hover:-translate-y-2 transition-all hover:border border-slate-600" key={index}>
+                                                <Image src={`/skills/${img}`} className="w-[3rem]" alt="img" width={700} height={200} />
+                                            </div>
+                                        )
+                                    })}
 
                                 </div>
                             </div>

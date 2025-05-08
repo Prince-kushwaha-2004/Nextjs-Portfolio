@@ -1,17 +1,20 @@
+const flowbiteReact = require("flowbite-react/plugin/tailwindcss");
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	darkMode: ["class"],
 	content: [
-		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-	],
+        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+        ".flowbite-react/class-list.json"
+    ],
 	theme: {
 		extend: {
 			backgroundImage: {
-				bg1: "url('/backgrounds/bg1.png')",
-				bg2: "url('/backgrounds/bg2.jpg')",
-				bg3: "url('/backgrounds/bg3.png')"
+				bg1: "url('/backgrounds/bg1.webp')",
+				bg2: "url('/backgrounds/bg2.webp')",
+				bg3: "url('/backgrounds/bg3.webp')"
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -71,5 +74,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), flowbiteReact],
 };

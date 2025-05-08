@@ -3,8 +3,9 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
-
-
+import { FaPhoneAlt } from "react-icons/fa";
+import Link from "next/link";
+import toast from "react-hot-toast";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -20,10 +21,46 @@ export default function Contact() {
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic (e.g., send to an API or email)
+    const namevalid = /^[A-Za-z][A-Za-z 0-9\.\,\(\)\']{1,}$/i;
+    const emailvalid = /^[*A-Za-z]{1,}[*A-Za-z0-9]{0,}[\.\_\-A-Za-z0-9][*A-Za-z0-9]{1,}@[A-Za-z]{2,}\.[^@\s\/.0-9]{2,5}$/i;
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
         console.log(formData);
+
+        if (!namevalid.test(formData.name)) {
+            return toast.error("Enter valid Name")
+        }
+        if (!emailvalid.test(formData.email)) {
+            return toast.error("Enter valid Email")
+        }
+        if (!namevalid.test(formData.message)) {
+            return toast.error("Enter valid Message")
+        }
+
+        const message = new FormData(event.target);
+        message.append("access_key", "e87d74b1-e8ec-4dfb-a003-850b929cb834");
+
+        const object = Object.fromEntries(message);
+        const json = JSON.stringify(object);
+
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: json
+        }).then((res) => res.json());
+
+        if (res.success) {
+            toast.success("Message Send Successfully")
+            setFormData({
+                name: "",
+                email: "",
+                message: "",
+            })
+        }
     };
 
     return (
@@ -49,23 +86,24 @@ export default function Contact() {
                                     <p className="text-sm sm:text-xl">princekk102004@gmail.com</p>
                                 </div>
                                 <div className="flex gap-4 items-center mt-8">
-                                    <MdEmail className="text-4xl sm:text-5xl text-gray-400 bg-[#1764694b] rounded-full p-2 hover:scale-110 transition-all " />
-                                    <p className="text-sm sm:text-xl">7007393542</p>
+                                    <FaPhoneAlt className="text-4xl sm:text-5xl text-gray-400 bg-[#1764694b] rounded-full p-2 hover:scale-110 transition-all " />
+                                    <p className="text-sm sm:text-xl">+917007393542</p>
                                 </div>
                                 <h1 className="text-2xl font-bold mt-8">Socials</h1>
                                 <div className="flex gap-8 mt-4 items-center">
-                                    <FaGithub className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-gray-400 hover:scale-110 transition-all " />
-                                    <FaLinkedin className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-blue-400 hover:scale-110 transition-all " />
-                                    <FaSquareXTwitter className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-gray-400 hover:scale-110 transition-all " />
-                                    <MdEmail className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-blue-400 hover:scale-110 transition-all " />
+                                    <Link target="_blank" href="https://github.com/Prince-kushwaha-2004"><FaGithub className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-gray-400 hover:scale-110 transition-all " /></Link>
+                                    <Link target="_blank" href="https://www.linkedin.com/in/prince121kk/"><FaLinkedin className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-blue-400 hover:scale-110 transition-all " /></Link>
+                                    <Link target="_blank" href="https://x.com/prince121kk"><FaSquareXTwitter className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-gray-400 hover:scale-110 transition-all " /></Link>
+                                    <Link target="_blank" href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=princekk102004@gmail.com"><MdEmail className="text-4xl sm:text-5xl p-2 bg-[#1764694b] rounded-full text-blue-400 hover:scale-110 transition-all " /></Link>
                                 </div>
 
                             </div>
                             <div className="lg:w-1/2" >
                                 <form
-                                    onSubmit={handleSubmit}
+                                    onSubmit={onSubmit}
                                     className="bg-opacity-40  ms-auto backdrop-blur-md p-8 rounded-lg shadow-lg w-full 2xl:px-32"
                                 >
+                                    <input type="hidden" name="access_key" value="e87d74b1-e8ec-4dfb-a003-850b929cb834"></input>
                                     <div className="space-y-4 ">
                                         <div>
                                             <label className="text-white text-sm sm:text-lg" htmlFor="name">
@@ -75,6 +113,7 @@ export default function Contact() {
                                                 type="text"
                                                 name="name"
                                                 id="name"
+                                                required
                                                 value={formData.name}
                                                 onChange={handleChange}
                                                 className="w-full p-3 text-sm sm:text-xl rounded-md bg-transparent border border-gray-500 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1f707a36] focus:border-[#1f707a36]"
@@ -90,6 +129,7 @@ export default function Contact() {
                                                 type="email"
                                                 name="email"
                                                 id="email"
+                                                required
                                                 value={formData.email}
                                                 onChange={handleChange}
                                                 className="w-full p-3 text-sm sm:text-xl rounded-md  bg-transparent border border-gray-500 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1f707a36] focus:border-[#1f707a36]"
@@ -104,6 +144,7 @@ export default function Contact() {
                                             <textarea
                                                 name="message"
                                                 id="message"
+                                                required
                                                 value={formData.message}
                                                 onChange={handleChange}
                                                 rows="4"
@@ -121,13 +162,11 @@ export default function Contact() {
                                     </div>
                                 </form>
                             </div>
-
-
                         </div>
                     </div>
 
                 </div>
-                {/* <h1 className="text-center pb-2 text-slate-50    ">Made with love @Prince Kushwaha</h1> */}
+                <h1 className="text-center pb-2 text-slate-50    ">Copyright &#169; 2025 Prince Kushwaha</h1>
             </div>
         </div>
     )

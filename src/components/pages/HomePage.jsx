@@ -4,6 +4,7 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { ReactTyped } from "react-typed";
 import Button1 from "../Buttons/Button1";
+import Link from "next/link";
 
 import Nav from "../Nav/Nav";
 import Ring from "../Spline/Ring";
@@ -26,16 +27,14 @@ export default function HomePage() {
                         I’m a passionate web developer who loves turning ideas into dynamic, high-performance websites. With expertise in the MERN stack and Next.js, I bring a well-rounded approach to building SEO-friendly, scalable web applications that deliver seamless user experiences.
                     </div>
                     <div className="mt-16 flex flex-col md:flex-row md:items-center gap-6 md:gap-32">
-                        <Button1 text="Resume" className={"w-[10rem]"} />
+                        <Link href="/prince-resume.pdf" target="_blank"><Button1 text="Resume" className={"w-[10rem]"} /></Link>
                         <div className="flex gap-8 items-center">
-                            <FaGithub className="text-3xl text-gray-400 hover:scale-110 transition-all " />
-                            <FaLinkedin className="text-3xl text-blue-400 hover:scale-110 transition-all " />
-                            <FaSquareXTwitter className="text-3xl text-gray-400 hover:scale-110 transition-all " />
-                            <MdEmail className="text-4xl text-blue-400 hover:scale-110 transition-all " />
+                            <Link target="_blank" href="https://github.com/Prince-kushwaha-2004"> <FaGithub className="text-3xl text-gray-400 hover:scale-110 transition-all " /></Link>
+                            <Link target="_blank" href="https://www.linkedin.com/in/prince121kk/"><FaLinkedin className="text-3xl text-blue-400 hover:scale-110 transition-all " /></Link>
+                            <Link target="_blank" href="https://x.com/prince121kk"> <FaSquareXTwitter className="text-3xl text-gray-400 hover:scale-110 transition-all " /></Link>
+                            <Link target="_blank" href="https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=princekk102004@gmail.com"> <MdEmail className="text-4xl text-blue-400 hover:scale-110 transition-all " /></Link>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

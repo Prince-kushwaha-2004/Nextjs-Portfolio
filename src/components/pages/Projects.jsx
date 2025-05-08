@@ -1,37 +1,12 @@
 "use client"
-import proj1 from '@/assets/project.png'
 import Image from "next/image"
 import SpotlightCard from "../SpotlightCard/SpotlightCard"
-import img18 from '@/assets/skills/18.webp'
-import img19 from '@/assets/skills/19.png'
-import img20 from '@/assets/skills/20.png'
+import Modal from "../modal/Modal"
+import { useState } from "react"
+import { projects } from "@/data/projects"
 export default function Projects() {
-    const projects = [
-        {
-            name: "project1",
-            img: proj1,
-            description: " Lorem ipsum dolor sit amet, consectetur adipisicing elitsm. sdfsdfdsfsOdit ratione perferendis nisi aut saepe earum totam provident similique odio? Vel optio maiores exercitationem. Consectetur quaerat ipsam officia quo, quidem in",
-            techStack: [img18, img19, img20]
-        },
-        {
-            name: "project2",
-            img: proj1,
-            description: " Lorem ipsum dolor sit amet, consectetur adipisicing elitsm. sdfsdfdsfsOdit ratione perferendis nisi aut saepe earum totam provident similique odio? Vel optio maiores exercitationem. Consectetur quaerat ipsam officia quo, quidem in",
-            techStack: [img18, img19, img20]
-        },
-        {
-            name: "project3",
-            img: proj1,
-            description: " Lorem ipsum dolor sit amet, consectetur adipisicing elitsm. sdfsdfdsfsOdit ratione perferendis nisi aut saepe earum totam provident similique odio? Vel optio maiores exercitationem. Consectetur quaerat ipsam officia quo, quidem in",
-            techStack: [img18, img19, img20]
-        },
-        {
-            name: "project4",
-            img: proj1,
-            description: " Lorem ipsum dolor sit amet, consectetur adipisicing elitsm. sdfsdfdsfsOdit ratione perferendis nisi aut saepe earum totam provident similique odio? Vel optio maiores exercitationem. Consectetur quaerat ipsam officia quo, quidem in",
-            techStack: [img18, img19, img20]
-        }
-    ]
+    const [selectedProject, setSelectedProject] = useState(null);
+
     return (
         <div className='min-h-screen h-auto bg-bg3 bg-cover' id="Projects">
             <div className='w-full h-full min-h-screen bg-gradient-to-b from-[#030507] via-[#0000008e] to-[#030507] '>
@@ -51,17 +26,18 @@ export default function Projects() {
                                 projects.map((item, index) => {
                                     return (
                                         <SpotlightCard key={index}>
-                                            <div className='flex flex-col w-[20rem] lg:w-[24rem] justify-between'>
+                                            <div className='flex flex-col w-[20rem] lg:w-[24rem] justify-between cursor-pointer' onClick={() => setSelectedProject(item)}>
                                                 <div>
                                                     <Image
                                                         src={item.img}
                                                         alt="img"
                                                         width={700}
+                                                        height={200}
                                                     />
                                                 </div>
                                                 <div className='p-8 flex-1 flex flex-col justify-between'>
                                                     <div>
-                                                        <h1 className='text-2xl sm:text-3xl'>{item.name}</h1>
+                                                        <h1 className='text-2xl sm:text-3xl font-semibold'>{item.name}</h1>
                                                         <p className="text-sm sm:text-lg text-slate-300 mt-4">
                                                             {item.description}
                                                         </p>
@@ -70,26 +46,27 @@ export default function Projects() {
                                                         {
                                                             item.techStack.map((tech, index) => {
                                                                 return (
-                                                                    <div className="flex justify-center items-center  bg-gray-900 w-[3rem] h-[3rem] rounded-full" key={index}>
-                                                                        <Image src={tech} className="w-[2rem]" alt="" />
+                                                                    <div className="flex justify-center items-center  bg-gray-900 w-[3rem] h-[3rem] rounded-full hover:scale-125 hover:-translate-y-2 transition-all" key={index}>
+                                                                        <Image src={`/skills/${tech}`} width={700}
+                                                                            height={200} className="w-[2rem]" alt="image" />
                                                                     </div>
                                                                 )
                                                             })
                                                         }
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </SpotlightCard>
-
                                     )
                                 })
                             }
-
-
                         </div>
-
                     </div>
+                    <Modal
+                        isOpen={!!selectedProject}
+                        onClose={() => setSelectedProject(null)}
+                        project={selectedProject}
+                    />
                 </div>
             </div>
         </div>
