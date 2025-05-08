@@ -33,7 +33,7 @@ const Modal = ({ isOpen, onClose, project }) => {
                             <h2 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-8">{name}</h2>
                             <p className="text-gray-200 text-sm sm:text-lg lg:text-xl mb-4">{description}</p>
 
-                            <ul className="!list-disc mb-4 text-gray-300 ">
+                            <ul className="!list-disc mb-4 no-scroll-ul text-gray-300 ">
                                 {details.map((point, index) => (
 
                                     <li className='text-sm sm:text-lg mt-2 lg:text-lg text-white' key={index}>{point}</li>

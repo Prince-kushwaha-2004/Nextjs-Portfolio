@@ -80,7 +80,7 @@ body {
   overflow: scroll;
   scrollbar-width: none;
 }
-ul{
+.no-scroll-ul{
   padding: 16px;
 
   text-align: left;
