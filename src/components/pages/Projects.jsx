@@ -38,7 +38,7 @@ export default function Projects() {
                                                 <div className='p-8 flex-1 flex flex-col justify-between'>
                                                     <div>
                                                         <h1 className='text-2xl sm:text-3xl font-semibold'>{item.name}</h1>
-                                                        <p className="text-sm sm:text-lg text-slate-300 mt-4">
+                                                        <p className="text-sm sm:text-lg text-slate-300 mt-4 text-justify">
                                                             {item.description}
                                                         </p>
                                                     </div>

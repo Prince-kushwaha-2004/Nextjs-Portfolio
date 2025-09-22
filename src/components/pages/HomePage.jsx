@@ -24,7 +24,7 @@ export default function HomePage() {
                         <ReactTyped className="bg-gradient-to-r from-blue-600 via-[#5980a0] to-indigo-400 inline-block text-transparent bg-clip-text" strings={["PRINCE KUSHWAHA"]} typeSpeed={150} /></h1>
 
                     <div className="text-md sm:text-xl mt-16 text-gray-300 w-full lg:w-2/3 ">
-                        I’m a passionate web developer who loves turning ideas into dynamic, high-performance websites. With expertise in the MERN stack and Next.js, I bring a well-rounded approach to building SEO-friendly, scalable web applications that deliver seamless user experiences.
+                        I’m a passionate web developer who loves turning ideas into dynamic, high-performance websites. With expertise in MERN stack and Next.js, I bring a well-rounded approach to building SEO-friendly, scalable web applications that deliver seamless user experiences.
                     </div>
                     <div className="mt-16 flex flex-col md:flex-row md:items-center gap-6 md:gap-32">
                         <Link href="/prince-resume.pdf" target="_blank"><Button1 text="Resume" className={"w-[10rem]"} /></Link>

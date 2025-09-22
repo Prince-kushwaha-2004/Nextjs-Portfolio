@@ -27,7 +27,7 @@ export default function AboutPage() {
                             </div>
 
                             <h1 className="text-sm sm:text-lg lg:text-xl mx-4 sm:mx-8 lg:mx-0 lg:ms-auto mt-12 lg:me-10  leading-[2rem] lg:leading-[2.5rem]">
-                                Hello, I’m Prince Kushwaha, a dedicated web developer with a strong passion for creating high-performance, user-friendly applications. I specialize in web development using modern frameworks and technologies like React, MongoDB, Node.js, and Next.js. I also have experience working with AngularJS and Django, allowing me to approach projects with a diverse toolkit.
+                                Hello, I’m Prince Kushwaha, a dedicated web developer with a strong passion for creating high-performance, user-friendly applications. I specialize in web development using modern frameworks and technologies like React, MongoDB, Node.js, and Next.js. I also have experience working with AngularJS and Django, that allows me to approach projects with a diverse toolkit.
 
                                 Over the course of my career, I’ve developed and successfully completed over 10 projects, which you can explore in my Projects section.
                                 <br /><br />

@@ -34,7 +34,7 @@ export default function Skills() {
                                 <br /><br />
                                 I have hands-on experience with MongoDB for database management and have worked with Docker
                                 for containerization and Nginx for efficient web server management. Additionally, I am proficient in AngularJS, Tailwind,
-                                Bootstrap, and Firebase, which help me build responsive and user-friendly interfaces.
+                                Bootstrap, and Firebase, which helps me build responsive and user-friendly interfaces.
                                 <br /><br />
                                 On the programming side,
                                 I am well-versed in C/C++ and Python, offering a diverse skill set for tackling various development challenges.

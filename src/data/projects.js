@@ -1,5 +1,45 @@
 export const projects = [
     {
+        name: "Student Portal",
+        img: "/projects/studentportal/studentportal1.png",
+        description: "High-performance Student Portal serving 8,000+ daily users at KIET Group Of Institutions. Features attendance tracking, class schedules, fee payment system, and PWA capabilities with offline support.",
+        techStack: ["react.webp", "tailwind.webp", "materialui.png", "django.webp"],
+        details: [
+            "Scalable architecture supporting 8,000+ daily active users.",
+            "Attendance Tracking: Real-time attendance monitoring for students.",
+            "Class Schedules: Students can view and manage their class timetables.",
+            "Exam Admit Cards: Download and view exam admit cards directly from the portal.",
+            "Online Fee Payment: Secure payment of hostel and academic fees.",
+            "Progress Tracking: Students can view their academic performance and marks for each subject.",
+            "PWA Capabilities: Installable app with offline support for seamless access.",
+            "Modern UI: Built with React, Material UI, and Tailwind CSS for a responsive and user-friendly experience.",
+            "Robust Backend: Django ensures secure and efficient data management."
+        ],
+        screenshots: [
+            "/projects/studentportal/studentportal1.png",
+            "/projects/studentportal/studentportal2.png",
+            "/projects/studentportal/studentportal3.png"
+        ],
+        liveLink: "https://tech.kiet.edu/StudentPortal"
+    },
+    {
+        name: "FileSync",
+        img: "/projects/filesync/filesync1.png",
+        description: "FileSync is a website that allows users to send files from one computer to another using peer-to-peer connections. It uses PeerJS for direct, two-way data sharing between devices, enabling fast and secure file transfers.",
+        techStack: ["react.webp", "webrtc.svg", "tailwind.webp"],
+        details: [
+            "Peer-to-peer file sharing: Send and receive files directly between computers using PeerJS.",
+            "Two-way data transfer: Both users can share files with each other in real time.",
+            "Simple interface: Easy-to-use UI for connecting and sharing files.",
+        ],
+        screenshots: [
+            "/projects/filesync/filesync1.png",
+            "/projects/filesync/filesync2.png",
+        ],
+        githubLink: "https://github.com/Prince-kushwaha-2004/file-transfer",
+        liveLink: "https://file-transfer-tan-six.vercel.app/"
+    },
+    {
         name: "Wanderlust",
         img: "/projects/wanderlust/wanderlust1.webp",
         description: " Wanderlust is a web application inspired by Airbnb, where users can list their homes, explore listings, and leave reviews. It’s designed to make home-sharing easy, offering users the ability to list, browse, and review accommodations.",
@@ -40,8 +80,6 @@ export const projects = [
             "/projects/certifier/certifier6.webp",
             "/projects/certifier/certifier7.webp",
             "/projects/certifier/certifier8.webp",
-
-
         ],
         githubLink: "https://github.com/Prince-kushwaha-2004/certifier",
 
@@ -90,5 +128,6 @@ export const projects = [
         ],
         githubLink: "https://github.com/Prince-kushwaha-2004/innotech-2024/tree/main",
         liveLink: "https://innotech-2024.onrender.com"
-    }
+    },
+
 ]

@@ -54,7 +54,7 @@ export default function Contact() {
         }).then((res) => res.json());
 
         if (res.success) {
-            toast.success("Message Send Successfully")
+            toast.success("Message Sent Successfully")
             setFormData({
                 name: "",
                 email: "",
