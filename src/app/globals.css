@@ -85,3 +85,14 @@ body {
 
   text-align: left;
 }
+
+
+.bg-neon-dark {
+  @apply relative bg-gradient-to-b from-[#020305] to-[#060a0f] overflow-hidden;
+}
+.bg-neon-dark::before {
+  content: "";
+  @apply absolute inset-0 blur-3xl;
+  background-image: radial-gradient(ellipse at 30% 20%, rgba(0,120,255,0.25), transparent 60%),
+                    radial-gradient(ellipse at 70% 80%, rgba(0,150,255,0.15), transparent 70%);
+}

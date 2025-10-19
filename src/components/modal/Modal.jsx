@@ -19,7 +19,7 @@ const Modal = ({ isOpen, onClose, project }) => {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 ">
-            <div className="bg-bg3 bg-cover shadow border border-slate-500 w-[90vw] h-[90vh] rounded-lg ">
+            <div className="bg-neon-dark bg-cover shadow border border-slate-500 w-[90vw] h-[90vh] rounded-lg ">
                 <div className='bg-gradient-to-b from-[#030507] via-[#0000008e] to-[#030507]  text-white rounded-lg shadow-lg  w-full h-full p-10 relative'>
                     <button
                         onClick={onClose}
@@ -30,8 +30,8 @@ const Modal = ({ isOpen, onClose, project }) => {
 
                     <div className='flex flex-wrap justify-between items-center w-full h-full hide-scroll'>
                         <div className='w-full lg:w-1/2 '>
-                            <h2 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-8">{name}</h2>
-                            <p className="text-gray-200 text-sm sm:text-lg lg:text-xl mb-4">{description}</p>
+                            <h2 className="text-4xl lg:text-5xl 2xl:text-6xl font-bold mb-2 lg:mb-8">{name}</h2>
+                            <p className="text-gray-200 text-sm sm:text-lg 2xl:text-xl mb-4">{description}</p>
 
                             <ul className="!list-disc mb-4 no-scroll-ul text-gray-300 ">
                                 {details.map((point, index) => (
@@ -41,7 +41,7 @@ const Modal = ({ isOpen, onClose, project }) => {
                             </ul>
 
                             <div className="mb-4 lg:mt-8">
-                                <h3 className="font-semibold  text-2xl lg:text-4xl">Tech Stack:</h3>
+                                <h3 className="font-semibold  text-2xl lg:text-3xl 2xl:text-4xl">Tech Stack:</h3>
 
                                 <div className="flex gap-4 mt-2 lg:mt-4">
                                     {

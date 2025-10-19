@@ -4,18 +4,13 @@ const flowbiteReact = require("flowbite-react/plugin/tailwindcss");
 export default {
 	darkMode: ["class"],
 	content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-        ".flowbite-react/class-list.json"
-    ],
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+		".flowbite-react/class-list.json"
+	],
 	theme: {
 		extend: {
-			backgroundImage: {
-				bg1: "url('/backgrounds/bg1.webp')",
-				bg2: "url('/backgrounds/bg2.webp')",
-				bg3: "url('/backgrounds/bg3.webp')"
-			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -26,10 +21,19 @@ export default {
 					'0%': { 'background-position': '100%' },
 					'100%': { 'background-position': '-100%' },
 				},
+				dots: {
+					'0%, 20%': { content: '"."' },
+					'40%': { content: '".."' },
+					'60%, 100%': { content: '"..."' },
+				},
 			},
 			animation: {
 				shine: 'shine 5s linear infinite',
+				'spin-slow': 'spin 3s linear infinite',
+				dots: 'dots 1.5s steps(3, end) infinite',
+				'pulse-slow': 'pulse 8s ease-in-out infinite',
 			},
+
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

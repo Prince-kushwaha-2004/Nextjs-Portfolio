@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@react-spring/web": "^9.7.5",
-    "@splinetool/react-spline": "^4.0.0",
-    "@splinetool/runtime": "^1.9.59",
+    "@splinetool/react-spline": "^4.1.0",
+    "@splinetool/runtime": "^1.10.82",
     "@tabler/icons-react": "^3.29.0",
     "@tsparticles/engine": "^3.8.0",
     "@tsparticles/react": "^3.0.0",

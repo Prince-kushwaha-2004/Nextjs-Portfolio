@@ -10,7 +10,7 @@ export default function Skills() {
     const row5 = ["firebase.webp", "nginx.webp", "angular.webp"];
 
     return (
-        <div className='min-h-screen h-auto bg-bg2 bg-cover xl:relative' id="Skills">
+        <div className='min-h-screen h-auto  bg-cover xl:relative ' id="Skills">
             <div className="hidden xl:block xl:absolute w-full h-full right-[80rem] z-0">
                 <Ring />
             </div>
@@ -27,7 +27,7 @@ export default function Skills() {
                             </div>
                         </div>
                         <div className="flex flex-col-reverse lg:flex-row mx-8 mb-16 lg:mb-0 2xl:mx-32 mt-32 gap-2 sm:gap-8 xl:gap-32 justify-center items-center ">
-                            <h1 className="text-sm sm:text-xl mt-8  lg:w-1/2 text-slate-300 leading-[2.5rem]">
+                            <h1 className="text-sm sm:text-lg sm:ms-16 2xl:text-xl mt-8  lg:w-1/2 text-slate-300 leading-[2.5rem]">
                                 I am a versatile full-stack developer with a strong foundation in both front-end and back-end technologies.
                                 My expertise includes HTML, CSS, JavaScript, React.js, Node.js, and Express.js, allowing me to create dynamic,
                                 scalable web applications.
@@ -39,7 +39,7 @@ export default function Skills() {
                                 On the programming side,
                                 I am well-versed in C/C++ and Python, offering a diverse skill set for tackling various development challenges.
                             </h1>
-                            <div className="flex flex-col scale-50 sm:scale-75 md:scale-100  justify-center items-center">
+                            <div className="flex flex-col scale-50 sm:scale-75  justify-center items-center md:scale-95 lg:scale-90 2xl:scale-100">
                                 <div className="flex gap-5 *:p-3">
                                     {row1.map((img, index) => {
                                         return (
