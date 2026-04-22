@@ -118,7 +118,7 @@ export const EXPERIENCE = [
     ],
   },
   {
-    company: "TechImpressive Technologies",
+    company: "Techimpressive Technologies",
     role: "SDE Intern",
     duration: "November 2024 - January 2025",
     website: "https://www.techimpressive.com/",
