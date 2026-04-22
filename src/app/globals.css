@@ -1,12 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Carter+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: "Poppins", serif;
+  font-family: var(--font-sans), sans-serif;
 }
 
+.playto-serif {
+  font-family: var(--font-serif), serif;
+}
+
+.playto-bg {
+  min-height: 100vh;
+  background-color: #04060e;
+  background-image:
+    radial-gradient(circle at 18% 15%, rgba(46, 81, 209, 0.151), transparent 38%),
+    radial-gradient(circle at 82% 45%, rgba(38, 98, 255, 0.18), transparent 41%),
+    radial-gradient(circle at 55% 88%, rgba(12, 36, 107, 0.35), transparent 35%);
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: floatY 4s ease-in-out infinite;
+}
+
+/* Skill orb subtle float */
+@keyframes skillFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.skill-orb {
+  animation: skillFloat 5s ease-in-out infinite;
+}
+
+/* Marquee infinite scroll */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

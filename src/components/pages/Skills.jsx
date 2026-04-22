@@ -1,6 +1,5 @@
 "use client"
 
-import Ring from '../Spline/Ring'
 import Image from 'next/image'
 export default function Skills() {
     const row1 = ["html.webp", "css.webp", "js.webp"];
@@ -11,9 +10,6 @@ export default function Skills() {
 
     return (
         <div className='min-h-screen h-auto  bg-cover xl:relative ' id="Skills">
-            <div className="hidden xl:block xl:absolute w-full h-full right-[80rem] z-0">
-                <Ring />
-            </div>
             <div className='w-full h-full min-h-screen bg-gradient-to-b from-[#030507] via-[#090e14d8] to-[#030507] xl:absolute'>
                 <div className='text-white  text-4xl  w-full h-auto '>
                     <div className="flex flex-col justify-center h-auto w-full">

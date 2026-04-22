@@ -40,27 +40,6 @@ export const projects = [
         liveLink: "https://file-transfer-tan-six.vercel.app/"
     },
     {
-        name: "Wanderlust",
-        img: "/projects/wanderlust/wanderlust1.webp",
-        description: " Wanderlust is a web application inspired by Airbnb, where users can list their homes, explore listings, and leave reviews. It’s designed to make home-sharing easy, offering users the ability to list, browse, and review accommodations.",
-        techStack: ["ejs.webp", "bootstrap.webp", "nodejs.webp", "express.webp", "mongodb.webp"],
-        details: [
-            "User Authentication: Secure login and registration with Passport.js.",
-            "List and Review Homes: Users can add their properties, browse other listings, and post reviews.",
-            "Map Integration: Uses Mapbox to show locations of listed properties.",
-            "Image Storage: Image hosting and management with Cloudinary.",
-            "Data Validation: Schema validation for requests with Joi.",
-            "Responsive Design: Styled with Bootstrap for a mobile-friendly experience.",
-        ],
-        screenshots: [
-            "/projects/wanderlust/wanderlust1.webp",
-            "/projects/wanderlust/wanderlust2.webp",
-            "/projects/wanderlust/wanderlust3.webp"
-        ],
-        githubLink: "https://github.com/Prince-kushwaha-2004/Wanderlust",
-        liveLink: "https://wanderlust-1-y0wm.onrender.com/listings"
-    },
-    {
         name: "Certifier",
         img: "/projects/certifier/certifier1.webp",
         description: "A bulk certificate generator project that automates personalized certificate creation using student data, integrates  file management, and features a responsive React frontend with Django and Pillow for backend image processing.",
@@ -83,6 +62,27 @@ export const projects = [
         ],
         githubLink: "https://github.com/Prince-kushwaha-2004/certifier",
 
+    },
+    {
+        name: "Wanderlust",
+        img: "/projects/wanderlust/wanderlust1.webp",
+        description: " Wanderlust is a web application inspired by Airbnb, where users can list their homes, explore listings, and leave reviews. It’s designed to make home-sharing easy, offering users the ability to list, browse, and review accommodations.",
+        techStack: ["ejs.webp", "bootstrap.webp", "nodejs.webp", "express.webp", "mongodb.webp"],
+        details: [
+            "User Authentication: Secure login and registration with Passport.js.",
+            "List and Review Homes: Users can add their properties, browse other listings, and post reviews.",
+            "Map Integration: Uses Mapbox to show locations of listed properties.",
+            "Image Storage: Image hosting and management with Cloudinary.",
+            "Data Validation: Schema validation for requests with Joi.",
+            "Responsive Design: Styled with Bootstrap for a mobile-friendly experience.",
+        ],
+        screenshots: [
+            "/projects/wanderlust/wanderlust1.webp",
+            "/projects/wanderlust/wanderlust2.webp",
+            "/projects/wanderlust/wanderlust3.webp"
+        ],
+        githubLink: "https://github.com/Prince-kushwaha-2004/Wanderlust",
+        liveLink: "https://wanderlust-1-y0wm.onrender.com/listings"
     },
     {
         name: "Quick Mart",

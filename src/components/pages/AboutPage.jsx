@@ -1,7 +1,6 @@
 "use client"
 import { FaGithub } from "react-icons/fa";
 import { SiCodechef, SiCodeforces, SiLeetcode } from "react-icons/si";
-import Robot from "../Spline/Robot";
 import Link from "next/link";
 export default function AboutPage() {
     return (
@@ -21,13 +20,7 @@ export default function AboutPage() {
                                     <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
                                 </div>
                             </div>
-                            <div className="flex flex-1 items-center mx:2 2xl:mx-40 gap-64 text-slate-300">
-                                <div className="w-1/2 relative hidden ms-16 lg:ms-32 lg:block">
-                                    <div className="hidden  h-full lg:flex justify-center items-center">
-                                        <Robot />
-                                    </div>
-                                </div>
-
+                            <div className="flex flex-1 items-center mx:2 2xl:mx-40 text-slate-300">
                                 <h1 className="text-sm sm:text-lg 2xl:text-xl mx-4 sm:mx-8 lg:mx-0 lg:ms-auto mt-12 lg:me-10  leading-[2rem] 2xl:leading-[2.5rem]">
                                     Hello, I’m Prince Kushwaha, a dedicated web developer with a strong passion for creating high-performance, user-friendly applications. I specialize in web development using modern frameworks and technologies like React, MongoDB, Node.js, and Next.js. I also have experience working with AngularJS and Django, that allows me to approach projects with a diverse toolkit.
 

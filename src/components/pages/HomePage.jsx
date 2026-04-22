@@ -7,7 +7,6 @@ import Button1 from "../Buttons/Button1";
 import Link from "next/link";
 
 import Nav from "../Nav/Nav";
-import Ring from "../Spline/Ring";
 import { HoverBorderGradient } from "../ui/hover-border-gradient";
 export default function HomePage() {
     return (
@@ -15,9 +14,6 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(0,120,255,0.25),transparent_60%),radial-gradient(ellipse_at_70%_80%,rgba(0,150,255,0.15),transparent_70%)] blur-3xl animate-pulse-slow"></div>
             <div className={`w-screen min-h-screen  relative`} id="Home">
                 <HoverBorderGradient children={<Nav />} className="bg-transparent px-8 text-xl border-slate-700" containerClassName="border-slate-700 bg-transparent relative z-[100] top-5  left-1/2 transform -translate-x-1/2 " />
-                <div className="absolute w-full h-full left-40 xl:left-80">
-                    <Ring />
-                </div>
                 <div className='w-screen h-full bg-gradient-to-b from-transparent to-[#030507] absolute'></div>
                 <div className='flex  w-screen h-screen' >
                     <div className='w-full px-4 lg:px-40 2xl:px-60 flex flex-col justify-center z-[10]'>
