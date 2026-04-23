@@ -18,7 +18,7 @@ export default function FaqSection() {
     >
       <p className="text-center text-xs uppercase tracking-[0.2em] text-[#7f9de0]">FAQ</p>
       <h2 className="mt-3 text-center playto-serif text-5xl text-white">Got questions?</h2>
-      <p className="mt-3 text-center text-[#90a3ca]">We have got answers.</p>
+      <p className="mt-3 text-center text-[#90a3ca]">I have got answers.</p>
       <div className="mt-10 space-y-4">
         {FAQs.map((item, index) => (
           <motion.article
