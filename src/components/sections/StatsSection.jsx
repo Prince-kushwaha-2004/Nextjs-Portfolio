@@ -28,9 +28,12 @@ export default function StatsSection() {
         {doubled.map((skill, i) => (
           <span
             key={`${skill}-${i}`}
-            className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.15em] text-[#8fa2ca] transition-colors hover:text-white"
+            className="flex items-center gap-6"
           >
-            {skill}
+            <span className="text-[#8fa2ca] text-lg select-none">•</span>
+            <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.15em] text-[#8fa2ca] transition-colors hover:text-white">
+              {skill}
+            </span>
           </span>
         ))}
       </div>

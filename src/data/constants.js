@@ -31,11 +31,9 @@ export const FAQs = [
 
 /* ─── Skills ──────────────────────────────────────────────────────── */
 export const SKILLS = [
-  "HTML",
-  "CSS",
-  "JavaScript",
   "React",
   "Next.js",
+  "TanStack Start",
   "Angular",
   "Tailwind CSS",
   "Bootstrap",
@@ -44,11 +42,12 @@ export const SKILLS = [
   "Node.js",
   "Express.js",
   "Django",
+  "DRF",
   "MongoDB",
+  "PostgreSQL",
   "Firebase",
   "Nginx",
   "Docker",
-  "WebRTC",
   "C",
   "C++",
   "Python",
@@ -119,7 +118,7 @@ export const EXPERIENCE = [
   },
   {
     company: "Techimpressive Technologies",
-    role: "SDE Intern",
+    role: "Full Stack Developer Intern",
     duration: "November 2024 - January 2025",
     website: "https://www.techimpressive.com/",
     points: [
@@ -130,7 +129,7 @@ export const EXPERIENCE = [
   },
   {
     company: "TEAM ERP",
-    role: "Full Stack Developer Intern",
+    role: "Full Stack Developer",
     duration: "June 2024 - October 2025",
     website: "https://tech.kiet.edu/team-erp/",
     points: [
