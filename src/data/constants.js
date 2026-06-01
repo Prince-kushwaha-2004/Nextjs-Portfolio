@@ -108,7 +108,7 @@ export const EXPERIENCE = [
   {
     company: "EduVerse",
     role: "SDE Intern",
-    duration: "September 2024 - Present",
+    duration: "September 2025 - Present",
     website: "https://erp.kiet.co.in/login",
     points: [
       "Worked on multiple modules using TanStack Start and DRF, implementing dynamic tables, forms, and responsive layouts to enhance user experience.",
@@ -119,7 +119,7 @@ export const EXPERIENCE = [
   {
     company: "Techimpressive Technologies",
     role: "Full Stack Developer Intern",
-    duration: "November 2024 - January 2025",
+    duration: "November 2025 - January 2026",
     website: "https://www.techimpressive.com/",
     points: [
       "Developed and deployed a full-stack platform with Next.js, Prisma, and PostgreSQL focused on job postings and training workflows.",
