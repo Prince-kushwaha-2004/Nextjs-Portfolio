@@ -14,14 +14,32 @@ const playfair = Playfair_Display({
 
 export const metadata = {
   title: "Prince's Portfolio",
-  description: "Portfolio Website",
+  description: "Prince's Portfolio Portfolio Website",
   metadataBase: new URL('https://princekushwaha.tech'),
+  keywords: [
+    "Prince Kushwaha",
+    "Prince Kushwaha Portfolio",
+    "Prince Kushwaha Portfolio Website",
+    "Prince Kushwaha Portfolio Website",
+  ],
   verification: {
     google: '8lVzECKNzw0ZbFmxTEuU1o6Nnw6xIMhSiDe8-vqXtpY',
   },
+  authors: [{ name: "Prince Kushwaha" }],
+  creator: "Prince Kushwaha",
+  publisher: "Prince Kushwaha",
+  category: "education",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Prince's Portfolio",
-    description: "Portfolio Website",
+    description: "Prince's Portfolio",
     images: [
       {
         url: '/logo/icon.png',
