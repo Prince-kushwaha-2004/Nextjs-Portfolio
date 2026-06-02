@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  title: "Prince's Portfolio",
-  description: "Prince's Portfolio Portfolio Website",
+  title: "Prince Kushwaha | Full Stack Developer",
+  description: "Prince Kushwaha - Full Stack Developer. Experienced in React, Next.js, Node.js, Express.js, Django, PostgreSQL, TypeScript, and modern web development. Discover my projects, technical expertise, and software engineering journey.",
   metadataBase: new URL('https://princekushwaha.tech'),
   keywords: [
     "Prince Kushwaha",
@@ -38,8 +38,8 @@ export const metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Prince's Portfolio",
-    description: "Prince's Portfolio",
+    title: "Prince Kushwaha | Full Stack Developer",
+    description: "Prince Kushwaha - Full Stack Developer. Experienced in React, Next.js, Node.js, Express.js, Django, PostgreSQL, TypeScript, and modern web development. Discover my projects, technical expertise, and software engineering journey.",
     images: [
       {
         url: '/logo/icon.png',
