@@ -15,6 +15,28 @@ const playfair = Playfair_Display({
 export const metadata = {
   title: "Prince's Portfolio",
   description: "Portfolio Website",
+  metadataBase: new URL('https://princekushwaha.tech'),
+  verification: {
+    google: '8lVzECKNzw0ZbFmxTEuU1o6Nnw6xIMhSiDe8-vqXtpY',
+  },
+  openGraph: {
+    title: "Prince's Portfolio",
+    description: "Portfolio Website",
+    images: [
+      {
+        url: '/logo/icon.png',
+        width: 1200,
+        height: 630,
+        alt: "Prince's Portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Prince's Portfolio",
+    description: "Portfolio Website",
+    images: ['/logo/icon.png'],
+  },
 };
 
 export default function RootLayout({ children }) {
