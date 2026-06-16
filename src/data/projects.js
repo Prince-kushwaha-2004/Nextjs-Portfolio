@@ -64,9 +64,9 @@ export const projects = [
 
     },
     {
-        name: "Wanderlust",
-        img: "/projects/wanderlust/wanderlust1.webp",
-        description: " Wanderlust is a web application inspired by Airbnb, where users can list their homes, explore listings, and leave reviews. It’s designed to make home-sharing easy, offering users the ability to list, browse, and review accommodations.",
+        name: "StayEasy",
+        img: "/projects/wanderlust/stayease1.png",
+        description: " StayEasy is a web application inspired by Airbnb, where users can list their homes, explore listings, and leave reviews. It’s designed to make home-sharing easy, offering users the ability to list, browse, and review accommodations.",
         techStack: ["ejs.webp", "bootstrap.webp", "nodejs.webp", "express.webp", "mongodb.webp"],
         details: [
             "User Authentication: Secure login and registration with Passport.js.",
@@ -77,12 +77,13 @@ export const projects = [
             "Responsive Design: Styled with Bootstrap for a mobile-friendly experience.",
         ],
         screenshots: [
-            "/projects/wanderlust/wanderlust1.webp",
-            "/projects/wanderlust/wanderlust2.webp",
-            "/projects/wanderlust/wanderlust3.webp"
+            "/projects/wanderlust/stayease1.png",
+            "/projects/wanderlust/stayease2.png",
+            "/projects/wanderlust/stayease3.png",
+            "/projects/wanderlust/stayease4.png"
         ],
         githubLink: "https://github.com/Prince-kushwaha-2004/Wanderlust",
-        liveLink: "https://wanderlust-1-y0wm.onrender.com/listings"
+        liveLink: "https://wanderlust-production-96de.up.railway.app/"
     },
     {
         name: "Quick Mart",
