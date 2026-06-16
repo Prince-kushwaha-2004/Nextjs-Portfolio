@@ -82,7 +82,7 @@ export const projects = [
             "/projects/wanderlust/stayease3.png",
             "/projects/wanderlust/stayease4.png"
         ],
-        githubLink: "https://github.com/Prince-kushwaha-2004/Wanderlust",
+        githubLink: "https://github.com/Prince-kushwaha-2004/StayEase",
         liveLink: "https://wanderlust-production-96de.up.railway.app/"
     },
     {
