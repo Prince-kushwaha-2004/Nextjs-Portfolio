@@ -11,6 +11,8 @@ import {
 import { useRef, useEffect, useCallback, useState } from "react";
 import { SKILL_ROWS, fadeUp, stagger } from "@/data/constants";
 import { Code2, Server, Database, Terminal, Cpu } from "lucide-react";
+import SpotlightCard from "@/components/SpotlightCard";
+import ShinyText from "@/components/ShinyText";
 
 /* ── Burst particles ── */
 const PARTICLE_COUNT = 10;
@@ -143,20 +145,23 @@ function SkillOrb({ skill }) {
             ? { scale: 0, opacity: 0, transition: { duration: 0.18 } }
             : { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 260, damping: 14, delay: 0.05 } }
         }
-        className="relative flex h-[52px] w-[52px] sm:h-[60px] sm:w-[60px] lg:h-[64px] lg:w-[64px] items-center justify-center rounded-full border border-[#30363d] bg-[#161b22]/90 shadow-md backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-[#58a6ff] group-hover:shadow-[0_0_20px_rgba(88,166,255,0.35)] group-hover:-translate-y-1"
+        className="relative flex h-[52px] w-[52px] sm:h-[60px] sm:w-[60px] lg:h-[64px] lg:w-[64px] items-center justify-center rounded-full border border-white/10 bg-[rgba(13,20,36,0.7)] shadow-lg backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:border-[#38bdf8] group-hover:shadow-[0_0_24px_rgba(56,189,248,0.45)] group-hover:-translate-y-1"
+        style={{
+          boxShadow: "inset 0 1px 1px rgba(255,255,255,0.15), 0 8px 20px rgba(0,0,0,0.4)",
+        }}
       >
         <Image
           src={`/skills/${skill.file}`}
           alt={skill.name}
           width={32}
           height={32}
-          className="h-6 w-6 sm:h-7 sm:w-7 object-contain transition-transform duration-300 group-hover:scale-110"
+          className="h-6 w-6 sm:h-7 sm:w-7 object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow"
         />
       </motion.div>
 
       {/* Hover tooltip tag */}
       <span
-        className="pointer-events-none absolute -bottom-6 z-30 whitespace-nowrap rounded-md border border-[#30363d] bg-[#0d1117]/95 px-2 py-0.5 text-[10px] font-medium text-[#c9d1d9] opacity-0 shadow-lg backdrop-blur-md transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-1"
+        className="pointer-events-none absolute -bottom-6 z-30 whitespace-nowrap rounded-md border border-white/15 bg-[rgba(10,15,30,0.92)] px-2 py-0.5 text-[10px] font-medium text-[#f8fafc] opacity-0 shadow-xl backdrop-blur-md transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-1"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
         {skill.name}
@@ -178,10 +183,10 @@ export default function SkillsSection() {
       {/* Header */}
       <motion.div variants={fadeUp} className="text-center md:text-left mb-12">
         <p className="section-label">Tech Stack</p>
-        <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-[#e6edf3]">
+        <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-[#f8fafc]">
           Skills &amp; Technologies
         </h2>
-        <p className="mt-2 text-sm text-[#8d96a0] max-w-xl">
+        <p className="mt-2 text-sm text-[#94a3b8] max-w-xl">
           A comprehensive ecosystem of modern frameworks, robust backends, scalable databases, and DevOps tools.
         </p>
       </motion.div>
@@ -191,68 +196,88 @@ export default function SkillsSection() {
 
         {/* ── Left Floating Cards (Frontend & DevOps) ── */}
         <div className="lg:col-span-3 flex flex-col gap-6 order-2 lg:order-1">
-          {/* Card 1: Frontend */}
+          {/* Card 1: Frontend (Tilted -3.5deg) with SpotlightCard */}
           <motion.div
             variants={fadeUp}
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#58a6ff]/50 hover:shadow-[0_4px_24px_rgba(88,166,255,0.15)]"
+            whileHover={{ rotate: 0, scale: 1.03, y: -4 }}
+            initial={{ rotate: -3.5 }}
+            animate={{ rotate: [-3.5, -2, -3.5] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#58a6ff]/10 text-[#58a6ff]">
-                <Code2 size={16} />
+            <SpotlightCard
+              spotlightColor="rgba(56, 189, 248, 0.25)"
+              spotlightSize={260}
+              className="rounded-2xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-5 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-[#38bdf8]/60 hover:shadow-[0_12px_36px_rgba(56,189,248,0.2)]"
+              style={{
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px rgba(0,0,0,0.5)",
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#38bdf8]/15 text-[#38bdf8] border border-[#38bdf8]/30 shadow-[0_0_12px_rgba(56,189,248,0.2)]">
+                  <Code2 size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#38bdf8]">
+                    Frontend &amp; UI
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#58a6ff]">
-                  Frontend &amp; UI
-                </span>
+              <p className="text-xs text-[#94a3b8] leading-relaxed mb-3">
+                Fast, reactive, and responsive user interfaces with component modularity.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["React", "Next.js", "Tailwind", "JavaScript", "Angular"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-mono text-[#cbd5e1] backdrop-blur-md transition hover:border-[#38bdf8]/40 hover:text-[#38bdf8]"
+                  >
+                    {s}
+                  </span>
+                ))}
               </div>
-            </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
-              Fast, reactive, and responsive user interfaces with component modularity.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["React", "Next.js", "Tailwind", "JavaScript", "Angular"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+            </SpotlightCard>
           </motion.div>
 
-          {/* Card 2: DevOps & Systems */}
+          {/* Card 2: DevOps & Systems (Tilted +2.5deg) with SpotlightCard */}
           <motion.div
             variants={fadeUp}
-            animate={{ y: [0, 8, 0] }}
+            whileHover={{ rotate: 0, scale: 1.03, y: -4 }}
+            initial={{ rotate: 2.5 }}
+            animate={{ rotate: [2.5, 4, 2.5] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#e3b341]/50 hover:shadow-[0_4px_24px_rgba(227,179,65,0.15)]"
           >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#e3b341]/10 text-[#e3b341]">
-                <Terminal size={16} />
+            <SpotlightCard
+              spotlightColor="rgba(245, 158, 11, 0.25)"
+              spotlightSize={260}
+              className="rounded-2xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-5 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-[#f59e0b]/60 hover:shadow-[0_12px_36px_rgba(245,158,11,0.2)]"
+              style={{
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px rgba(0,0,0,0.5)",
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/30 shadow-[0_0_12px_rgba(245,158,11,0.2)]">
+                  <Terminal size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#f59e0b]">
+                    DevOps &amp; Tools
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e3b341]">
-                  DevOps &amp; Tools
-                </span>
+              <p className="text-xs text-[#94a3b8] leading-relaxed mb-3">
+                Production containerization, reverse proxy configs, and CI/CD pipelines.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["Docker", "Nginx", "Git", "GitHub", "AWS S3"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-mono text-[#cbd5e1] backdrop-blur-md transition hover:border-[#f59e0b]/40 hover:text-[#f59e0b]"
+                  >
+                    {s}
+                  </span>
+                ))}
               </div>
-            </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
-              Production containerization, reverse proxy configs, and CI/CD pipelines.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["Docker", "Nginx", "Git", "GitHub", "AWS S3"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+            </SpotlightCard>
           </motion.div>
         </div>
 
@@ -261,9 +286,9 @@ export default function SkillsSection() {
 
           {/* Subtle glowing ambient backdrop */}
           <div
-            className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full opacity-25 blur-3xl"
+            className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full opacity-30 blur-3xl"
             style={{
-              background: "radial-gradient(circle, #58a6ff 0%, #a371f7 30%, transparent 50%)",
+              background: "radial-gradient(circle, #38bdf8 0%, #818cf8 35%, #a855f7 65%, transparent 80%)",
             }}
           />
 
@@ -293,68 +318,88 @@ export default function SkillsSection() {
 
         {/* ── Right Floating Cards (Backend & Database) ── */}
         <div className="lg:col-span-3 flex flex-col gap-6 order-3">
-          {/* Card 3: Backend & APIs */}
+          {/* Card 3: Backend & APIs (Tilted +3deg) with SpotlightCard */}
           <motion.div
             variants={fadeUp}
-            animate={{ y: [0, -9, 0] }}
+            whileHover={{ rotate: 0, scale: 1.03, y: -4 }}
+            initial={{ rotate: 3 }}
+            animate={{ rotate: [3, 1.5, 3] }}
             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#3fb950]/50 hover:shadow-[0_4px_24px_rgba(63,185,80,0.15)]"
           >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#3fb950]/10 text-[#3fb950]">
-                <Server size={16} />
+            <SpotlightCard
+              spotlightColor="rgba(16, 185, 129, 0.25)"
+              spotlightSize={260}
+              className="rounded-2xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-5 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-[#10b981]/60 hover:shadow-[0_12px_36px_rgba(16,185,129,0.2)]"
+              style={{
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px rgba(0,0,0,0.5)",
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/30 shadow-[0_0_12px_rgba(16,185,129,0.2)]">
+                  <Server size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#10b981]">
+                    Backend &amp; APIs
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#3fb950]">
-                  Backend &amp; APIs
-                </span>
+              <p className="text-xs text-[#94a3b8] leading-relaxed mb-3">
+                Scalable REST microservices, authentication security, and business logic.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["Node.js", "Express.js", "Django", "DRF", "REST APIs"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-mono text-[#cbd5e1] backdrop-blur-md transition hover:border-[#10b981]/40 hover:text-[#10b981]"
+                  >
+                    {s}
+                  </span>
+                ))}
               </div>
-            </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
-              Scalable REST microservices, authentication security, and business logic.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["Node.js", "Express.js", "Django", "DRF", "REST APIs"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+            </SpotlightCard>
           </motion.div>
 
-          {/* Card 4: Databases & Languages */}
+          {/* Card 4: Databases & Languages (Tilted -2.5deg) with SpotlightCard */}
           <motion.div
             variants={fadeUp}
-            animate={{ y: [0, 7, 0] }}
+            whileHover={{ rotate: 0, scale: 1.03, y: -4 }}
+            initial={{ rotate: -2.5 }}
+            animate={{ rotate: [-2.5, -4, -2.5] }}
             transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#bc8cff]/50 hover:shadow-[0_4px_24px_rgba(188,140,255,0.15)]"
           >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#bc8cff]/10 text-[#bc8cff]">
-                <Database size={16} />
+            <SpotlightCard
+              spotlightColor="rgba(192, 132, 252, 0.25)"
+              spotlightSize={260}
+              className="rounded-2xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-5 backdrop-blur-xl shadow-2xl transition-all duration-300 hover:border-[#c084fc]/60 hover:shadow-[0_12px_36px_rgba(192,132,252,0.2)]"
+              style={{
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 10px 30px rgba(0,0,0,0.5)",
+              }}
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#c084fc]/15 text-[#c084fc] border border-[#c084fc]/30 shadow-[0_0_12px_rgba(192,132,252,0.2)]">
+                  <Database size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#c084fc]">
+                    Data &amp; Core Tech
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#bc8cff]">
-                  Data &amp; Core Tech
-                </span>
+              <p className="text-xs text-[#94a3b8] leading-relaxed mb-3">
+                High-performance query design, NoSQL schema, and algorithmic logic.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["PostgreSQL", "MongoDB", "Firebase", "Python", "C/C++"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-mono text-[#cbd5e1] backdrop-blur-md transition hover:border-[#c084fc]/40 hover:text-[#c084fc]"
+                  >
+                    {s}
+                  </span>
+                ))}
               </div>
-            </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
-              High-performance query design, NoSQL schema, and algorithmic logic.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["PostgreSQL", "MongoDB", "Firebase", "Python", "C/C++"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
+            </SpotlightCard>
           </motion.div>
         </div>
 

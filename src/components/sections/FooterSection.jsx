@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SOCIAL_LINKS, fadeUp } from "@/data/constants";
-import { Send, MapPin, Mail, ArrowRight } from "lucide-react";
+import { Send, MapPin, Mail, Sparkles, MessageSquare } from "lucide-react";
 import toast from "react-hot-toast";
+import FollowTheSun from "@/components/FollowTheSun";
+import LuminousType from "@/components/LuminousType";
 
 export default function FooterSection() {
   const [sending, setSending] = useState(false);
@@ -26,7 +28,7 @@ export default function FooterSection() {
       });
       const data = await res.json();
       if (data.success) {
-        toast.success("Message sent!");
+        toast.success("Message sent! I'll get back to you shortly.");
         setFormData({ name: "", email: "", message: "" });
       } else {
         toast.error("Failed to send. Try again.");
@@ -38,11 +40,12 @@ export default function FooterSection() {
     }
   };
 
-  const inputClass = "w-full rounded-lg border px-4 py-3 text-sm outline-none transition";
+  const inputClass = "w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-200 placeholder:text-[#94a3b8]/50";
   const inputStyle = {
-    background: "var(--bg-subtle)",
-    borderColor: "var(--border)",
-    color: "var(--text-primary)",
+    background: "rgba(10, 15, 30, 0.65)",
+    borderColor: "rgba(255, 255, 255, 0.1)",
+    color: "#f8fafc",
+    backdropFilter: "blur(12px)",
   };
 
   return (
@@ -52,62 +55,83 @@ export default function FooterSection() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.05 }}
-      className="w-full border-t"
-      style={{ borderColor: "var(--border)", background: "var(--bg-subtle)" }}
+      className="relative w-full border-t backdrop-blur-xl"
+      style={{ borderColor: "rgba(255, 255, 255, 0.08)", background: "rgba(6, 8, 19, 0.75)" }}
     >
-      <div className="section-container">
-        {/* Header */}
-        <div className="mb-10">
-          <p className="section-label">Contact</p>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl" style={{ color: "var(--text-primary)" }}>
-            Let&apos;s build something.
-          </h2>
-          <p className="mt-2 max-w-lg text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-            Got a project in mind? I&apos;d love to hear about it. Fill the form or reach out directly.
+      <div className="section-container relative z-10 pt-16 pb-12">
+        {/* Header with React Bits Pro Luminous Type */}
+        <div className="mb-10 text-center md:text-left">
+          <p className="section-label">Connect &amp; Collaborate</p>
+          <div className="mt-4">
+            <LuminousType
+              className="text-3xl font-extrabold sm:text-5xl text-white tracking-tight"
+              spotlightColor="rgba(56, 189, 248, 0.95)"
+              glowColor="rgba(129, 140, 248, 0.4)"
+              spotlightSize={320}
+            >
+              Let&apos;s build something exceptional.
+            </LuminousType>
+          </div>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#94a3b8]">
+            Whether you need a high-performance web platform, a modern Next.js frontend, or robust backend architecture — let&apos;s connect.
           </p>
         </div>
 
-        <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-          {/* Left */}
-          <div>
-            {/* Contact info */}
+        {/* ── React Bits Pro Block: Features 17 Follow-The-Sun ── */}
+        <div className="mb-14">
+          <FollowTheSun />
+        </div>
+
+        {/* Contact info + form */}
+        <div className="grid gap-10 md:grid-cols-2 md:gap-16 items-start">
+          {/* Left: Contact Info & Socials */}
+          <div className="rounded-3xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
+            <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <Sparkles size={18} className="text-sky-400" /> Direct Channels
+            </h4>
             <div className="space-y-4">
               <a
                 href="mailto:princekk102004@gmail.com"
-                className="flex items-center gap-3 text-sm transition hover:opacity-80"
-                style={{ color: "var(--text-secondary)" }}
+                className="group flex items-center gap-3 text-sm transition hover:text-[#38bdf8]"
+                style={{ color: "#cbd5e1" }}
               >
                 <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                  style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#38bdf8]/30 transition-transform group-hover:scale-110"
+                  style={{ background: "rgba(56, 189, 248, 0.12)", color: "#38bdf8", boxShadow: "0 0 16px rgba(56,189,248,0.2)" }}
                 >
-                  <Mail size={15} />
+                  <Mail size={16} />
                 </div>
-                princekk102004@gmail.com
+                <div>
+                  <div className="text-[11px] font-mono text-slate-400">Email Address</div>
+                  <div className="font-semibold text-white group-hover:text-sky-400">princekk102004@gmail.com</div>
+                </div>
               </a>
               <div
                 className="flex items-center gap-3 text-sm"
-                style={{ color: "var(--text-secondary)" }}
+                style={{ color: "#cbd5e1" }}
               >
                 <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                  style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#38bdf8]/30"
+                  style={{ background: "rgba(56, 189, 248, 0.12)", color: "#38bdf8", boxShadow: "0 0 16px rgba(56,189,248,0.2)" }}
                 >
-                  <MapPin size={15} />
+                  <MapPin size={16} />
                 </div>
-                India · Open to Remote
+                <div>
+                  <div className="text-[11px] font-mono text-slate-400">Location &amp; Availability</div>
+                  <div className="font-semibold text-white">Bengaluru, India · Worldwide Remote OK</div>
+                </div>
               </div>
             </div>
 
             {/* Social */}
-            <div className="mt-8">
+            <div className="mt-8 border-t border-white/10 pt-6">
               <p
-                className="mb-3 text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+                className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#94a3b8]"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 Find me on
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2.5">
                 {SOCIAL_LINKS.map((item) => {
                   const Icon = item.icon;
                   return (
@@ -116,11 +140,23 @@ export default function FooterSection() {
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm font-medium transition hover:opacity-80"
+                      className="inline-flex items-center gap-2 rounded-xl border px-4 py-2 text-xs font-medium backdrop-blur-md transition-all duration-200"
                       style={{
-                        borderColor: "var(--border)",
-                        background: "var(--bg-card)",
-                        color: "var(--text-secondary)",
+                        borderColor: "rgba(255, 255, 255, 0.1)",
+                        background: "rgba(13, 20, 36, 0.65)",
+                        color: "#cbd5e1",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.5)";
+                        e.currentTarget.style.color = "#38bdf8";
+                        e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.2)";
+                        e.currentTarget.style.transform = "translateY(-1px)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                        e.currentTarget.style.color = "#cbd5e1";
+                        e.currentTarget.style.boxShadow = "none";
+                        e.currentTarget.style.transform = "translateY(0)";
                       }}
                     >
                       <Icon className="h-4 w-4" />
@@ -131,40 +167,53 @@ export default function FooterSection() {
               </div>
             </div>
 
-            {/* Code snippet decoration */}
-            <div className="mt-8 code-block text-xs">
-              <span style={{ color: "#8d96a0" }}>// reach out anytime</span>
+            {/* Developer snippet decoration */}
+            <div
+              className="mt-6 rounded-2xl border p-4 font-mono text-xs shadow-xl backdrop-blur-md leading-6"
+              style={{
+                borderColor: "rgba(255, 255, 255, 0.1)",
+                background: "rgba(10, 15, 30, 0.7)",
+                boxShadow: "inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+              }}
+            >
+              <span style={{ color: "#94a3b8" }}>// reach out anytime</span>
               <br />
-              <span style={{ color: "#79c0ff" }}>const </span>
-              <span style={{ color: "#e6edf3" }}>contact </span>
-              <span style={{ color: "#ff7b72" }}>= </span>
-              <span style={{ color: "#a5d6ff" }}>{`{`}</span>
+              <span style={{ color: "#f43f5e" }}>const </span>
+              <span style={{ color: "#38bdf8" }}>developer </span>
+              <span style={{ color: "#f8fafc" }}>= </span>
+              <span style={{ color: "#c084fc" }}>{`{`}</span>
               <br />
-              <span style={{ color: "#a5d6ff" }}>{"  email: "}</span>
-              <span style={{ color: "#a8daff" }}>&quot;princekk102004@gmail.com&quot;</span>
+              <span style={{ color: "#cbd5e1" }}>{"  status: "}</span>
+              <span style={{ color: "#34d399" }}>&quot;available_for_hire&quot;</span>
               <span>,</span>
               <br />
-              <span style={{ color: "#a5d6ff" }}>{"  status: "}</span>
-              <span style={{ color: "#a8daff" }}>&quot;open_to_work&quot;</span>
+              <span style={{ color: "#cbd5e1" }}>{"  response: "}</span>
+              <span style={{ color: "#34d399" }}>&quot;&lt; 2 hours&quot;</span>
               <br />
-              <span style={{ color: "#a5d6ff" }}>{`}`}</span>
+              <span style={{ color: "#c084fc" }}>{`}`}</span>
               <span>;</span>
             </div>
           </div>
 
-          {/* Right: form */}
+          {/* Right: Interactive Form */}
           <form
             onSubmit={handleSubmit}
-            className="card rounded-xl p-6"
-            style={{ background: "var(--bg-card)" }}
+            className="rounded-3xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-6 sm:p-8 backdrop-blur-xl shadow-2xl"
+            style={{
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), 0 20px 40px rgba(0,0,0,0.5)",
+            }}
           >
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/30">
+                <MessageSquare size={16} />
+              </div>
+              <h4 className="text-lg font-bold text-white">Send a Message</h4>
+            </div>
+
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
-                <label
-                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  Name
+                <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]">
+                  Your Name
                 </label>
                 <input
                   type="text"
@@ -172,19 +221,22 @@ export default function FooterSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  placeholder="Your name"
+                  placeholder="e.g. Alex Smith"
                   className={inputClass}
                   style={inputStyle}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#38bdf8";
+                    e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.25)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
               <div>
-                <label
-                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  Email
+                <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]">
+                  Your Email
                 </label>
                 <input
                   type="email"
@@ -192,20 +244,23 @@ export default function FooterSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  placeholder="your@email.com"
+                  placeholder="alex@company.com"
                   className={inputClass}
                   style={inputStyle}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "#38bdf8";
+                    e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.25)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
             </div>
 
             <div className="mt-4">
-              <label
-                className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
-                style={{ color: "var(--text-muted)" }}
-              >
+              <label className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]">
                 Message
               </label>
               <textarea
@@ -214,11 +269,17 @@ export default function FooterSection() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="Tell me about your project..."
+                placeholder="Hi Prince, I'd like to discuss an opportunity or project..."
                 className={inputClass}
                 style={inputStyle}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "#38bdf8";
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.25)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               />
             </div>
 
@@ -226,11 +287,14 @@ export default function FooterSection() {
               type="submit"
               disabled={sending}
               id="contact-submit-btn"
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-              style={{ background: "var(--accent)" }}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl py-3.5 text-sm font-semibold text-white shadow-xl transition-all duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60 cursor-pointer"
+              style={{
+                background: "linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #6366f1 100%)",
+                boxShadow: "0 8px 25px rgba(56, 189, 248, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25)",
+              }}
             >
-              <Send size={14} />
-              {sending ? "Sending..." : "Send Message"}
+              <Send size={15} />
+              {sending ? "Sending Message..." : "Send Message"}
             </button>
           </form>
         </div>
@@ -239,12 +303,15 @@ export default function FooterSection() {
       {/* Bottom bar */}
       <div
         className="border-t px-5 py-5 md:px-8"
-        style={{ borderColor: "var(--border)" }}
+        style={{ borderColor: "rgba(255, 255, 255, 0.08)" }}
       >
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 text-xs sm:flex-row"
-          style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}>
-          <span>© {new Date().getFullYear()} Prince Kushwaha</span>
-          <span style={{ color: "var(--accent)" }}>Built with Next.js + Tailwind</span>
+          style={{ color: "#94a3b8", fontFamily: "'JetBrains Mono', monospace" }}>
+          <span>© {new Date().getFullYear()} Prince Kushwaha · Full Stack Engineer</span>
+          <span className="flex items-center gap-1.5" style={{ color: "#38bdf8" }}>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Designed with React Bits &amp; Modern Glassmorphism
+          </span>
         </div>
       </div>
     </motion.footer>

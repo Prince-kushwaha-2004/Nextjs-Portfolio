@@ -4,34 +4,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Dark-only theme tokens ──────────────────────────────────── */
+/* ─── Dark glassmorphism theme tokens ─────────────────────────── */
 :root {
-  --bg-page:       #0d1117;
-  --bg-subtle:     #161b22;
-  --bg-muted:      #21262d;
-  --bg-card:       #161b22;
-  --bg-overlay:    rgba(13,17,23,0.92);
+  --bg-page:       #060813;
+  --bg-subtle:     rgba(15, 23, 42, 0.65);
+  --bg-muted:      rgba(30, 41, 59, 0.55);
+  --bg-card:       rgba(13, 20, 36, 0.65);
+  --bg-overlay:    rgba(6, 8, 19, 0.88);
 
-  --border:        #30363d;
-  --border-muted:  #21262d;
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-muted:  rgba(255, 255, 255, 0.04);
+  --border-highlight: rgba(255, 255, 255, 0.18);
 
-  --text-primary:  #e6edf3;
-  --text-secondary:#8d96a0;
-  --text-muted:    #656d76;
+  --text-primary:  #f8fafc;
+  --text-secondary:#cbd5e1;
+  --text-muted:    #94a3b8;
 
-  --accent:        #58a6ff;
-  --accent-hover:  #79c0ff;
-  --accent-subtle: #121d2f;
+  --accent:        #38bdf8;
+  --accent-hover:  #7dd3fc;
+  --accent-subtle: rgba(56, 189, 248, 0.12);
 
-  --green:         #3fb950;
-  --green-subtle:  #0d2119;
+  --green:         #10b981;
+  --green-hover:   #34d399;
+  --green-subtle:  rgba(16, 185, 129, 0.12);
 
-  --purple:        #a371f7;
-  --purple-subtle: #1e1535;
+  --purple:        #a855f7;
+  --purple-hover:  #c084fc;
+  --purple-subtle: rgba(168, 85, 247, 0.12);
 
-  --shadow-sm:     0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md:     0 4px 16px rgba(0,0,0,0.5);
-  --shadow-lg:     0 8px 40px rgba(0,0,0,0.6);
+  --amber:         #f59e0b;
+  --amber-subtle:  rgba(245, 158, 11, 0.12);
+
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:     0 8px 24px rgba(0,0,0,0.5);
+  --shadow-lg:     0 16px 40px rgba(0,0,0,0.6);
+  --glass-glow:    0 0 25px rgba(56, 189, 248, 0.15);
 }
 
 /* ─── Base ────────────────────────────────────────────────────── */
@@ -51,7 +58,8 @@ body {
 /* ─── Scrollbar ───────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(56,189,248,0.5); }
 .hide-scroll::-webkit-scrollbar { display: none; }
 .hide-scroll { scrollbar-width: none; }
 
@@ -62,24 +70,34 @@ body {
   padding: 80px 24px;
 }
 
-/* ─── Cards ───────────────────────────────────────────────────── */
+/* ─── Glassmorphic Cards ──────────────────────────────────────── */
 .card {
   background: var(--bg-card);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  border-radius: 16px;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.1),
+    0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
+
 .card-lift:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    0 20px 40px -12px rgba(56, 189, 248, 0.16),
+    0 12px 28px -6px rgba(0, 0, 0, 0.6);
 }
 
 /* ─── Section label ───────────────────────────────────────────── */
 .section-label {
-  font-size: 0.7rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--accent);
   display: flex;
   align-items: center;
@@ -87,22 +105,22 @@ body {
 }
 .section-label::before {
   content: '';
-  width: 14px;
+  width: 16px;
   height: 2px;
-  background: var(--accent);
-  border-radius: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+  border-radius: 2px;
   display: inline-block;
 }
 
 /* ─── Gradient text ───────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #58a6ff 0%, #a371f7 50%, #ff7b72 100%);
+  background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .gradient-text-blue {
-  background: linear-gradient(135deg, #58a6ff, #79c0ff);
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -172,23 +190,45 @@ body {
   animation: rotateBg 8s linear infinite;
 }
 
-/* ─── Tag pill ────────────────────────────────────────────────── */
+/* ─── Tag pill (Glass) ────────────────────────────────────────── */
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 3px 10px;
-  font-size: 0.7rem;
+  padding: 4px 11px;
+  font-size: 0.72rem;
   font-weight: 500;
   border-radius: 9999px;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
   font-family: 'JetBrains Mono', monospace;
-  transition: border-color 0.15s, color 0.15s;
+  transition: all 0.2s ease;
 }
 .tag:hover {
-  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
   color: var(--accent);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+/* ─── Glass Utility Classes ───────────────────────────────────── */
+.glass-panel {
+  background: rgba(13, 20, 36, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12),
+    0 12px 32px -4px rgba(0, 0, 0, 0.5);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ─── Timeline ────────────────────────────────────────────────── */
@@ -196,7 +236,7 @@ body {
   position: absolute;
   left: 0; top: 0;
   width: 2px; height: 100%;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  background: linear-gradient(to bottom, var(--accent), var(--purple), transparent);
 }
 
 /* ─── ShadCN reset ────────────────────────────────────────────── */
@@ -227,4 +267,31 @@ body {
 @layer base {
   * { @apply border-border; }
   body { @apply bg-background text-foreground; }
+}
+
+/* ─── GitHub Calendar Full Width ──────────────────────────────── */
+.github-calendar-wrapper {
+  width: 100%;
+}
+.github-calendar-wrapper article,
+.github-calendar-wrapper .react-activity-calendar {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.github-calendar-wrapper .react-activity-calendar__scroll-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto;
+}
+.github-calendar-wrapper svg.react-activity-calendar__calendar,
+.github-calendar-wrapper .react-activity-calendar__scroll-container > svg {
+  width: 100% !important;
+  height: auto !important;
+  min-width: 680px;
+}
+.github-calendar-wrapper .react-activity-calendar__footer {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 16px;
 }

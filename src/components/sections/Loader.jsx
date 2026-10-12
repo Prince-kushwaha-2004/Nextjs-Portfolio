@@ -45,7 +45,7 @@ export default function Loader({ onComplete }) {
         <div
           key="loader-shell"
           className="fixed inset-0 z-[100] overflow-hidden"
-          style={{ background: "#0d1117" }}
+          style={{ background: "#060813" }}
         >
           {/* Sliding panel animates in from left, exits to right */}
           <motion.div
@@ -53,13 +53,13 @@ export default function Loader({ onComplete }) {
             initial={{ x: "-100%" }}
             animate={phase === "exit" ? { x: "100%" } : { x: "0%" }}
             transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
-            style={{ background: "#0d1117" }}
+            style={{ background: "#060813" }}
           >
           {/* Grid pattern background */}
           <div
-            className="pointer-events-none absolute inset-0 opacity-[0.04]"
+            className="pointer-events-none absolute inset-0 opacity-[0.05]"
             style={{
-              backgroundImage: "linear-gradient(#58a6ff 1px, transparent 1px), linear-gradient(90deg, #58a6ff 1px, transparent 1px)",
+              backgroundImage: "linear-gradient(#38bdf8 1px, transparent 1px), linear-gradient(90deg, #38bdf8 1px, transparent 1px)",
               backgroundSize: "40px 40px",
             }}
           />
@@ -68,7 +68,7 @@ export default function Loader({ onComplete }) {
           <div
             className="pointer-events-none absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse at 50% 50%, rgba(88,166,255,0.08) 0%, transparent 65%)",
+              background: "radial-gradient(ellipse at 50% 50%, rgba(56,189,248,0.12) 0%, rgba(129,140,248,0.06) 40%, transparent 70%)",
             }}
           />
 

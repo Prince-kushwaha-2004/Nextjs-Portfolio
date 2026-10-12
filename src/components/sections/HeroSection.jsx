@@ -3,16 +3,20 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, FileText, MapPin } from "lucide-react";
+import { ArrowRight, FileText, MapPin, Sparkles, Terminal } from "lucide-react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { XIcon } from "@/data/constants";
+import Aurora from "@/components/Aurora";
+import BlurText from "@/components/BlurText";
+import ShinyText from "@/components/ShinyText";
+import DecryptedText from "@/components/DecryptedText";
 
 const GITHUB_USERNAME = "Prince-kushwaha-2004";
 
 const ROLES = [
   "Full Stack Developer",
   "React & Next.js Engineer",
-  "Backend Developer",
+  "Backend & API Architect",
   "Open Source Contributor",
 ];
 
@@ -36,7 +40,7 @@ function TypingRole() {
       if (displayed.length < full.length) {
         t.current = setTimeout(() => setDisplayed(full.slice(0, displayed.length + 1)), 60);
       } else {
-        t.current = setTimeout(() => setIsDeleting(true), 2200);
+        t.current = setTimeout(() => setIsDeleting(true), 2400);
       }
     } else {
       if (displayed.length > 0) {
@@ -57,7 +61,7 @@ function TypingRole() {
           display: "inline-block",
           width: 2,
           height: "1.1em",
-          background: "#58a6ff",
+          background: "#38bdf8",
           marginLeft: 3,
           verticalAlign: "text-bottom",
           borderRadius: 1,
@@ -114,7 +118,6 @@ function useGithubStats() {
           sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() }));
         } catch { /* ignore */ }
       } catch {
-        // Fallback default stats so it never shows blank or broken dashes
         setS({ repos: "37", commits: "500+", followers: "9" });
       }
     })();
@@ -123,41 +126,13 @@ function useGithubStats() {
   return s;
 }
 
-/* ── Dot grid background ────────────────────────────────────────── */
-function DotGrid() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Dot pattern */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(88,166,255,0.18) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)",
-        }}
-      />
-      {/* Blue top-left glow */}
-      <div
-        className="absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/3 -translate-y-1/3 rounded-full opacity-[0.12]"
-        style={{ background: "radial-gradient(circle, #58a6ff, transparent 70%)" }}
-      />
-      {/* Purple bottom-right glow */}
-      <div
-        className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full opacity-[0.10]"
-        style={{ background: "radial-gradient(circle, #a371f7, transparent 70%)" }}
-      />
-    </div>
-  );
-}
-
 /* ── Hero section ───────────────────────────────────────────────── */
 export default function HeroSection() {
   const stats = useGithubStats();
 
   const statItems = [
-    { label: "Repos", value: stats.repos },
-    { label: "Commits", value: stats.commits },
+    { label: "Public Repos", value: stats.repos },
+    { label: "Code Commits", value: stats.commits },
     { label: "Followers", value: stats.followers },
   ];
 
@@ -166,69 +141,65 @@ export default function HeroSection() {
       id="home"
       className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden"
     >
-      <DotGrid />
-
-      {/* Floating code decorations — right side */}
-      <div className="pointer-events-none absolute right-[6%] top-[22%] hidden md:block">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-        >
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="font-mono text-5xl font-bold select-none"
-            style={{ color: "rgba(88,166,255,0.12)" }}
-          >
-            {"{ }"}
-          </motion.div>
-        </motion.div>
+      {/* ── React Bits WebGL 3D Aurora Background ── */}
+      <div className="pointer-events-none absolute inset-0 z-0 opacity-45 overflow-hidden">
+        <Aurora
+          colorStops={["#0284c7", "#6366f1", "#06b6d4", "#4f46e5"]}
+          amplitude={1.2}
+          blend={0.55}
+          speed={0.7}
+          opacity={0.4}
+        />
       </div>
 
-      <div className="pointer-events-none absolute right-[12%] top-[46%] hidden md:block">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="rounded-xl border px-5 py-3.5 font-mono text-xs leading-6 select-none shadow-2xl"
-            style={{
-              borderColor: "#30363d",
-              background: "rgba(22,27,34,0.75)",
-              backdropFilter: "blur(12px)",
-              color: "#8d96a0",
-            }}
-          >
-            <span style={{ color: "#ff7b72" }}>const </span>
-            <span style={{ color: "#79c0ff" }}>dev</span>
-            <span style={{ color: "#e6edf3" }}> = () ={">"} {"{"}</span>
-            <br />
-            <span>&nbsp;&nbsp;</span>
-            <span style={{ color: "#ff7b72" }}>return </span>
-            <span style={{ color: "#a5d6ff" }}>&quot;🚀 value&quot;</span>;
-            <br />
-            <span style={{ color: "#e6edf3" }}>{"}"}</span>
-          </motion.div>
-        </motion.div>
-      </div>
+      {/* Subtle overlay grid for tech aesthetic */}
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] opacity-20"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(56,189,248,0.2) 1px, transparent 1px)",
+          backgroundSize: "36px 36px",
+          maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 95%)",
+          WebkitMaskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 95%)",
+        }}
+      />
 
-      <div className="pointer-events-none absolute right-[5%] bottom-[24%] hidden md:block">
+      {/* Floating glassmorphic code chip */}
+      <div className="pointer-events-none absolute right-[8%] top-[38%] hidden lg:block z-10">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
         >
           <motion.div
             animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="font-mono text-3xl font-bold select-none"
-            style={{ color: "rgba(163,113,247,0.15)" }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="rounded-2xl border border-white/10 bg-[rgba(13,20,36,0.65)] p-5 backdrop-blur-xl shadow-2xl font-mono text-xs leading-6 select-none max-w-xs"
+            style={{
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.15), 0 24px 48px rgba(0,0,0,0.6)",
+            }}
           >
-            {"</>"}
+            <div className="flex items-center gap-1.5 mb-3 border-b border-white/10 pb-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+              <span className="text-[10px] text-slate-400 ml-2">prince.config.ts</span>
+            </div>
+            <div>
+              <span style={{ color: "#f43f5e" }}>export const </span>
+              <span style={{ color: "#38bdf8" }}>stack</span>
+              <span style={{ color: "#f8fafc" }}> = [</span>
+              <br />
+              <span>&nbsp;&nbsp;</span>
+              <span style={{ color: "#34d399" }}>&quot;Next.js 15&quot;</span>,
+              <br />
+              <span>&nbsp;&nbsp;</span>
+              <span style={{ color: "#34d399" }}>&quot;TypeScript &amp; React&quot;</span>,
+              <br />
+              <span>&nbsp;&nbsp;</span>
+              <span style={{ color: "#34d399" }}>&quot;PostgreSQL / Node&quot;</span>
+              <br />
+              <span style={{ color: "#f8fafc" }}>];</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
@@ -237,191 +208,205 @@ export default function HeroSection() {
       <div className="section-container relative z-10 w-full flex flex-col items-start justify-center pt-28 pb-16">
         <div className="w-full max-w-3xl">
 
-        {/* Available badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-md"
-          style={{
-            borderColor: "rgba(63,185,80,0.4)",
-            background: "rgba(63,185,80,0.08)",
-          }}
-        >
-          <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#3fb950" }} />
-          <span className="font-mono text-xs font-semibold" style={{ color: "#3fb950" }}>
-            Open to Work · Remote OK
-          </span>
-        </motion.div>
-
-        {/* Name - Clear, high-contrast, perfectly visible */}
-        <div className="mb-6">
+          {/* Available badge with React Bits ShinyText */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-md cursor-default"
+            style={{
+              borderColor: "rgba(16,185,129,0.35)",
+              background: "rgba(16,185,129,0.1)",
+              boxShadow: "0 0 20px rgba(16,185,129,0.15), inset 0 1px 0 rgba(255,255,255,0.12)",
+            }}
           >
-            <h1 className="tracking-tight font-extrabold select-none">
-              <span
-                className=" text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#e6edf3]"
-                style={{ lineHeight: 1.1 }}
-              >
-                Prince
-              </span>
-              <span
-                className=" text-4xl mx-4 sm:text-4xl md:text-5xl lg:text-7xl   tracking-tight text-[#e6edf3]"
-                style={{ lineHeight: 1.05 }}
-              >
-                Kushwaha
-              </span>
-            </h1>
+            <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#10b981", boxShadow: "0 0 8px #10b981" }} />
+            <ShinyText
+              text="Open to Work · Full-time & Remote OK"
+              speed={2.5}
+              color="#34d399"
+              shineColor="#ffffff"
+              className="font-mono text-xs font-semibold"
+            />
           </motion.div>
-        </div>
 
-        {/* Accent line */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
-          className="mb-6 h-[2px] w-24 origin-left rounded-full"
-          style={{ background: "linear-gradient(to right, #58a6ff, #a371f7, transparent)" }}
-        />
+          {/* Name - Styled with React Bits BlurText */}
+          <div className="mb-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            >
+              <h1 className="tracking-tight font-extrabold select-none flex flex-wrap items-baseline gap-3">
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+                  Prince
+                </span>
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400 bg-clip-text text-transparent">
+                  Kushwaha
+                </span>
+              </h1>
+            </motion.div>
+          </div>
 
-        {/* Typing role */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.4 }}
-          className="mb-5 flex items-center gap-2"
-        >
-          <span className="font-mono text-sm" style={{ color: "#484f58" }}>~/&nbsp;</span>
-          <span className="font-mono text-base md:text-lg" style={{ color: "#8d96a0" }}>
-            I&apos;m a <TypingRole />
-          </span>
-        </motion.div>
+          {/* Accent line */}
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.7, ease: "easeOut" }}
+            className="mb-6 h-[2px] w-28 origin-left rounded-full"
+            style={{ background: "linear-gradient(to right, #38bdf8, #818cf8, #c084fc, transparent)" }}
+          />
 
-        {/* Bio */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.5 }}
-          className="mb-2 max-w-lg text-[15px] leading-7"
-          style={{ color: "#8d96a0" }}
-        >
-          I build fast, scalable web applications —
-          {" "}<span style={{ color: "#c9d1d9" }}>clean UI, solid backend, production-ready.</span>
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mb-8 flex items-center gap-1.5 font-mono text-xs"
-          style={{ color: "#484f58" }}
-        >
-          <MapPin size={11} /> India
-        </motion.div>
-
-        {/* Live stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.5 }}
-          className="mb-8 flex flex-wrap gap-8"
-        >
-          {statItems.map((s) => (
-            <div key={s.label}>
-              <p
-                className="text-2xl font-bold tabular-nums text-[#e6edf3] font-mono"
-              >
-                {s.value}
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-widest mt-0.5 text-[#6e7681]">
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* CTA row */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-          className="mb-8 flex flex-wrap items-center gap-4"
-        >
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-xl px-7 py-3 text-[14px] font-semibold text-white"
-            style={{
-              background: "linear-gradient(135deg, #1f6feb, #388bfd)",
-              boxShadow: "0 4px 24px rgba(88,166,255,0.35)",
-              transition: "transform 0.2s, box-shadow 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
+          {/* Typing role */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.4 }}
+            className="mb-5 flex items-center gap-2"
           >
-            View Projects <ArrowRight size={15} />
-          </a>
-          <Link
-            href="/Prince Kushwaha.pdf"
-            target="_blank"
-            className="inline-flex items-center gap-2 rounded-xl border px-7 py-3 text-[14px] font-semibold"
-            style={{
-              borderColor: "#30363d",
-              background: "rgba(22,27,34,0.8)",
-              color: "#e6edf3",
-              transition: "transform 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
-          >
-            <FileText size={14} /> Resume
-          </Link>
-          <a href="#contact" style={{ color: "#58a6ff", fontSize: 14 }}>
-            Let&apos;s talk →
-          </a>
-        </motion.div>
+            <span className="font-mono text-sm" style={{ color: "rgba(255,255,255,0.3)" }}>~/&nbsp;</span>
+            <span className="font-mono text-base md:text-lg" style={{ color: "#cbd5e1" }}>
+              I&apos;m a <TypingRole />
+            </span>
+          </motion.div>
 
-        {/* Socials */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.5 }}
-          className="flex flex-wrap items-center gap-2.5"
-        >
-          <span className="mr-2 text-xs uppercase tracking-widest text-[#484f58] font-mono">
-            Find me
-          </span>
-          {SOCIAL.map(({ icon: Icon, href, label }) => (
+          {/* Bio */}
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            className="mb-3 max-w-xl text-[15px] sm:text-base leading-relaxed text-slate-300"
+          >
+            I architect and engineer modern, high-performance web applications —
+            {" "}<span className="text-white font-medium">fluid animations, bulletproof backends, production-ready systems.</span>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.75 }}
+            className="mb-8 flex items-center gap-1.5 font-mono text-xs text-slate-400"
+          >
+            <MapPin size={12} className="text-sky-400" /> Bengaluru, India · Available Worldwide
+          </motion.div>
+
+          {/* Live GitHub Stats with React Bits DecryptedText */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="mb-9 flex flex-wrap gap-8"
+          >
+            {statItems.map((s) => (
+              <div key={s.label} className="group">
+                <div className="text-2xl sm:text-3xl font-bold tabular-nums text-white font-mono tracking-tight flex items-center gap-1">
+                  <DecryptedText
+                    text={s.value}
+                    speed={35}
+                    maxIterations={8}
+                    animateOn="hover"
+                    encryptedClassName="text-sky-400 font-mono"
+                  />
+                </div>
+                <p className="text-[11px] font-mono uppercase tracking-widest mt-1 text-slate-400 group-hover:text-sky-400 transition-colors">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* CTA row */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85, duration: 0.5 }}
+            className="mb-9 flex flex-wrap items-center gap-4"
+          >
             <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              title={label}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border"
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-xl px-7 py-3 text-[14px] font-semibold text-white shadow-xl transition-all duration-200 cursor-pointer"
               style={{
-                borderColor: "#30363d",
-                background: "rgba(22,27,34,0.8)",
-                color: "#8d96a0",
-                transition: "transform 0.2s, border-color 0.2s, color 0.2s",
+                background: "linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #6366f1 100%)",
+                boxShadow: "0 8px 30px rgba(56,189,248,0.35), inset 0 1px 0 rgba(255,255,255,0.3)",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
+            >
+              Explore Projects <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+            </a>
+            <Link
+              href="/Prince Kushwaha.pdf"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-xl border px-7 py-3 text-[14px] font-semibold backdrop-blur-md transition-all duration-200"
+              style={{
+                borderColor: "rgba(255,255,255,0.12)",
+                background: "rgba(13,20,36,0.65)",
+                color: "#f8fafc",
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.1), 0 8px 24px rgba(0,0,0,0.3)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.borderColor = "#58a6ff";
-                e.currentTarget.style.color = "#58a6ff";
+                e.currentTarget.style.borderColor = "rgba(56,189,248,0.4)";
+                e.currentTarget.style.color = "#38bdf8";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.borderColor = "#30363d";
-                e.currentTarget.style.color = "#8d96a0";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
+                e.currentTarget.style.color = "#f8fafc";
               }}
             >
-              <Icon size={16} />
+              <FileText size={14} /> Resume
+            </Link>
+            <a
+              href="#contact"
+              className="text-sm font-semibold transition hover:opacity-80 flex items-center gap-1 text-sky-400"
+            >
+              Let&apos;s talk →
             </a>
-          ))}
-        </motion.div>
+          </motion.div>
+
+          {/* Social icons */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.95, duration: 0.5 }}
+            className="flex flex-wrap items-center gap-2.5"
+          >
+            <span className="mr-2 text-xs uppercase tracking-widest text-[#94a3b8] font-mono">
+              Find me
+            </span>
+            {SOCIAL.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                title={label}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border backdrop-blur-md transition-all duration-200"
+                style={{
+                  borderColor: "rgba(255,255,255,0.1)",
+                  background: "rgba(13,20,36,0.65)",
+                  color: "#94a3b8",
+                  boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.borderColor = "rgba(56,189,248,0.4)";
+                  e.currentTarget.style.color = "#38bdf8";
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(56,189,248,0.25)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                  e.currentTarget.style.color = "#94a3b8";
+                  e.currentTarget.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,0.08)";
+                }}
+              >
+                <Icon size={16} />
+              </a>
+            ))}
+          </motion.div>
+
         </div>
       </div>
     </section>

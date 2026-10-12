@@ -37,50 +37,63 @@ export default function Navbar({ animate }) {
           <div
             className="relative flex h-12 items-center justify-between rounded-2xl px-4 md:px-6"
             style={{
-              background: scrolled ? "rgba(13,17,23,0.82)" : "transparent",
-              backdropFilter: scrolled ? "blur(20px)" : "none",
-              WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+              background: scrolled ? "rgba(10, 15, 30, 0.78)" : "rgba(10, 15, 30, 0.45)",
+              backdropFilter: "blur(24px) saturate(180%)",
+              WebkitBackdropFilter: "blur(24px) saturate(180%)",
               border: scrolled
-                ? "1px solid rgba(88,166,255,0.18)"
-                : "1px solid transparent",
+                ? "1px solid rgba(56, 189, 248, 0.25)"
+                : "1px solid rgba(255, 255, 255, 0.09)",
               boxShadow: scrolled
-                ? "0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04)"
-                : "none",
+                ? "0 12px 36px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.12)"
+                : "0 6px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)",
               transition: "all 0.35s ease",
             }}
           >
-            {/* Shine line at top — visible only when scrolled */}
-            {scrolled && (
-              <div
-                className="pointer-events-none absolute inset-x-6 top-0 h-px rounded-full"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(88,166,255,0.4), transparent)" }}
-              />
-            )}
+            {/* Specular shine line at top */}
+            <div
+              className="pointer-events-none absolute inset-x-6 top-0 h-px rounded-full"
+              style={{
+                background: "linear-gradient(90deg, transparent, rgba(56,189,248,0.5), rgba(168,85,247,0.4), transparent)",
+              }}
+            />
 
             {/* Logo */}
             <span
-              className="font-mono text-sm font-semibold select-none"
-              style={{ color: "#58a6ff" }}
+              className="font-mono text-sm font-bold select-none tracking-tight"
+              style={{ color: "#38bdf8" }}
             >
-              <span style={{ color: "#484f58" }}>~/</span>prince
-              <span className="cursor" />
+              <span style={{ color: "rgba(255,255,255,0.3)" }}>~/</span>prince
+              <span
+                style={{
+                  display: "inline-block",
+                  width: 2,
+                  height: "1.1em",
+                  background: "#38bdf8",
+                  marginLeft: 3,
+                  verticalAlign: "text-bottom",
+                  borderRadius: 1,
+                  animation: "blink 1s step-end infinite",
+                }}
+              />
             </span>
 
             {/* Desktop nav links */}
-            <nav className="hidden items-center gap-0.5 md:flex">
+            <nav className="hidden items-center gap-1 md:flex">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
-                  className="rounded-xl px-3 py-1.5 text-[13px] font-medium transition-all duration-150"
-                  style={{ color: "#8d96a0" }}
+                  className="rounded-xl px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200"
+                  style={{ color: "#94a3b8" }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "#e6edf3";
-                    e.currentTarget.style.background = "rgba(255,255,255,0.07)";
+                    e.currentTarget.style.color = "#f8fafc";
+                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,0.1)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "#8d96a0";
+                    e.currentTarget.style.color = "#94a3b8";
                     e.currentTarget.style.background = "transparent";
+                    e.currentTarget.style.boxShadow = "none";
                   }}
                 >
                   {link.label}
@@ -88,13 +101,36 @@ export default function Navbar({ animate }) {
               ))}
             </nav>
 
-            {/* Resume button */}
-            <div className="flex  gap-2">
+            {/* Action buttons */}
+            <div className="flex items-center gap-2">
+              <a
+                href="#contact"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-xl px-3 py-1 text-xs font-semibold tracking-wide transition-all duration-200"
+                style={{
+                  background: "rgba(56, 189, 248, 0.12)",
+                  border: "1px solid rgba(56, 189, 248, 0.28)",
+                  color: "#38bdf8",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(56, 189, 248, 0.22)";
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.3)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(56, 189, 248, 0.12)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                Hire Me
+              </a>
 
               {/* Mobile hamburger */}
               <button
-                className="flex h-8 w-8 items-center justify-center rounded-xl md:hidden"
-                style={{ background: "rgba(255,255,255,0.06)", color: "#8d96a0" }}
+                className="flex h-8 w-8 items-center justify-center rounded-xl md:hidden transition"
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  color: "#cbd5e1",
+                }}
                 onClick={() => setMobileOpen(!mobileOpen)}
                 aria-label="Toggle menu"
               >
@@ -115,10 +151,10 @@ export default function Navbar({ animate }) {
             transition={{ duration: 0.18 }}
             className="fixed inset-x-4 top-[72px] z-40 overflow-hidden rounded-2xl border md:hidden"
             style={{
-              background: "rgba(13,17,23,0.97)",
-              borderColor: "rgba(88,166,255,0.15)",
-              backdropFilter: "blur(20px)",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+              background: "rgba(10, 15, 30, 0.88)",
+              borderColor: "rgba(56, 189, 248, 0.25)",
+              backdropFilter: "blur(24px) saturate(180%)",
+              boxShadow: "0 16px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1)",
             }}
           >
             <div className="flex flex-col gap-1 p-3">
@@ -128,12 +164,19 @@ export default function Navbar({ animate }) {
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
                   className="rounded-xl px-4 py-2.5 text-sm font-medium transition"
-                  style={{ color: "#8d96a0" }}
+                  style={{ color: "#cbd5e1" }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#38bdf8";
+                    e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "#cbd5e1";
+                    e.currentTarget.style.background = "transparent";
+                  }}
                 >
                   {link.label}
                 </a>
               ))}
-
             </div>
           </motion.div>
         )}
