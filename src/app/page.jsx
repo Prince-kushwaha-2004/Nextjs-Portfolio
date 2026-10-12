@@ -51,18 +51,16 @@ export default function App() {
       {loading && <Loader onComplete={handleLoadingComplete} />}
 
       {/* ─── Main site (always rendered, hidden behind loader) ──── */}
-      <main className="playto-bg text-[#e7edff]">
+      <main style={{ minHeight: '100vh', background: 'var(--bg-page)', color: 'var(--text-primary)' }}>
         <Navbar animate={!loading} />
 
-        {/* ─── First screen: hero fills viewport, marquee at bottom ── */}
-        <div className="flex min-h-[calc(100vh-64px)] flex-col">
-          <motion.div variants={contentItem} className="flex-1 flex flex-col">
-            <HeroSection />
-          </motion.div>
-          <motion.div variants={contentItem}>
-            <StatsSection />
-          </motion.div>
-        </div>
+        {/* ─── First screen ──────────────────────────────────────── */}
+        <motion.div variants={contentItem}>
+          <HeroSection />
+        </motion.div>
+        <motion.div variants={contentItem}>
+          <StatsSection />
+        </motion.div>
         <motion.div variants={contentItem}>
           <FeaturesSection />
         </motion.div>

@@ -2,36 +2,43 @@
 
 const SERVICES = [
   "Full-Stack Development",
-  "Clean UI",
-  "Responsive Design",
+  "Clean API Design",
+  "Responsive UI",
   "SEO Optimization",
-  "API Development",
   "Performance Tuning",
-  "Database Design",
+  "Database Architecture",
   "Cloud Deployment",
-  "Authentication & Security",
-  "Real-Time Applications",
-  "Mobile-First Design",
+  "Auth & Security",
+  "Real-Time Apps",
   "Code Architecture",
 ];
 
 export default function StatsSection() {
   const doubled = [...SERVICES, ...SERVICES];
-
   return (
-    <section className="relative border-y border-white/10 bg-[#080d1b]/70 overflow-hidden py-5">
-      {/* Left / right fade masks */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#080d1b] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#080d1b] to-transparent" />
-
-      <div className="marquee-track flex w-max items-center gap-6">
+    <section
+      className="relative overflow-hidden border-y py-3.5"
+      style={{ background: "var(--bg-subtle)", borderColor: "var(--border)" }}
+    >
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16"
+        style={{ background: "linear-gradient(to right, var(--bg-subtle), transparent)" }}
+      />
+      <div
+        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16"
+        style={{ background: "linear-gradient(to left, var(--bg-subtle), transparent)" }}
+      />
+      <div className="marquee-track flex w-max items-center">
         {doubled.map((skill, i) => (
-          <span
-            key={`${skill}-${i}`}
-            className="flex items-center gap-6"
-          >
-            <span className="text-[#8fa2ca] text-lg select-none">•</span>
-            <span className="whitespace-nowrap text-sm font-medium uppercase tracking-[0.15em] text-[#8fa2ca] transition-colors hover:text-white">
+          <span key={`${skill}-${i}`} className="flex items-center gap-5 px-4">
+            <span
+              className="h-1 w-1 rounded-full"
+              style={{ background: "var(--accent)" }}
+            />
+            <span
+              className="whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.15em]"
+              style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+            >
               {skill}
             </span>
           </span>

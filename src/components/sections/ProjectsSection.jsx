@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import { fadeUp, stagger, formatTechName } from "@/data/constants";
 
@@ -13,70 +13,100 @@ export default function ProjectsSection({ onSelectProject }) {
       variants={stagger}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
-      className="mx-auto w-full max-w-6xl px-5 py-12 md:px-8"
+      viewport={{ once: true, amount: 0.05 }}
+      className="section-container"
     >
-      <p className="text-center text-xs uppercase tracking-[0.2em] text-[#7f9de0]">Projects</p>
-      <h2 className="mt-3 text-center playto-serif text-5xl text-white">All featured work.</h2>
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {projects.map((item) => (
+      <motion.div variants={fadeUp}>
+        <p className="section-label">Projects</p>
+        <h2 className="mt-4 text-3xl font-bold sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+          Things I&apos;ve built
+        </h2>
+        <p className="mt-2 text-sm" style={{ color: "var(--text-muted)" }}>
+          From idea to production — shipped with care.
+        </p>
+      </motion.div>
+
+      <div className="mt-8 grid gap-5 md:grid-cols-2 md:auto-rows-fr">
+        {projects.map((item, index) => (
           <motion.article
             key={item.name}
             variants={fadeUp}
-            className="overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] shadow-[0_15px_40px_rgba(5,10,25,0.45)]"
+            className="card card-lift group flex flex-col overflow-hidden rounded-xl"
           >
-            <div className="relative h-52 w-full overflow-hidden border-b border-white/10">
+            {/* Image — equal height for all */}
+            <div
+              className="relative h-52 w-full shrink-0 overflow-hidden"
+              style={{ background: "var(--bg-muted)" }}
+            >
               <Image
                 src={item.img}
                 alt={item.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-white">{item.name}</h3>
-              <p className="mt-3 text-sm leading-6 text-[#9eadd0]">{item.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
+
+            {/* Content */}
+            <div className="flex flex-1 flex-col p-5">
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="text-base font-bold" style={{ color: "var(--text-primary)" }}>
+                  {item.name}
+                </h3>
+                <div className="flex shrink-0 gap-2">
+                  {item.githubLink && (
+                    <a
+                      href={item.githubLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex h-7 w-7 items-center justify-center rounded-md border transition hover:opacity-80"
+                      style={{
+                        borderColor: "var(--border)",
+                        background: "var(--bg-subtle)",
+                        color: "var(--text-muted)",
+                      }}
+                      title="GitHub"
+                    >
+                      <Github size={13} />
+                    </a>
+                  )}
+                  {item.liveLink && (
+                    <a
+                      href={item.liveLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex h-7 w-7 items-center justify-center rounded-md transition hover:opacity-80"
+                      style={{ background: "var(--accent)", color: "#fff" }}
+                      title="Live Demo"
+                    >
+                      <ArrowUpRight size={13} />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                {item.description}
+              </p>
+
+              {/* Tech tags */}
+              <div className="mt-4 flex flex-wrap gap-1.5">
                 {item.techStack.map((tech) => (
-                  <span
-                    key={`${item.name}-${tech}`}
-                    className="rounded-full border border-[#2c3a63] bg-[#121a2f] px-3 py-1 text-xs text-[#b8c7ec]"
-                  >
+                  <span key={`${item.name}-${tech}`} className="tag">
                     {formatTechName(tech)}
                   </span>
                 ))}
               </div>
-              <div className="mt-5 flex flex-wrap gap-3 text-sm">
-                <button
-                  onClick={() => onSelectProject(item)}
-                  className="rounded-full border border-white/20 px-4 py-2 text-[#d9e4ff] hover:bg-white/10"
-                >
-                  View Details
-                </button>
-                {item.githubLink && (
-                  <a
-                    href={item.githubLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-[#d9e4ff] hover:bg-white/10"
-                  >
-                    <Github className="h-4 w-4" />
-                    GitHub
-                  </a>
-                )}
-                {item.liveLink && (
-                  <a
-                    href={item.liveLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-[#316dff] px-4 py-2 font-medium text-white hover:bg-[#3a78ff]"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </a>
-                )}
-              </div>
+
+              {/* Details button */}
+              <button
+                onClick={() => onSelectProject(item)}
+                className="mt-4 text-xs font-medium transition hover:opacity-80"
+                style={{ color: "var(--accent)" }}
+              >
+                View details →
+              </button>
             </div>
           </motion.article>
         ))}

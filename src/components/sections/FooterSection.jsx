@@ -3,52 +3,46 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { SOCIAL_LINKS, fadeUp } from "@/data/constants";
+import { Send, MapPin, Mail, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
 
 export default function FooterSection() {
   const [sending, setSending] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setSending(true);
-
     try {
-      const payload = {
-        ...formData,
-        access_key: "e87d74b1-e8ec-4dfb-a003-850b929cb834",
-      };
-
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ ...formData, access_key: "e87d74b1-e8ec-4dfb-a003-850b929cb834" }),
       });
-      const result = await response.json();
-
-      if (result.success) {
-        toast.success("Message sent successfully.");
+      const data = await res.json();
+      if (data.success) {
+        toast.success("Message sent!");
         setFormData({ name: "", email: "", message: "" });
       } else {
-        toast.error("Unable to send message right now.");
+        toast.error("Failed to send. Try again.");
       }
-    } catch (error) {
-      toast.error("Something went wrong while sending.");
+    } catch {
+      toast.error("Network error.");
     } finally {
       setSending(false);
     }
+  };
+
+  const inputClass = "w-full rounded-lg border px-4 py-3 text-sm outline-none transition";
+  const inputStyle = {
+    background: "var(--bg-subtle)",
+    borderColor: "var(--border)",
+    color: "var(--text-primary)",
   };
 
   return (
@@ -57,83 +51,201 @@ export default function FooterSection() {
       variants={fadeUp}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
-      className="mt-4 w-full border-t border-white/10 bg-gradient-to-b from-[#0b1020] via-[#080d18] to-[#060a14] py-4"
+      viewport={{ once: true, amount: 0.05 }}
+      className="w-full border-t"
+      style={{ borderColor: "var(--border)", background: "var(--bg-subtle)" }}
     >
-      <div className="w-full px-4 py-10 md:rounded-2xl md:px-8 lg:px-10">
-        <div className="mx-auto grid w-full max-w-7xl gap-10 md:grid-cols-2 md:gap-12">
-          <div className="flex flex-col justify-center">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#7f9de0]">Contact Me</p>
-            <h2 className="mt-3 playto-serif text-5xl text-white">Let us build something meaningful.</h2>
-            <p className="mt-5 text-sm leading-7 text-[#9fb1d8] md:text-base">
-              Whether you are launching a new product, upgrading an existing platform, or need a reliable developer for your team, I can help you build fast, scalable, and user-focused web experiences.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-[#9fb1d8] md:text-base">
-              Share your idea, timeline, and requirements. I will review everything carefully and get back with the right approach.
-            </p>
-            <div className="mt-6 space-y-2 text-sm text-[#c5d4f8]">
-              <p>Email: princekk102004@gmail.com</p>
+      <div className="section-container">
+        {/* Header */}
+        <div className="mb-10">
+          <p className="section-label">Contact</p>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+            Let&apos;s build something.
+          </h2>
+          <p className="mt-2 max-w-lg text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            Got a project in mind? I&apos;d love to hear about it. Fill the form or reach out directly.
+          </p>
+        </div>
+
+        <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+          {/* Left */}
+          <div>
+            {/* Contact info */}
+            <div className="space-y-4">
+              <a
+                href="mailto:princekk102004@gmail.com"
+                className="flex items-center gap-3 text-sm transition hover:opacity-80"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                <div
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                  style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+                >
+                  <Mail size={15} />
+                </div>
+                princekk102004@gmail.com
+              </a>
+              <div
+                className="flex items-center gap-3 text-sm"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                <div
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+                  style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+                >
+                  <MapPin size={15} />
+                </div>
+                India · Open to Remote
+              </div>
             </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {SOCIAL_LINKS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-[#d9e4ff] transition hover:bg-white/10"
-                  >
-                    <Icon className="h-4 w-4" />
-                    {item.name}
-                  </a>
-                );
-              })}
+
+            {/* Social */}
+            <div className="mt-8">
+              <p
+                className="mb-3 text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                Find me on
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {SOCIAL_LINKS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm font-medium transition hover:opacity-80"
+                      style={{
+                        borderColor: "var(--border)",
+                        background: "var(--bg-card)",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {item.name}
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Code snippet decoration */}
+            <div className="mt-8 code-block text-xs">
+              <span style={{ color: "#8d96a0" }}>// reach out anytime</span>
+              <br />
+              <span style={{ color: "#79c0ff" }}>const </span>
+              <span style={{ color: "#e6edf3" }}>contact </span>
+              <span style={{ color: "#ff7b72" }}>= </span>
+              <span style={{ color: "#a5d6ff" }}>{`{`}</span>
+              <br />
+              <span style={{ color: "#a5d6ff" }}>{"  email: "}</span>
+              <span style={{ color: "#a8daff" }}>&quot;princekk102004@gmail.com&quot;</span>
+              <span>,</span>
+              <br />
+              <span style={{ color: "#a5d6ff" }}>{"  status: "}</span>
+              <span style={{ color: "#a8daff" }}>&quot;open_to_work&quot;</span>
+              <br />
+              <span style={{ color: "#a5d6ff" }}>{`}`}</span>
+              <span>;</span>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="grid gap-4 rounded-2xl border border-white/10 bg-[#0a1222]/70 p-5">
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              placeholder="Your Name"
-              className="rounded-xl border border-white/20 bg-[#0b1223] px-4 py-3 text-white outline-none placeholder:text-[#7385ad] focus:border-[#4f7eff]"
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              placeholder="Your Email"
-              className="rounded-xl border border-white/20 bg-[#0b1223] px-4 py-3 text-white outline-none placeholder:text-[#7385ad] focus:border-[#4f7eff]"
-            />
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={6}
-              placeholder="Tell me about your project"
-              className="rounded-xl border border-white/20 bg-[#0b1223] px-4 py-3 text-white outline-none placeholder:text-[#7385ad] focus:border-[#4f7eff]"
-            />
+          {/* Right: form */}
+          <form
+            onSubmit={handleSubmit}
+            className="card rounded-xl p-6"
+            style={{ background: "var(--bg-card)" }}
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Your name"
+                  className={inputClass}
+                  style={inputStyle}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                />
+              </div>
+              <div>
+                <label
+                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="your@email.com"
+                  className={inputClass}
+                  style={inputStyle}
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label
+                className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Message
+              </label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                placeholder="Tell me about your project..."
+                className={inputClass}
+                style={inputStyle}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+              />
+            </div>
+
             <button
               type="submit"
               disabled={sending}
-              className="rounded-full bg-[#316dff] px-8 py-3 text-sm font-semibold text-white transition hover:bg-[#3a78ff] disabled:cursor-not-allowed disabled:opacity-70"
+              id="contact-submit-btn"
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+              style={{ background: "var(--accent)" }}
             >
+              <Send size={14} />
               {sending ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
       </div>
-      <div className="mx-auto mt-8 flex w-full max-w-7xl flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-sm text-[#8698be] md:flex-row">
-        <p>Copyright © 2026 Prince Kushwaha</p>
-        <p className="text-xs uppercase tracking-[0.18em] text-[#7f9de0]">Built with Next.js</p>
+
+      {/* Bottom bar */}
+      <div
+        className="border-t px-5 py-5 md:px-8"
+        style={{ borderColor: "var(--border)" }}
+      >
+        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 text-xs sm:flex-row"
+          style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}>
+          <span>© {new Date().getFullYear()} Prince Kushwaha</span>
+          <span style={{ color: "var(--accent)" }}>Built with Next.js + Tailwind</span>
+        </div>
       </div>
     </motion.footer>
   );

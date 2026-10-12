@@ -1,13 +1,20 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 
 /* ─── X (Twitter) icon ────────────────────────────────────────────── */
-export function XIcon({ className }) {
+export function XIcon({ size = 16, className, style }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor">
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+      style={{ width: size, height: size, flexShrink: 0, ...style }}
+    >
       <path d="M18.244 2h3.308l-7.226 8.26L22.83 22h-6.654l-5.214-6.817L4.996 22H1.686l7.73-8.835L1.255 2h6.823l4.713 6.231L18.244 2Zm-1.16 18h1.833L7.08 3.894H5.114L17.084 20Z" />
     </svg>
   );
 }
+
 
 /* ─── FAQs ────────────────────────────────────────────────────────── */
 export const FAQs = [
