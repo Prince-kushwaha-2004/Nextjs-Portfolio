@@ -37,7 +37,11 @@ const STARS = [
  * Completely static, zero-interaction, zero-RAF glowing planetary horizon.
  * Uses hardware-accelerated CSS and SVG to guarantee 0% CPU consumption and no system hangs.
  */
-export default function HorizonBloom({ className = '' }) {
+export default function HorizonBloom({
+  className = '',
+  idPrefix = 'hb',
+  positionClass = 'translate-y-20 sm:translate-y-40',
+}) {
   return (
     <div
       className={`pointer-events-none relative w-full h-full overflow-hidden select-none bg-[#010003] ${className}`}
@@ -60,17 +64,17 @@ export default function HorizonBloom({ className = '' }) {
         ))}
       </svg>
 
-      {/* ── 2. Entire Horizon Structure (Shifted down towards bottom) ── */}
-      <div className="absolute inset-0 pointer-events-none translate-y-20 sm:translate-y-40">
-        {/* Deep Atmosphere Purple Glow (Behind Horizon) */}
+      {/* ── 2. Entire Horizon Structure ── */}
+      <div className={`absolute inset-0 pointer-events-none ${positionClass}`}>
+        {/* Deep Atmosphere Celestial Glow (Behind Horizon) */}
         <div
           className="absolute left-1/2 bottom-[10%] -translate-x-1/2 pointer-events-none rounded-full"
           style={{
             width: 'min(125vw, 1300px)',
             height: '560px',
             background:
-              'radial-gradient(ellipse 65% 55% at 50% 75%, rgba(192, 132, 252, 0.42) 0%, rgba(147, 51, 234, 0.24) 30%, rgba(107, 33, 168, 0.10) 58%, transparent 76%)',
-            filter: 'blur(30px)',
+              'radial-gradient(ellipse 65% 55% at 50% 75%, rgba(56, 189, 248, 0.40) 0%, rgba(99, 102, 241, 0.32) 26%, rgba(147, 51, 234, 0.18) 52%, rgba(15, 23, 42, 0.05) 75%, transparent 85%)',
+            filter: 'blur(32px)',
           }}
         />
 
@@ -78,10 +82,10 @@ export default function HorizonBloom({ className = '' }) {
         <div
           className="absolute left-1/2 bottom-[27.2%] -translate-x-1/2 translate-y-1/2 pointer-events-none rounded-full"
           style={{
-            width: 'min(85vw, 780px)',
+            width: 'min(85vw, 820px)',
             height: '76px',
             background:
-              'radial-gradient(ellipse 75% 35% at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(245, 235, 255, 0.85) 16%, rgba(192, 132, 252, 0.45) 44%, rgba(147, 51, 234, 0.15) 72%, transparent 100%)',
+              'radial-gradient(ellipse 75% 35% at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(224, 242, 254, 0.92) 16%, rgba(56, 189, 248, 0.58) 42%, rgba(99, 102, 241, 0.30) 68%, rgba(147, 51, 234, 0.12) 88%, transparent 100%)',
             filter: 'blur(4px)',
           }}
         />
@@ -90,10 +94,10 @@ export default function HorizonBloom({ className = '' }) {
         <div
           className="absolute left-1/2 bottom-[27.2%] -translate-x-1/2 translate-y-1/2 pointer-events-none rounded-full"
           style={{
-            width: '150px',
+            width: '160px',
             height: '18px',
             background:
-              'radial-gradient(ellipse 85% 55% at 50% 50%, #ffffff 0%, rgba(255, 255, 255, 0.92) 28%, rgba(216, 180, 254, 0.55) 60%, transparent 100%)',
+              'radial-gradient(ellipse 85% 55% at 50% 50%, #ffffff 0%, rgba(255, 255, 255, 0.95) 28%, rgba(186, 230, 253, 0.65) 60%, rgba(99, 102, 241, 0.25) 85%, transparent 100%)',
           }}
         />
 
@@ -104,19 +108,21 @@ export default function HorizonBloom({ className = '' }) {
           preserveAspectRatio="none"
         >
           <defs>
-            {/* Atmospheric Violet Rim Gradient */}
-            <linearGradient id="rimAtmosphere" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#a855f7" stopOpacity="0" />
-              <stop offset="22%" stopColor="#a855f7" stopOpacity="0.22" />
-              <stop offset="42%" stopColor="#c084fc" stopOpacity="0.85" />
-              <stop offset="50%" stopColor="#e9d5ff" stopOpacity="1" />
-              <stop offset="58%" stopColor="#c084fc" stopOpacity="0.85" />
-              <stop offset="78%" stopColor="#a855f7" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
+            {/* Atmospheric Cyan-Indigo Rim Gradient */}
+            <linearGradient id={`${idPrefix}-rimAtmosphere`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#38bdf8" stopOpacity="0" />
+              <stop offset="20%" stopColor="#6366f1" stopOpacity="0.25" />
+              <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.85" />
+              <stop offset="48%" stopColor="#e0f2fe" stopOpacity="0.95" />
+              <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+              <stop offset="52%" stopColor="#e0f2fe" stopOpacity="0.95" />
+              <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.85" />
+              <stop offset="80%" stopColor="#6366f1" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="#38bdf8" stopOpacity="0" />
             </linearGradient>
 
             {/* White Razor-Core Rim Gradient */}
-            <linearGradient id="rimCore" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id={`${idPrefix}-rimCore`} x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
               <stop offset="38%" stopColor="#ffffff" stopOpacity="0.1" />
               <stop offset="48%" stopColor="#ffffff" stopOpacity="0.92" />
@@ -126,7 +132,7 @@ export default function HorizonBloom({ className = '' }) {
               <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
             </linearGradient>
 
-            <filter id="rimGlowBlur" x="-20%" y="-30%" width="140%" height="160%">
+            <filter id={`${idPrefix}-rimGlowBlur`} x="-20%" y="-30%" width="140%" height="160%">
               <feGaussianBlur stdDeviation="8" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
@@ -145,16 +151,16 @@ export default function HorizonBloom({ className = '' }) {
           <path
             d="M -50 210 Q 800 88 1650 210"
             fill="none"
-            stroke="url(#rimAtmosphere)"
+            stroke={`url(#${idPrefix}-rimAtmosphere)`}
             strokeWidth="6"
-            filter="url(#rimGlowBlur)"
+            filter={`url(#${idPrefix}-rimGlowBlur)`}
           />
 
           {/* Laser Razor Core Crest Line */}
           <path
             d="M -50 210 Q 800 88 1650 210"
             fill="none"
-            stroke="url(#rimCore)"
+            stroke={`url(#${idPrefix}-rimCore)`}
             strokeWidth="1.8"
           />
         </svg>

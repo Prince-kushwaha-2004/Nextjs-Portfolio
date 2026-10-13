@@ -7,32 +7,44 @@
 /* ─── Horizon Cosmic Theme Tokens ─────────────────────────────── */
 :root {
   --bg-page:        #010003;
-  --bg-subtle:      rgba(18, 10, 36, 0.70);
-  --bg-muted:       rgba(28, 16, 54, 0.60);
-  --bg-card:        rgba(15, 8, 30, 0.55);
-  --bg-overlay:     rgba(1, 0, 3, 0.88);
+  --bg-subtle:      rgba(10, 15, 30, 0.70);
+  --bg-muted:       rgba(15, 23, 42, 0.65);
+  --bg-card:        rgba(11, 18, 33, 0.60);
+  --bg-overlay:     rgba(2, 6, 23, 0.88);
 
-  --border:         rgba(168, 85, 247, 0.20);
-  --border-muted:   rgba(147, 51, 234, 0.12);
-  --border-hover:   rgba(192, 132, 252, 0.45);
+  --border:         rgba(56, 189, 248, 0.16);
+  --border-muted:   rgba(99, 102, 241, 0.14);
+  --border-hover:   rgba(56, 189, 248, 0.45);
 
-  --text-primary:   #f5eeff;
-  --text-secondary: #c4b5fd;
-  --text-muted:     #948ba8;
+  --text-primary:   #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #94a3b8;
 
-  --accent:         #c084fc;
-  --accent-hover:   #d8b4fe;
-  --accent-subtle:  rgba(168, 85, 247, 0.14);
+  --accent:         #38bdf8;
+  --accent-hover:   #7dd3fc;
+  --accent-subtle:  rgba(56, 189, 248, 0.14);
 
-  --green:          #3fb950;
-  --green-subtle:   rgba(63, 185, 80, 0.12);
+  --cyan:           #38bdf8;
+  --cyan-subtle:    rgba(56, 189, 248, 0.14);
+
+  --emerald:        #10b981;
+  --emerald-subtle: rgba(16, 185, 129, 0.14);
+
+  --indigo:         #6366f1;
+  --indigo-subtle:  rgba(99, 102, 241, 0.16);
+
+  --amber:          #f59e0b;
+  --amber-subtle:   rgba(245, 158, 11, 0.14);
+
+  --green:          #10b981;
+  --green-subtle:   rgba(16, 185, 129, 0.14);
 
   --purple:         #a855f7;
-  --purple-subtle:  rgba(168, 85, 247, 0.16);
+  --purple-subtle:  rgba(168, 85, 247, 0.14);
 
   --shadow-sm:      0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md:      0 8px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(168, 85, 247, 0.12);
-  --shadow-lg:      0 16px 48px rgba(0, 0, 0, 0.6), 0 0 24px rgba(168, 85, 247, 0.22);
+  --shadow-md:      0 8px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(56, 189, 248, 0.10);
+  --shadow-lg:      0 16px 48px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.18);
   --shadow-glass:   0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
 }
 
@@ -55,14 +67,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .font-mono { font-family: 'JetBrains Mono', monospace !important; }
 
 /* ─── Scrollbar ───────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar { width: 3px; height: 2px;}
 ::-webkit-scrollbar-track { background: #010003; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.35);
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.4), rgba(99, 102, 241, 0.4));
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(192, 132, 252, 0.65);
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.7), rgba(99, 102, 241, 0.7));
 }
 .hide-scroll::-webkit-scrollbar { display: none; }
 .hide-scroll { scrollbar-width: none; }
@@ -89,14 +101,14 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 .card-lift:hover {
   transform: translateY(-4px);
   border-color: var(--border-hover);
-  box-shadow: 0 16px 40px -10px rgba(168, 85, 247, 0.28), inset 0 1px 2px 0 rgba(255, 255, 255, 0.20);
+  box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.22), inset 0 1px 2px 0 rgba(255, 255, 255, 0.20);
 }
 
 .glass-panel {
-  background: rgba(13, 7, 26, 0.70);
+  background: rgba(10, 16, 32, 0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(168, 85, 247, 0.22);
+  border: 1px solid rgba(56, 189, 248, 0.20);
   box-shadow: 0 16px 48px -8px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
 }
 
@@ -116,21 +128,27 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   content: '';
   width: 16px;
   height: 2px;
-  background: linear-gradient(90deg, #c084fc, #a855f7);
+  background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
   border-radius: 2px;
-  box-shadow: 0 0 8px rgba(192, 132, 252, 0.7);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
   display: inline-block;
 }
 
 /* ─── Gradient text ───────────────────────────────────────────── */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #d8b4fe 30%, #c084fc 60%, #9333ea 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 35%, #818cf8 70%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #f8fafc, #38bdf8, #6366f1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .gradient-text-purple {
-  background: linear-gradient(135deg, #f5eeff, #c084fc, #a855f7);
+  background: linear-gradient(135deg, #f8fafc, #818cf8, #a855f7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -163,7 +181,7 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   100% { background-position: 400px 0; }
 }
 .shimmer {
-  background: linear-gradient(90deg, rgba(28, 16, 54, 0.4) 25%, rgba(168, 85, 247, 0.15) 50%, rgba(28, 16, 54, 0.4) 75%);
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.4) 25%, rgba(56, 189, 248, 0.15) 50%, rgba(15, 23, 42, 0.4) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.5s infinite;
 }
@@ -176,18 +194,18 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   font-size: 0.7rem;
   font-weight: 500;
   border-radius: 9999px;
-  background: rgba(168, 85, 247, 0.10);
-  border: 1px solid rgba(168, 85, 247, 0.22);
-  color: #d8b4fe;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.20);
+  color: #7dd3fc;
   font-family: 'JetBrains Mono', monospace;
   backdrop-filter: blur(8px);
   transition: all 0.2s ease;
 }
 .tag:hover {
-  border-color: #c084fc;
+  border-color: #38bdf8;
   color: #ffffff;
-  background: rgba(168, 85, 247, 0.22);
-  box-shadow: 0 0 12px rgba(192, 132, 252, 0.35);
+  background: rgba(56, 189, 248, 0.20);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 }
 
 /* ─── Timeline ────────────────────────────────────────────────── */
@@ -195,35 +213,59 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   position: absolute;
   left: 0; top: 0;
   width: 2px; height: 100%;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  background: linear-gradient(to bottom, #38bdf8, #6366f1, transparent);
 }
 
-/* ─── ShadCN reset with Horizon theme ─────────────────────────── */
+/* ─── ShadCN reset with Horizon Cosmic theme ─────────────────── */
 @layer base {
   :root {
-    --background: 270 60% 1%;
-    --foreground: 270 30% 98%;
-    --border: 270 40% 18%;
-    --input: 270 40% 18%;
-    --ring: 275 80% 65%;
-    --primary: 275 85% 75%;
-    --primary-foreground: 270 50% 5%;
-    --secondary: 270 30% 14%;
-    --secondary-foreground: 270 30% 98%;
-    --muted: 270 30% 14%;
-    --muted-foreground: 265 20% 65%;
-    --accent: 275 80% 65%;
-    --accent-foreground: 270 30% 98%;
-    --card: 270 45% 7%;
-    --card-foreground: 270 30% 98%;
-    --popover: 270 45% 7%;
-    --popover-foreground: 270 30% 98%;
+    --background: 240 40% 1%;
+    --foreground: 210 40% 98%;
+    --border: 215 30% 18%;
+    --input: 215 30% 18%;
+    --ring: 199 89% 48%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 220 50% 5%;
+    --secondary: 220 30% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 30% 14%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --card: 222 45% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 45% 7%;
+    --popover-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 270 30% 98%;
+    --destructive-foreground: 210 40% 98%;
     --radius: 0.75rem;
   }
 }
-@layer base {
-  * { @apply border-border; }
-  body { @apply bg-background text-foreground; }
+/* ─── GitHub Calendar Full-Width Alignment ────────────────────── */
+.github-calendar-card article.react-activity-calendar {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.github-calendar-card .react-activity-calendar__scroll-container {
+  width: 100% !important;
+}
+
+.github-calendar-card .react-activity-calendar__calendar {
+  width: 100% !important;
+  min-width: 680px;
+  height: auto !important;
+  display: block;
+}
+
+.github-calendar-card .react-activity-calendar__footer {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 10px;
+}
+
+.github-calendar-card .react-activity-calendar__legend-colors {
+  margin-left: auto !important;
 }

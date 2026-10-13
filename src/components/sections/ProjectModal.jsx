@@ -50,33 +50,33 @@ export default function ProjectModal({ project, onClose }) {
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl border shadow-2xl"
             style={{
-              background: "rgba(15, 8, 30, 0.92)",
+              background: "rgba(10, 16, 32, 0.94)",
               backdropFilter: "blur(20px)",
-              borderColor: "rgba(168, 85, 247, 0.25)",
-              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.7), 0 0 24px rgba(168, 85, 247, 0.2)",
+              borderColor: "rgba(56, 189, 248, 0.25)",
+              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.8), 0 0 24px rgba(56, 189, 248, 0.15)",
             }}
           >
             {/* Header */}
             <div
               className="flex items-start justify-between gap-4 border-b p-5"
-              style={{ borderColor: "var(--border)" }}
+              style={{ borderColor: "rgba(56, 189, 248, 0.16)" }}
             >
               <div>
-                <h3 className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>
+                <h3 className="text-xl font-bold text-[#f8fafc]">
                   {project.name}
                 </h3>
-                <p className="mt-1.5 text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#94a3b8]">
                   {project.description}
                 </p>
               </div>
               <button
                 onClick={onClose}
                 id="project-modal-close"
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition hover:opacity-80"
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border transition hover:border-[#38bdf8] hover:text-[#38bdf8]"
                 style={{
-                  borderColor: "var(--border)",
-                  background: "var(--bg-subtle)",
-                  color: "var(--text-muted)",
+                  borderColor: "rgba(56, 189, 248, 0.20)",
+                  background: "rgba(11, 18, 33, 0.70)",
+                  color: "#94a3b8",
                 }}
                 aria-label="Close"
               >
@@ -89,7 +89,7 @@ export default function ProjectModal({ project, onClose }) {
               {allScreenshots.length > 0 && (
                 <div
                   className="relative overflow-hidden rounded-lg border"
-                  style={{ borderColor: "var(--border)", background: "var(--bg-subtle)" }}
+                  style={{ borderColor: "rgba(56, 189, 248, 0.18)", background: "rgba(6, 11, 25, 0.8)" }}
                 >
                   <div className="relative h-60 sm:h-72">
                     <Image
@@ -104,16 +104,16 @@ export default function ProjectModal({ project, onClose }) {
                     <>
                       <button
                         onClick={handlePrevImage}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-lg border p-2 shadow-md transition hover:opacity-80"
-                        style={{ background: "var(--bg-card)", borderColor: "var(--border)", color: "var(--text-primary)" }}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-lg border p-2 shadow-md transition hover:border-[#38bdf8] hover:text-[#38bdf8]"
+                        style={{ background: "rgba(10, 16, 32, 0.85)", borderColor: "rgba(56, 189, 248, 0.25)", color: "#f8fafc" }}
                         aria-label="Previous"
                       >
                         <ChevronLeft size={16} />
                       </button>
                       <button
                         onClick={handleNextImage}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg border p-2 shadow-md transition hover:opacity-80"
-                        style={{ background: "var(--bg-card)", borderColor: "var(--border)", color: "var(--text-primary)" }}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg border p-2 shadow-md transition hover:border-[#38bdf8] hover:text-[#38bdf8]"
+                        style={{ background: "rgba(10, 16, 32, 0.85)", borderColor: "rgba(56, 189, 248, 0.25)", color: "#f8fafc" }}
                         aria-label="Next"
                       >
                         <ChevronRight size={16} />
@@ -134,7 +134,7 @@ export default function ProjectModal({ project, onClose }) {
                       style={{
                         height: 6,
                         width: activeImageIndex === index ? 20 : 6,
-                        background: activeImageIndex === index ? "var(--accent)" : "var(--border)",
+                        background: activeImageIndex === index ? "#38bdf8" : "rgba(56, 189, 248, 0.25)",
                       }}
                       aria-label={`Screenshot ${index + 1}`}
                     />
@@ -145,8 +145,8 @@ export default function ProjectModal({ project, onClose }) {
               {/* Tech stack */}
               <div className="mt-6">
                 <p
-                  className="mb-3 text-[11px] font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+                  className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
                   Tech Stack
                 </p>
@@ -155,7 +155,7 @@ export default function ProjectModal({ project, onClose }) {
                     <div
                       key={`${project.name}-modal-tech-${tech}`}
                       className="flex h-9 w-9 items-center justify-center rounded-lg border"
-                      style={{ borderColor: "var(--border)", background: "var(--bg-subtle)" }}
+                      style={{ borderColor: "rgba(56, 189, 248, 0.20)", background: "rgba(11, 18, 33, 0.70)" }}
                       title={tech.split(".")[0]}
                     >
                       <Image
@@ -177,8 +177,8 @@ export default function ProjectModal({ project, onClose }) {
                     href={project.githubLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium transition hover:opacity-80"
-                    style={{ borderColor: "var(--border)", background: "var(--bg-subtle)", color: "var(--text-primary)" }}
+                    className="inline-flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition hover:border-[#38bdf8] hover:text-[#38bdf8]"
+                    style={{ borderColor: "rgba(56, 189, 248, 0.20)", background: "rgba(10, 16, 32, 0.65)", color: "#cbd5e1" }}
                   >
                     <Github size={14} />
                     GitHub
@@ -189,8 +189,11 @@ export default function ProjectModal({ project, onClose }) {
                     href={project.liveLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
-                    style={{ background: "var(--accent)" }}
+                    className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition hover:opacity-95 shadow-md"
+                    style={{
+                      background: "linear-gradient(135deg, #0284c7, #4f46e5)",
+                      boxShadow: "0 0 14px rgba(56, 189, 248, 0.35)",
+                    }}
                   >
                     <ExternalLink size={14} />
                     Live Demo
@@ -202,8 +205,8 @@ export default function ProjectModal({ project, onClose }) {
               {(project.details || []).length > 0 && (
                 <div className="mt-6">
                   <p
-                    className="mb-3 text-[11px] font-semibold uppercase tracking-widest"
-                    style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+                    className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
                     Details
                   </p>
@@ -212,7 +215,7 @@ export default function ProjectModal({ project, onClose }) {
                       <li key={i} className="flex gap-2.5 text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                         <span
                           className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                          style={{ background: "var(--accent)" }}
+                          style={{ background: "#38bdf8", boxShadow: "0 0 6px rgba(56, 189, 248, 0.6)" }}
                         />
                         {point}
                       </li>

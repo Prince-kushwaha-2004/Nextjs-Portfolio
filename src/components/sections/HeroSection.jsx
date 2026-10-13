@@ -51,19 +51,19 @@ function TypingRole() {
   }, [displayed, isDeleting, roleIdx]);
 
   return (
-    <span className="text-[#e6edf3] font-mono font-medium">
+    <span className="text-[#f8fafc] font-mono font-medium">
       {displayed}
       <span
         style={{
           display: "inline-block",
           width: 2,
           height: "1.1em",
-          background: "#c084fc",
+          background: "#38bdf8",
           marginLeft: 3,
           verticalAlign: "text-bottom",
           borderRadius: 1,
           animation: "blink 1s step-end infinite",
-          boxShadow: "0 0 8px #c084fc",
+          boxShadow: "0 0 8px #38bdf8",
         }}
       />
     </span>
@@ -141,8 +141,8 @@ export default function HeroSection() {
       className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden"
     >
       {/* ── Static Glowing Horizon Bloom Background ── */}
-      <div className="absolute  inset-0 z-0 pointer-events-none">
-        <HorizonBloom />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <HorizonBloom idPrefix="hero" />
       </div>
 
       {/* Floating code decorations — right side */}
@@ -156,7 +156,7 @@ export default function HeroSection() {
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="font-mono text-5xl font-bold select-none"
-            style={{ color: "rgba(168,85,247,0.18)" }}
+            style={{ color: "rgba(56,189,248,0.18)" }}
           >
             {"{ }"}
           </motion.div>
@@ -174,22 +174,22 @@ export default function HeroSection() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="rounded-xl border px-5 py-3.5 font-mono text-xs leading-6 select-none shadow-2xl"
             style={{
-              borderColor: "rgba(168,85,247,0.22)",
-              background: "rgba(15,8,30,0.65)",
+              borderColor: "rgba(56,189,248,0.22)",
+              background: "rgba(10,16,32,0.70)",
               backdropFilter: "blur(16px)",
-              color: "#c4b5fd",
-              boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 16px rgba(168,85,247,0.12)",
+              color: "#cbd5e1",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 16px rgba(56,189,248,0.12)",
             }}
           >
-            <span style={{ color: "#f472b6" }}>const </span>
-            <span style={{ color: "#c084fc" }}>dev</span>
-            <span style={{ color: "#f5eeff" }}> = () ={">"} {"{"}</span>
+            <span style={{ color: "#38bdf8" }}>const </span>
+            <span style={{ color: "#818cf8" }}>dev</span>
+            <span style={{ color: "#f8fafc" }}> = () ={">"} {"{"}</span>
             <br />
             <span>&nbsp;&nbsp;</span>
-            <span style={{ color: "#f472b6" }}>return </span>
-            <span style={{ color: "#d8b4fe" }}>&quot;🚀 value&quot;</span>;
+            <span style={{ color: "#38bdf8" }}>return </span>
+            <span style={{ color: "#34d399" }}>&quot;🚀 value&quot;</span>;
             <br />
-            <span style={{ color: "#f5eeff" }}>{"}"}</span>
+            <span style={{ color: "#f8fafc" }}>{"}"}</span>
           </motion.div>
         </motion.div>
       </div>
@@ -204,7 +204,7 @@ export default function HeroSection() {
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             className="font-mono text-3xl font-bold select-none"
-            style={{ color: "rgba(192,132,252,0.22)" }}
+            style={{ color: "rgba(56,189,248,0.22)" }}
           >
             {"</>"}
           </motion.div>
@@ -220,15 +220,15 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-md"
+            className="mb-8 inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5 backdrop-blur-md"
             style={{
-              borderColor: "rgba(192,132,252,0.30)",
-              background: "rgba(168,85,247,0.12)",
-              boxShadow: "0 0 16px rgba(168,85,247,0.15)",
+              borderColor: "rgba(56, 189, 248, 0.25)",
+              background: "rgba(10, 20, 38, 0.65)",
+              boxShadow: "0 0 16px rgba(56, 189, 248, 0.15)",
             }}
           >
-            <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#c084fc", boxShadow: "0 0 8px #c084fc" }} />
-            <span className="font-mono text-xs font-semibold" style={{ color: "#d8b4fe" }}>
+            <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#10b981", boxShadow: "0 0 10px #10b981" }} />
+            <span className="font-mono text-xs font-semibold text-[#f8fafc]">
               Open to Work · Remote OK
             </span>
           </motion.div>
@@ -242,13 +242,13 @@ export default function HeroSection() {
             >
               <h1 className="tracking-tight font-extrabold select-none">
                 <span
-                  className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#f5eeff]"
+                  className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#f8fafc]"
                   style={{ lineHeight: 1.1 }}
                 >
                   Prince
                 </span>
                 <span
-                  className="text-4xl mx-4 sm:text-4xl md:text-5xl lg:text-7xl tracking-tight text-[#f5eeff]"
+                  className="text-4xl mx-4 sm:text-4xl md:text-5xl lg:text-7xl tracking-tight text-[#f8fafc]"
                   style={{ lineHeight: 1.05 }}
                 >
                   Kushwaha
@@ -262,10 +262,10 @@ export default function HeroSection() {
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
-            className="mb-6 h-[2px] w-24 origin-left rounded-full"
+            className="mb-6 h-[2px] w-28 origin-left rounded-full"
             style={{
-              background: "linear-gradient(to right, #c084fc, #a855f7, transparent)",
-              boxShadow: "0 0 10px rgba(192,132,252,0.6)",
+              background: "linear-gradient(to right, #38bdf8, #6366f1, #a855f7, transparent)",
+              boxShadow: "0 0 12px rgba(56, 189, 248, 0.6)",
             }}
           />
 
@@ -276,8 +276,8 @@ export default function HeroSection() {
             transition={{ delay: 0.7, duration: 0.4 }}
             className="mb-5 flex items-center gap-2"
           >
-            <span className="font-mono text-sm" style={{ color: "#7e6d9b" }}>~/&nbsp;</span>
-            <span className="font-mono text-base md:text-lg" style={{ color: "#c4b5fd" }}>
+            <span className="font-mono text-sm" style={{ color: "#38bdf8" }}>~/&nbsp;</span>
+            <span className="font-mono text-base md:text-lg" style={{ color: "#cbd5e1" }}>
               I&apos;m a <TypingRole />
             </span>
           </motion.div>
@@ -288,10 +288,10 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75, duration: 0.5 }}
             className="mb-2 max-w-lg text-[15px] leading-7"
-            style={{ color: "#948ba8" }}
+            style={{ color: "#94a3b8" }}
           >
             I build fast, scalable web applications —
-            {" "}<span style={{ color: "#f5eeff" }}>clean UI, solid backend, production-ready.</span>
+            {" "}<span style={{ color: "#f8fafc" }}>clean UI, solid backend, production-ready.</span>
           </motion.p>
 
           <motion.div
@@ -299,9 +299,9 @@ export default function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
             className="mb-8 flex items-center gap-1.5 font-mono text-xs"
-            style={{ color: "#7e6d9b" }}
+            style={{ color: "#64748b" }}
           >
-            <MapPin size={11} /> India
+            <MapPin size={11} style={{ color: "#10b981" }} /> India
           </motion.div>
 
           {/* Live stats */}
@@ -314,11 +314,11 @@ export default function HeroSection() {
             {statItems.map((s) => (
               <div key={s.label}>
                 <p
-                  className="text-2xl font-bold tabular-nums text-[#f5eeff] font-mono"
+                  className="text-2xl font-bold tabular-nums text-[#f8fafc] font-mono"
                 >
                   {s.value}
                 </p>
-                <p className="text-[11px] font-mono uppercase tracking-widest mt-0.5 text-[#948ba8]">
+                <p className="text-[11px] font-mono uppercase tracking-widest mt-0.5 text-[#94a3b8]">
                   {s.label}
                 </p>
               </div>
@@ -336,16 +336,16 @@ export default function HeroSection() {
               href="#projects"
               className="group inline-flex items-center gap-2 rounded-xl px-7 py-3 text-[14px] font-semibold text-white transition-all duration-300"
               style={{
-                background: "linear-gradient(135deg, #7e22ce, #a855f7, #c084fc)",
-                boxShadow: "0 4px 24px rgba(168,85,247,0.45)",
+                background: "linear-gradient(135deg, #0284c7, #4f46e5, #7c3aed)",
+                boxShadow: "0 4px 24px rgba(14, 165, 233, 0.45)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = "0 6px 30px rgba(192,132,252,0.6)";
+                e.currentTarget.style.boxShadow = "0 6px 30px rgba(56, 189, 248, 0.6)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 24px rgba(168,85,247,0.45)";
+                e.currentTarget.style.boxShadow = "0 4px 24px rgba(14, 165, 233, 0.45)";
               }}
             >
               View Projects <ArrowRight size={15} />
@@ -355,19 +355,19 @@ export default function HeroSection() {
               target="_blank"
               className="inline-flex items-center gap-2 rounded-xl border px-7 py-3 text-[14px] font-semibold transition-all duration-200"
               style={{
-                borderColor: "rgba(168,85,247,0.25)",
-                background: "rgba(15,8,30,0.65)",
+                borderColor: "rgba(56, 189, 248, 0.25)",
+                background: "rgba(10, 16, 32, 0.65)",
                 backdropFilter: "blur(12px)",
-                color: "#f5eeff",
+                color: "#f8fafc",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.borderColor = "rgba(192,132,252,0.5)";
-                e.currentTarget.style.boxShadow = "0 4px 20px rgba(168,85,247,0.2)";
+                e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.5)";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(56, 189, 248, 0.25)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.borderColor = "rgba(168,85,247,0.25)";
+                e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.25)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -376,7 +376,7 @@ export default function HeroSection() {
             <a
               href="#contact"
               className="text-sm font-medium transition hover:opacity-80"
-              style={{ color: "#c084fc" }}
+              style={{ color: "#38bdf8" }}
             >
               Let&apos;s talk →
             </a>
@@ -389,7 +389,7 @@ export default function HeroSection() {
             transition={{ delay: 1.0, duration: 0.5 }}
             className="flex flex-wrap items-center gap-2.5"
           >
-            <span className="mr-2 text-xs uppercase tracking-widest text-[#7e6d9b] font-mono">
+            <span className="mr-2 text-xs uppercase tracking-widest text-[#64748b] font-mono">
               Find me
             </span>
             {SOCIAL.map(({ icon: Icon, href, label }) => (
@@ -401,22 +401,22 @@ export default function HeroSection() {
                 title={label}
                 className="flex h-10 w-10 items-center justify-center rounded-xl border"
                 style={{
-                  borderColor: "rgba(168,85,247,0.20)",
-                  background: "rgba(15,8,30,0.65)",
+                  borderColor: "rgba(56, 189, 248, 0.20)",
+                  background: "rgba(10, 16, 32, 0.65)",
                   backdropFilter: "blur(12px)",
-                  color: "#c4b5fd",
+                  color: "#cbd5e1",
                   transition: "transform 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.borderColor = "#c084fc";
+                  e.currentTarget.style.borderColor = "#38bdf8";
                   e.currentTarget.style.color = "#ffffff";
-                  e.currentTarget.style.boxShadow = "0 0 14px rgba(192,132,252,0.35)";
+                  e.currentTarget.style.boxShadow = "0 0 14px rgba(56, 189, 248, 0.35)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "rgba(168,85,247,0.20)";
-                  e.currentTarget.style.color = "#c4b5fd";
+                  e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.20)";
+                  e.currentTarget.style.color = "#cbd5e1";
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >

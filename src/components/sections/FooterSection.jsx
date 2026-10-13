@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { SOCIAL_LINKS, fadeUp } from "@/data/constants";
 import { Send, MapPin, Mail, ArrowRight } from "lucide-react";
 import toast from "react-hot-toast";
+import HorizonBloom from "@/components/HorizonBloom";
 
 export default function FooterSection() {
   const [sending, setSending] = useState(false);
@@ -40,8 +41,8 @@ export default function FooterSection() {
 
   const inputClass = "w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-200";
   const inputStyle = {
-    background: "rgba(15, 8, 30, 0.65)",
-    backdropFilter: "blur(12px)",
+    background: "rgba(10, 16, 32, 0.70)",
+    backdropFilter: "blur(14px)",
     borderColor: "var(--border)",
     color: "var(--text-primary)",
   };
@@ -53,14 +54,18 @@ export default function FooterSection() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.05 }}
-      className="w-full border-t"
-      style={{ borderColor: "var(--border)", background: "var(--bg-subtle)" }}
+      className="relative w-full  overflow-hidden"
     >
-      <div className="section-container">
+      {/* ── Static Glowing Horizon Bloom Background ── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <HorizonBloom idPrefix="footer" positionClass="translate-y-24 sm:translate-y-32" />
+      </div>
+
+      <div className="section-container relative z-10">
         {/* Header */}
         <div className="mb-10">
           <p className="section-label">Contact</p>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl" style={{ color: "var(--text-primary)" }}>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl text-[#f8fafc]">
             Let&apos;s build something.
           </h2>
           <p className="mt-2 max-w-lg text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
@@ -75,24 +80,32 @@ export default function FooterSection() {
             <div className="space-y-4">
               <a
                 href="mailto:princekk102004@gmail.com"
-                className="flex items-center gap-3 text-sm transition hover:opacity-80"
+                className="flex items-center gap-3 text-sm transition hover:opacity-90 group"
                 style={{ color: "var(--text-secondary)" }}
               >
                 <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                  style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border transition-all duration-200 group-hover:scale-105"
+                  style={{
+                    background: "rgba(56, 189, 248, 0.12)",
+                    borderColor: "rgba(56, 189, 248, 0.30)",
+                    color: "#38bdf8",
+                  }}
                 >
                   <Mail size={15} />
                 </div>
-                princekk102004@gmail.com
+                <span className="group-hover:text-white transition-colors">princekk102004@gmail.com</span>
               </a>
               <div
                 className="flex items-center gap-3 text-sm"
                 style={{ color: "var(--text-secondary)" }}
               >
                 <div
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
-                  style={{ background: "var(--accent-subtle)", color: "var(--accent)" }}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border"
+                  style={{
+                    background: "rgba(16, 185, 129, 0.12)",
+                    borderColor: "rgba(16, 185, 129, 0.30)",
+                    color: "#10b981",
+                  }}
                 >
                   <MapPin size={15} />
                 </div>
@@ -103,8 +116,8 @@ export default function FooterSection() {
             {/* Social */}
             <div className="mt-8">
               <p
-                className="mb-3 text-xs font-semibold uppercase tracking-widest"
-                style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+                className="mb-3 text-xs font-semibold uppercase tracking-widest text-[#94a3b8]"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 Find me on
               </p>
@@ -117,10 +130,11 @@ export default function FooterSection() {
                       href={item.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border px-3.5 py-2 text-sm font-medium transition hover:opacity-80"
+                      className="inline-flex items-center gap-2 rounded-xl border px-3.5 py-2 text-sm font-medium transition-all duration-200 hover:scale-105 hover:border-[#38bdf8]/50 hover:text-white hover:shadow-[0_0_16px_rgba(56,189,248,0.25)]"
                       style={{
                         borderColor: "var(--border)",
-                        background: "var(--bg-card)",
+                        background: "rgba(11, 18, 33, 0.65)",
+                        backdropFilter: "blur(12px)",
                         color: "var(--text-secondary)",
                       }}
                     >
@@ -133,23 +147,31 @@ export default function FooterSection() {
             </div>
 
             {/* Code snippet decoration */}
-            <div className="mt-8 code-block text-xs">
-              <span style={{ color: "#8d96a0" }}>// reach out anytime</span>
+            <div
+              className="mt-8 rounded-xl border p-4 text-xs font-mono leading-relaxed"
+              style={{
+                borderColor: "rgba(56, 189, 248, 0.18)",
+                background: "rgba(10, 16, 32, 0.70)",
+                backdropFilter: "blur(16px)",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)",
+              }}
+            >
+              <span style={{ color: "#64748b" }}>// reach out anytime</span>
               <br />
-              <span style={{ color: "#79c0ff" }}>const </span>
-              <span style={{ color: "#e6edf3" }}>contact </span>
-              <span style={{ color: "#ff7b72" }}>= </span>
-              <span style={{ color: "#a5d6ff" }}>{`{`}</span>
+              <span style={{ color: "#38bdf8" }}>const </span>
+              <span style={{ color: "#f8fafc" }}>contact </span>
+              <span style={{ color: "#38bdf8" }}>= </span>
+              <span style={{ color: "#f8fafc" }}>{`{`}</span>
               <br />
-              <span style={{ color: "#a5d6ff" }}>{"  email: "}</span>
-              <span style={{ color: "#a8daff" }}>&quot;princekk102004@gmail.com&quot;</span>
-              <span>,</span>
+              <span style={{ color: "#a5b4fc" }}>{"  email: "}</span>
+              <span style={{ color: "#34d399" }}>&quot;princekk102004@gmail.com&quot;</span>
+              <span style={{ color: "#94a3b8" }}>,</span>
               <br />
-              <span style={{ color: "#a5d6ff" }}>{"  status: "}</span>
-              <span style={{ color: "#a8daff" }}>&quot;open_to_work&quot;</span>
+              <span style={{ color: "#a5b4fc" }}>{"  status: "}</span>
+              <span style={{ color: "#34d399" }}>&quot;open_to_work&quot;</span>
               <br />
-              <span style={{ color: "#a5d6ff" }}>{`}`}</span>
-              <span>;</span>
+              <span style={{ color: "#f8fafc" }}>{`}`}</span>
+              <span style={{ color: "#94a3b8" }}>;</span>
             </div>
           </div>
 
@@ -157,12 +179,18 @@ export default function FooterSection() {
           <form
             onSubmit={handleSubmit}
             className="card rounded-2xl p-6"
+            style={{
+              background: "rgba(11, 18, 33, 0.70)",
+              backdropFilter: "blur(20px)",
+              borderColor: "rgba(56, 189, 248, 0.20)",
+              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(56, 189, 248, 0.10)",
+            }}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label
-                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--text-muted)" }}
+                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
                   Name
                 </label>
@@ -176,8 +204,8 @@ export default function FooterSection() {
                   className={inputClass}
                   style={inputStyle}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = "var(--accent)";
-                    e.currentTarget.style.boxShadow = "0 0 14px rgba(192, 132, 252, 0.25)";
+                    e.currentTarget.style.borderColor = "#38bdf8";
+                    e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.25)";
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = "var(--border)";
@@ -187,8 +215,8 @@ export default function FooterSection() {
               </div>
               <div>
                 <label
-                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
-                  style={{ color: "var(--text-muted)" }}
+                  className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]"
+                  style={{ fontFamily: "'JetBrains Mono', monospace" }}
                 >
                   Email
                 </label>
@@ -202,8 +230,8 @@ export default function FooterSection() {
                   className={inputClass}
                   style={inputStyle}
                   onFocus={(e) => {
-                    e.currentTarget.style.borderColor = "var(--accent)";
-                    e.currentTarget.style.boxShadow = "0 0 14px rgba(192, 132, 252, 0.25)";
+                    e.currentTarget.style.borderColor = "#38bdf8";
+                    e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.25)";
                   }}
                   onBlur={(e) => {
                     e.currentTarget.style.borderColor = "var(--border)";
@@ -215,8 +243,8 @@ export default function FooterSection() {
 
             <div className="mt-4">
               <label
-                className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest"
-                style={{ color: "var(--text-muted)" }}
+                className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-[#94a3b8]"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
               >
                 Message
               </label>
@@ -230,8 +258,8 @@ export default function FooterSection() {
                 className={inputClass}
                 style={inputStyle}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = "var(--accent)";
-                  e.currentTarget.style.boxShadow = "0 0 14px rgba(192, 132, 252, 0.25)";
+                  e.currentTarget.style.borderColor = "#38bdf8";
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.25)";
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = "var(--border)";
@@ -244,10 +272,10 @@ export default function FooterSection() {
               type="submit"
               disabled={sending}
               id="contact-submit-btn"
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60 shadow-lg"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white transition-all duration-300 hover:opacity-95 hover:shadow-[0_6px_28px_rgba(56,189,248,0.45)] hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 shadow-lg"
               style={{
-                background: "linear-gradient(135deg, #7e22ce, #a855f7, #c084fc)",
-                boxShadow: "0 4px 20px rgba(168, 85, 247, 0.35)",
+                background: "linear-gradient(135deg, #0284c7, #4f46e5, #7c3aed)",
+                boxShadow: "0 4px 20px rgba(14, 165, 233, 0.35)",
               }}
             >
               <Send size={14} />
@@ -259,13 +287,14 @@ export default function FooterSection() {
 
       {/* Bottom bar */}
       <div
-        className="border-t px-5 py-5 md:px-8"
-        style={{ borderColor: "var(--border)" }}
+        className="relative z-10 px-5 py-5 md:px-8"
       >
-        <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 text-xs sm:flex-row"
-          style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}>
+        <div
+          className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-2 text-xs sm:flex-row"
+          style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+        >
           <span>© {new Date().getFullYear()} Prince Kushwaha</span>
-          <span style={{ color: "var(--accent)" }}>Built with Next.js + Tailwind</span>
+          <span style={{ color: "#38bdf8" }}>Built with Next.js + Tailwind</span>
         </div>
       </div>
     </motion.footer>

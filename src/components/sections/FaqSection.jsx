@@ -31,10 +31,11 @@ export default function FaqSection() {
             <motion.article
               key={item.q}
               variants={fadeUp}
-              className="card overflow-hidden rounded-xl"
+              className="card overflow-hidden rounded-xl transition-all duration-300"
               style={{
-                borderColor: isOpen ? "var(--accent)" : "var(--border)",
-                boxShadow: isOpen ? "0 8px 32px rgba(168, 85, 247, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12)" : undefined,
+                background: "rgba(11, 18, 33, 0.65)",
+                borderColor: isOpen ? "#38bdf8" : "rgba(56, 189, 248, 0.16)",
+                boxShadow: isOpen ? "0 8px 32px rgba(56, 189, 248, 0.20), inset 0 1px 1px rgba(255, 255, 255, 0.12)" : undefined,
               }}
             >
               <button
@@ -44,8 +45,8 @@ export default function FaqSection() {
                 aria-expanded={isOpen}
               >
                 <span
-                  className="text-sm font-semibold"
-                  style={{ color: isOpen ? "var(--accent)" : "var(--text-primary)" }}
+                  className="text-sm font-semibold transition-colors"
+                  style={{ color: isOpen ? "#38bdf8" : "#f8fafc" }}
                 >
                   {item.q}
                 </span>
@@ -53,7 +54,7 @@ export default function FaqSection() {
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                   className="shrink-0"
-                  style={{ color: isOpen ? "var(--accent)" : "var(--text-muted)" }}
+                  style={{ color: isOpen ? "#38bdf8" : "#94a3b8" }}
                 >
                   <ChevronDown size={16} />
                 </motion.div>

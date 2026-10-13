@@ -26,7 +26,7 @@ export default function ExperienceSection() {
         {/* Vertical line */}
         <div
           className="absolute left-0 top-2 h-[calc(100%-16px)] w-0.5"
-          style={{ background: "linear-gradient(to bottom, var(--accent), rgba(168, 85, 247, 0.2))" }}
+          style={{ background: "linear-gradient(to bottom, #38bdf8 0%, #6366f1 60%, rgba(168, 85, 247, 0.15) 100%)" }}
         />
 
         <div className="flex flex-col gap-0">
@@ -40,31 +40,36 @@ export default function ExperienceSection() {
               <div
                 className="absolute -left-[30.5px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2"
                 style={{
-                  background: "var(--bg-page)",
-                  borderColor: "var(--accent)",
-                  boxShadow: "0 0 10px rgba(192, 132, 252, 0.6)",
+                  background: "#010003",
+                  borderColor: "#38bdf8",
+                  boxShadow: "0 0 12px rgba(56, 189, 248, 0.7)",
                 }}
               >
-                {/* <Briefcase size={11} style={{ color: "var(--accent)" }} /> */}
+                <div className="h-1.5 w-1.5 rounded-full bg-[#38bdf8]" />
               </div>
 
-              <div className="card card-lift rounded-xl p-6">
+              <div
+                className="card card-lift rounded-xl p-6"
+                style={{
+                  background: "rgba(11, 18, 33, 0.65)",
+                  borderColor: "rgba(56, 189, 248, 0.16)",
+                }}
+              >
                 {/* Header */}
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <h3
-                        className="text-base font-bold"
-                        style={{ color: "var(--text-primary)" }}
+                        className="text-base font-bold text-[#f8fafc]"
                       >
                         {item.role}
                       </h3>
                       <span
                         className="rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
                         style={{
-                          background: "rgba(168, 85, 247, 0.12)",
-                          borderColor: "rgba(192, 132, 252, 0.35)",
-                          color: "var(--accent)",
+                          background: "rgba(56, 189, 248, 0.12)",
+                          borderColor: "rgba(56, 189, 248, 0.35)",
+                          color: "#38bdf8",
                           fontFamily: "'JetBrains Mono', monospace",
                         }}
                       >
@@ -74,15 +79,15 @@ export default function ExperienceSection() {
                   </div>
                   <div
                     className="flex items-center gap-1.5 shrink-0 text-xs"
-                    style={{ color: "var(--text-muted)", fontFamily: "'JetBrains Mono', monospace" }}
+                    style={{ color: "#94a3b8", fontFamily: "'JetBrains Mono', monospace" }}
                   >
-                    <Calendar size={11} />
+                    <Calendar size={11} style={{ color: "#38bdf8" }} />
                     {item.duration}
                   </div>
                 </div>
 
                 {/* Divider */}
-                <div className="my-4 h-px" style={{ background: "var(--border-muted)" }} />
+                <div className="my-4 h-px" style={{ background: "rgba(56, 189, 248, 0.12)" }} />
 
                 {/* Points */}
                 <ul className="space-y-2.5">
@@ -90,7 +95,7 @@ export default function ExperienceSection() {
                     <li key={i} className="flex gap-3 text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                       <span
                         className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ background: "var(--accent)" }}
+                        style={{ background: "#38bdf8", boxShadow: "0 0 6px rgba(56, 189, 248, 0.6)" }}
                       />
                       {point}
                     </li>
@@ -103,10 +108,10 @@ export default function ExperienceSection() {
                     href={item.website}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-5 inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-xs font-medium transition hover:opacity-80"
+                    className="mt-5 inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-medium transition hover:border-[#38bdf8] hover:text-[#38bdf8]"
                     style={{
-                      borderColor: "var(--border)",
-                      background: "var(--bg-subtle)",
+                      borderColor: "rgba(56, 189, 248, 0.20)",
+                      background: "rgba(10, 16, 32, 0.60)",
                       color: "var(--text-secondary)",
                     }}
                   >

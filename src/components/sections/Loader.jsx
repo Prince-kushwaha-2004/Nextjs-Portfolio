@@ -53,11 +53,11 @@ export default function Loader({ onComplete }) {
             transition={{ duration: 0.95, ease: [0.76, 0, 0.24, 1] }}
             style={{ background: "#010003" }}
           >
-            {/* Grid pattern background in Horizon purple */}
+            {/* Grid pattern background in celestial cyan */}
             <div
               className="pointer-events-none absolute inset-0 opacity-[0.05]"
               style={{
-                backgroundImage: "linear-gradient(#a855f7 1px, transparent 1px), linear-gradient(90deg, #a855f7 1px, transparent 1px)",
+                backgroundImage: "linear-gradient(#38bdf8 1px, transparent 1px), linear-gradient(90deg, #38bdf8 1px, transparent 1px)",
                 backgroundSize: "40px 40px",
               }}
             />
@@ -66,7 +66,7 @@ export default function Loader({ onComplete }) {
             <div
               className="pointer-events-none absolute inset-0"
               style={{
-                background: "radial-gradient(ellipse at 50% 50%, rgba(168,85,247,0.12) 0%, transparent 65%)",
+                background: "radial-gradient(ellipse at 50% 50%, rgba(56,189,248,0.15) 0%, rgba(99,102,241,0.08) 35%, transparent 65%)",
               }}
             />
 
@@ -81,32 +81,32 @@ export default function Loader({ onComplete }) {
               <div
                 className="rounded-full border px-4 py-1.5 text-xs font-semibold backdrop-blur-md"
                 style={{
-                  background: "rgba(168,85,247,0.12)",
-                  borderColor: "rgba(192,132,252,0.35)",
-                  color: "#c084fc",
+                  background: "rgba(56, 189, 248, 0.12)",
+                  borderColor: "rgba(56, 189, 248, 0.35)",
+                  color: "#38bdf8",
                   fontFamily: "'JetBrains Mono', monospace",
-                  boxShadow: "0 0 14px rgba(168,85,247,0.2)",
+                  boxShadow: "0 0 14px rgba(56, 189, 248, 0.2)",
                 }}
               >
                 ~/portfolio
               </div>
 
               <motion.h1
-                className="text-center text-5xl font-bold tracking-tight text-[#f5eeff] sm:text-6xl"
+                className="text-center text-5xl font-bold tracking-tight text-[#f8fafc] sm:text-6xl"
                 initial={{ opacity: 0, letterSpacing: "0.3em" }}
                 animate={count >= 25 ? { opacity: 1, letterSpacing: "0.02em" } : {}}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 style={{ fontFamily: "var(--font-heading), 'Space Grotesk', sans-serif" }}
               >
                 Prince
-                <span style={{ color: "#c084fc" }}> Kushwaha</span>
+                <span style={{ color: "#38bdf8" }}> Kushwaha</span>
               </motion.h1>
 
               <motion.div
                 className="h-px"
                 style={{
-                  background: "linear-gradient(90deg, transparent, #c084fc, transparent)",
-                  boxShadow: "0 0 8px rgba(192,132,252,0.6)",
+                  background: "linear-gradient(90deg, transparent, #38bdf8, transparent)",
+                  boxShadow: "0 0 10px rgba(56, 189, 248, 0.6)",
                 }}
                 initial={{ width: 0 }}
                 animate={count >= 25 ? { width: 260 } : {}}
@@ -115,7 +115,7 @@ export default function Loader({ onComplete }) {
 
               <motion.p
                 className="text-xs uppercase tracking-[0.3em]"
-                style={{ color: "#c4b5fd", fontFamily: "'JetBrains Mono', monospace" }}
+                style={{ color: "#cbd5e1", fontFamily: "'JetBrains Mono', monospace" }}
                 initial={{ opacity: 0 }}
                 animate={count >= 30 ? { opacity: 1 } : {}}
                 transition={{ duration: 0.4, delay: 0.45 }}
@@ -133,7 +133,7 @@ export default function Loader({ onComplete }) {
             >
               <span
                 className="text-7xl font-bold tabular-nums sm:text-9xl"
-                style={{ color: "rgba(168,85,247,0.12)", fontFamily: "'JetBrains Mono', monospace" }}
+                style={{ color: "rgba(56, 189, 248, 0.12)", fontFamily: "'JetBrains Mono', monospace" }}
               >
                 {String(count).padStart(3, "0")}
               </span>
