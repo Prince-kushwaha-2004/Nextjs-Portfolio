@@ -1,155 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Horizon Cosmic Theme Tokens ─────────────────────────────── */
+:root {
+  --bg-page:        #010003;
+  --bg-subtle:      rgba(10, 15, 30, 0.70);
+  --bg-muted:       rgba(15, 23, 42, 0.65);
+  --bg-card:        rgba(11, 18, 33, 0.60);
+  --bg-overlay:     rgba(2, 6, 23, 0.88);
+
+  --border:         rgba(56, 189, 248, 0.16);
+  --border-muted:   rgba(99, 102, 241, 0.14);
+  --border-hover:   rgba(56, 189, 248, 0.45);
+
+  --text-primary:   #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #94a3b8;
+
+  --accent:         #38bdf8;
+  --accent-hover:   #7dd3fc;
+  --accent-subtle:  rgba(56, 189, 248, 0.14);
+
+  --cyan:           #38bdf8;
+  --cyan-subtle:    rgba(56, 189, 248, 0.14);
+
+  --emerald:        #10b981;
+  --emerald-subtle: rgba(16, 185, 129, 0.14);
+
+  --indigo:         #6366f1;
+  --indigo-subtle:  rgba(99, 102, 241, 0.16);
+
+  --amber:          #f59e0b;
+  --amber-subtle:   rgba(245, 158, 11, 0.14);
+
+  --green:          #10b981;
+  --green-subtle:   rgba(16, 185, 129, 0.14);
+
+  --purple:         #a855f7;
+  --purple-subtle:  rgba(168, 85, 247, 0.14);
+
+  --shadow-sm:      0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:      0 8px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(56, 189, 248, 0.10);
+  --shadow-lg:      0 16px 48px rgba(0, 0, 0, 0.6), 0 0 24px rgba(56, 189, 248, 0.18);
+  --shadow-glass:   0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ─── Base ────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  font-family: var(--font-sans), sans-serif;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
-.playto-serif {
-  font-family: var(--font-serif), serif;
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading), 'Space Grotesk', sans-serif;
+  letter-spacing: -0.02em;
 }
 
-.playto-bg {
-  min-height: 100vh;
-  background-color: #04060e;
-  background-image:
-    radial-gradient(circle at 18% 15%, rgba(46, 81, 209, 0.151), transparent 38%),
-    radial-gradient(circle at 82% 45%, rgba(38, 98, 255, 0.18), transparent 41%),
-    radial-gradient(circle at 55% 88%, rgba(12, 36, 107, 0.35), transparent 35%);
+.font-mono { font-family: 'JetBrains Mono', monospace !important; }
+
+/* ─── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 3px; height: 2px;}
+::-webkit-scrollbar-track { background: #010003; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.4), rgba(99, 102, 241, 0.4));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.7), rgba(99, 102, 241, 0.7));
+}
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { scrollbar-width: none; }
+
+/* ─── Layout ──────────────────────────────────────────────────── */
+.section-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
 }
 
-@keyframes floatY {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+/* ─── Glassmorphism Cards ─────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-glass);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
-.animate-float {
-  animation: floatY 4s ease-in-out infinite;
+.card-lift:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: 0 16px 40px -10px rgba(56, 189, 248, 0.22), inset 0 1px 2px 0 rgba(255, 255, 255, 0.20);
 }
 
-/* Skill orb subtle float */
-@keyframes skillFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+.glass-panel {
+  background: rgba(10, 16, 32, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.20);
+  box-shadow: 0 16px 48px -8px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
 }
 
-.skill-orb {
-  animation: skillFloat 5s ease-in-out infinite;
+/* ─── Section label ───────────────────────────────────────────── */
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.section-label::before {
+  content: '';
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.7);
+  display: inline-block;
 }
 
-/* Marquee infinite scroll */
-@keyframes marqueeScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* ─── Gradient text ───────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 35%, #818cf8 70%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #f8fafc, #38bdf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-purple {
+  background: linear-gradient(135deg, #f8fafc, #818cf8, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.marquee-track {
-  animation: marqueeScroll 25s linear infinite;
+/* ─── Cursor blink ────────────────────────────────────────────── */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+  box-shadow: 0 0 8px var(--accent);
 }
 
-.marquee-track:hover {
-  animation-play-state: paused;
+/* ─── Marquee ─────────────────────────────────────────────────── */
+@keyframes marqueeScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+.marquee-track { animation: marqueeScroll 30s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ─── Float ───────────────────────────────────────────────────── */
+@keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+.animate-float { animation: floatY 4s ease-in-out infinite; }
+
+/* ─── Shimmer ─────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
 }
+.shimmer {
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.4) 25%, rgba(56, 189, 248, 0.15) 50%, rgba(15, 23, 42, 0.4) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Tag pill ────────────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.20);
+  color: #7dd3fc;
+  font-family: 'JetBrains Mono', monospace;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+.tag:hover {
+  border-color: #38bdf8;
+  color: #ffffff;
+  background: rgba(56, 189, 248, 0.20);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
+}
+
+/* ─── Timeline ────────────────────────────────────────────────── */
+.timeline-line {
+  position: absolute;
+  left: 0; top: 0;
+  width: 2px; height: 100%;
+  background: linear-gradient(to bottom, #38bdf8, #6366f1, transparent);
+}
+
+/* ─── ShadCN reset with Horizon Cosmic theme ─────────────────── */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 240 40% 1%;
+    --foreground: 210 40% 98%;
+    --border: 215 30% 18%;
+    --input: 215 30% 18%;
+    --ring: 199 89% 48%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 220 50% 5%;
+    --secondary: 220 30% 14%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 30% 14%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 210 40% 98%;
+    --card: 222 45% 7%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 45% 7%;
+    --popover-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --destructive-foreground: 210 40% 98%;
+    --radius: 0.75rem;
   }
 }
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-.hide-scroll::-webkit-scrollbar {
-  display: none;
-}
-.hide-scroll{
-  overflow: scroll;
-  scrollbar-width: none;
-}
-.no-scroll-ul{
-  padding: 16px;
-
-  text-align: left;
+/* ─── GitHub Calendar Full-Width Alignment ────────────────────── */
+.github-calendar-card article.react-activity-calendar {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-
-.bg-neon-dark {
-  @apply relative bg-gradient-to-b from-[#020305] to-[#060a0f] overflow-hidden;
+.github-calendar-card .react-activity-calendar__scroll-container {
+  width: 100% !important;
 }
-.bg-neon-dark::before {
-  content: "";
-  @apply absolute inset-0 blur-3xl;
-  background-image: radial-gradient(ellipse at 30% 20%, rgba(0,120,255,0.25), transparent 60%),
-                    radial-gradient(ellipse at 70% 80%, rgba(0,150,255,0.15), transparent 70%);
+
+.github-calendar-card .react-activity-calendar__calendar {
+  width: 100% !important;
+  min-width: 680px;
+  height: auto !important;
+  display: block;
+}
+
+.github-calendar-card .react-activity-calendar__footer {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 10px;
+}
+
+.github-calendar-card .react-activity-calendar__legend-colors {
+  margin-left: auto !important;
 }

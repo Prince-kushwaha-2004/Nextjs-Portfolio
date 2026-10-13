@@ -35,9 +35,54 @@ export const projects = [
         screenshots: [
             "/projects/filesync/filesync1.png",
             "/projects/filesync/filesync2.png",
+            "/projects/filesync/filesync3.png",
         ],
         githubLink: "https://github.com/Prince-kushwaha-2004/file-transfer",
-        liveLink: "https://file-transfer-tan-six.vercel.app/"
+        liveLink: "https://easyfilesync.vercel.app/"
+    },
+    {
+        name: "KIET Official Website",
+        img: "/projects/kietwebsite/kietwebsite1.png",
+        description: "Official institutional portal for KIET Group of Institutions built with Next.js. Engineered with high-performance SSR architecture, advanced SEO optimization, structured metadata.",
+        techStack: ["next.webp", "react.webp", "tailwind.webp", "nodejs.webp"],
+        details: [
+            "Official College Website: Architected and developed the main institutional website for KIET Deemed to be University.",
+            "Optimized and deployed the platform to efficiently handle 3500+ daily visitors, ensuring high availability and fast load times.",
+            "Advanced SEO Optimization: Implemented dynamic meta tags, structured data, sitemaps, and dynamic routing for maximum search engine visibility.",
+            "Performance & Core Web Vitals: Leveraged Next.js SSR, automatic image optimization, and code splitting to ensure lightning-fast page loads.",
+            "Interactive UI: Designed with modern Tailwind CSS components ensuring seamless cross-device responsiveness."
+        ],
+        screenshots: [
+            "/projects/kietwebsite/kietwebsite1.png",
+            "/projects/kietwebsite/kietwebsite2.png",
+            "/projects/kietwebsite/kietwebsite3.png",
+            "/projects/kietwebsite/kietwebsite4.png",
+            "/projects/kietwebsite/kietwebsite5.png",
+        ],
+        liveLink: "https://www.kiet.edu/"
+    },
+    {
+        name: "DevKit",
+        img: "/projects/devkit/devkit1.png",
+        description: "All in one developer workspace built on Next.js featuring a Email Template Builder for cold mailing according to user resume, interactive Photo Editor, JSON Formatter , virtualized 3D Flipbook PDF reader, and QR Code Generator.",
+        techStack: ["next.webp", "react.webp", "tailwind.webp", "js.webp"],
+        details: [
+            "Modular Developer Suite: Multi-tool productivity platform built using Next.js with high-performance client-side processing.",
+            "Email Template Builder: Interactive email template designer with social toggles, responsive blocks, and HTML code export fetches data from user resume.",
+            "Photo Editor: Browser-based image editing suite offering filters, cropping, resizing, and canvas enhancement controls.",
+            "JSON Formatter : Real-time JSON parser, syntax beautifier, and error diagnostics.",
+            "Interactive Flipbook: Virtualized 3D page-flipping reader for large PDF documents with gesture support and realistic page turning effects.",
+            "QR Code Studio: Customizable QR code generation with high-resolution download formats."
+        ],
+        screenshots: [
+            "/projects/devkit/devkit1.png",
+            "/projects/devkit/devkit2.png",
+            "/projects/devkit/devkit3.png",
+            "/projects/devkit/devkit4.png",
+            "/projects/devkit/devkit5.png",
+        ],
+        githubLink: "https://github.com/Prince-kushwaha-2004/DevKit",
+        liveLink: "https://dev-kit-ease.vercel.app/",
     },
     {
         name: "Certifier",
@@ -61,6 +106,8 @@ export const projects = [
             "/projects/certifier/certifier8.webp",
         ],
         githubLink: "https://github.com/Prince-kushwaha-2004/certifier",
+        liveLink: "https://tech.kiet.edu/certifier/"
+
 
     },
     {
