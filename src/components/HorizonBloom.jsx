@@ -80,9 +80,8 @@ export default function HorizonBloom({
 
         {/* Horizontal Sunrise Lens Flare Slit */}
         <div
-          className="absolute left-1/2 bottom-[27.2%] -translate-x-1/2 translate-y-1/2 pointer-events-none rounded-full"
+          className="absolute md:w-[40vw]  left-1/2 bottom-[27.2%] -translate-x-1/2 translate-y-1/2 pointer-events-none rounded-full"
           style={{
-            width: 'min(85vw, 820px)',
             height: '76px',
             background:
               'radial-gradient(ellipse 75% 35% at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(224, 242, 254, 0.92) 16%, rgba(56, 189, 248, 0.58) 42%, rgba(99, 102, 241, 0.30) 68%, rgba(147, 51, 234, 0.12) 88%, transparent 100%)',

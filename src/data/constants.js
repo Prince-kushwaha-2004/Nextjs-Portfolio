@@ -113,20 +113,20 @@ export const SKILL_ROWS = [
 /* ─── Experience ──────────────────────────────────────────────────── */
 export const EXPERIENCE = [
   {
-    company: "EduVerse",
-    role: "SDE Intern",
-    duration: "September 2025 - Present",
-    website: "https://erp.kiet.co.in/login",
+    company: "TEAM ERP",
+    role: "Full Stack Developer",
+    duration: "June 2024 - present",
+    website: "https://tech.kiet.edu/team-erp/",
     points: [
-      "Worked on multiple modules using TanStack Start and DRF, implementing dynamic tables, forms, and responsive layouts to enhance user experience.",
-      "Implemented infinite scroll pagination for dropdowns and tables, reducing unnecessary data load by 40% and improving page responsiveness.",
-      "Optimized media handling by integrating AWS S3 for secure and scalable image storage, reducing load times by 30%.",
+      "Contributed to the development of TEAM ERP, an in-house college management system designed, developed, and maintained by students for over 8,000 users, working on 8+ core modules.",
+      "Improved user experience and data flow by collaborating with a 10+ member development team.",
+      "Participated in full software development lifecycle including SRS documentation, development, testing, and deployment phases.",
     ],
   },
   {
     company: "Techimpressive Technologies",
     role: "Full Stack Developer Intern",
-    duration: "November 2025 - January 2026",
+    duration: "November 2025 - February 2026",
     website: "https://www.techimpressive.com/",
     points: [
       "Developed and deployed a full-stack platform with Next.js, Prisma, and PostgreSQL focused on job postings and training workflows.",
@@ -135,16 +135,17 @@ export const EXPERIENCE = [
     ],
   },
   {
-    company: "TEAM ERP",
-    role: "Full Stack Developer",
-    duration: "June 2024 - October 2025",
-    website: "https://tech.kiet.edu/team-erp/",
+    company: "EduVerse",
+    role: "SDE Intern",
+    duration: "September 2025 - January 2026",
+    website: "https://eduvverse.com/",
     points: [
-      "Contributed to the development of TEAM ERP, an in-house college management system designed, developed, and maintained by students for over 8,000 users, working on 8+ core modules.",
-      "Improved user experience and data flow by collaborating with a 10+ member development team.",
-      "Participated in full software development lifecycle including SRS documentation, development, testing, and deployment phases.",
+      "Worked on multiple modules using TanStack Start and DRF, implementing dynamic tables, forms, and responsive layouts to enhance user experience.",
+      "Implemented infinite scroll pagination for dropdowns and tables, reducing unnecessary data load by 40% and improving page responsiveness.",
+      "Optimized media handling by integrating AWS S3 for secure and scalable image storage, reducing load times by 30%.",
     ],
   },
+
 ];
 
 /* ─── Social Links ────────────────────────────────────────────────── */

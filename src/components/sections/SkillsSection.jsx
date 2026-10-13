@@ -11,6 +11,7 @@ import {
 import { useRef, useEffect, useCallback, useState } from "react";
 import { SKILL_ROWS, fadeUp, stagger } from "@/data/constants";
 import { Code2, Server, Database, Terminal } from "lucide-react";
+import CodeDecoration from "@/components/ui/CodeDecoration";
 
 /* ── Burst particles in multi-color celestial cyber palette ── */
 const PARTICLE_COUNT = 12;
@@ -170,203 +171,217 @@ function SkillOrb({ skill }) {
 
 export default function SkillsSection() {
   return (
-    <motion.section
+    <section
       id="skills"
-      variants={stagger}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.05 }}
-      className="section-container relative overflow-hidden py-16"
+      className="relative w-full overflow-hidden"
     >
-      {/* Header */}
-      <motion.div variants={fadeUp} className="text-center md:text-left mb-12">
-        <p className="section-label">Tech Stack</p>
-        <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-[#f8fafc]">
-          Skills &amp; Technologies
-        </h2>
-        <p className="mt-2 text-sm text-[#948ba8] max-w-xl">
-          A comprehensive ecosystem of modern frameworks, robust backends, scalable databases, and DevOps tools.
-        </p>
-      </motion.div>
+      {/* Floating code decorations — left and right */}
+      <CodeDecoration
+        symbol="</>"
+        side="left"
+        top="22%"
+        size="text-4xl"
+        color="cyan"
+        duration={5.8}
+        delay={0.3}
+      />
 
-      {/* Main layout: Floating glass skill cards around the centerpiece */}
-      <div className="relative mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+        className="section-container relative z-10 py-16"
+      >
+        {/* Header */}
+        <motion.div variants={fadeUp} className="text-center md:text-left mb-12">
+          <p className="section-label">Tech Stack</p>
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-[#f8fafc]">
+            Skills &amp; Technologies
+          </h2>
+          <p className="mt-2 text-sm text-[#948ba8] max-w-xl">
+            A comprehensive ecosystem of modern frameworks, robust backends, scalable databases, and DevOps tools.
+          </p>
+        </motion.div>
 
-        {/* ── Left Floating Cards (Frontend & DevOps) ── */}
-        <div className="lg:col-span-3 flex flex-col gap-6 order-2 lg:order-1">
-          {/* Card 1: Frontend - Electric Cyan Theme */}
-          <motion.div
-            variants={fadeUp}
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="rounded-2xl border border-sky-500/20 bg-[#081528]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#38bdf8]/50 hover:shadow-[0_8px_32px_rgba(56,189,248,0.25)]"
-          >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/15 text-[#38bdf8] border border-sky-500/30">
-                <Code2 size={16} />
+        {/* Main layout: Floating glass skill cards around the centerpiece */}
+        <div className="relative mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+
+          {/* ── Left Floating Cards (Frontend & DevOps) ── */}
+          <div className="lg:col-span-3 flex flex-col gap-6 order-2 lg:order-1">
+            {/* Card 1: Frontend - Electric Cyan Theme */}
+            <motion.div
+              variants={fadeUp}
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="rounded-2xl border border-sky-500/20 bg-[#081528]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#38bdf8]/50 hover:shadow-[0_8px_32px_rgba(56,189,248,0.25)]"
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/15 text-[#38bdf8] border border-sky-500/30">
+                  <Code2 size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#38bdf8]">
+                    Frontend &amp; UI
+                  </span>
+                </div>
               </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#38bdf8]">
-                  Frontend &amp; UI
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
-              Fast, reactive, and responsive user interfaces with component modularity.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["React", "Next.js", "Tailwind", "JavaScript", "Angular"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-sky-500/25 bg-[#0b203c]/80 px-2 py-0.5 text-[11px] font-mono text-[#bae6fd]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Card 2: DevOps & Systems - Warm Amber Theme */}
-          <motion.div
-            variants={fadeUp}
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            className="rounded-2xl border border-amber-500/20 bg-[#201508]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#f59e0b]/50 hover:shadow-[0_8px_32px_rgba(245,158,11,0.25)]"
-          >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/15 text-[#f59e0b] border border-amber-500/30">
-                <Terminal size={16} />
-              </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#f59e0b]">
-                  DevOps &amp; Tools
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
-              Production containerization, reverse proxy configs, and CI/CD pipelines.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["Docker", "Nginx", "Git", "GitHub", "AWS S3"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-amber-500/25 bg-[#2a1b0b]/80 px-2 py-0.5 text-[11px] font-mono text-[#fde68a]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-
-
-        {/* ── Middle: Centerpiece Skill Honeycomb Component ── */}
-        <div className="lg:col-span-6 flex flex-col items-center justify-center order-1 lg:order-2 py-6 relative">
-
-          {/* Glowing ambient celestial backdrop */}
-          <div
-            className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full opacity-35 blur-3xl"
-            style={{
-              background: "radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(99, 102, 241, 0.22) 35%, rgba(168, 85, 247, 0.12) 65%, transparent 75%)",
-            }}
-          />
-
-          <motion.div
-            variants={fadeUp}
-            className="relative z-10 flex flex-col items-center gap-3 sm:gap-4.5"
-          >
-            {SKILL_ROWS.map((row, rowIndex) => (
-              <motion.div
-                key={`row-${rowIndex}`}
-                variants={{
-                  hidden: {},
-                  show: {
-                    transition: { staggerChildren: 0.06, delayChildren: rowIndex * 0.07 },
-                  },
-                }}
-                className="flex flex-wrap items-center justify-center gap-3 sm:gap-4.5"
-              >
-                {row.map((skill) => (
-                  <SkillOrb key={skill.name} skill={skill} />
+              <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
+                Fast, reactive, and responsive user interfaces with component modularity.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["React", "Next.js", "Tailwind", "JavaScript", "Angular"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-md border border-sky-500/25 bg-[#0b203c]/80 px-2 py-0.5 text-[11px] font-mono text-[#bae6fd]"
+                  >
+                    {s}
+                  </span>
                 ))}
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Card 2: DevOps & Systems - Warm Amber Theme */}
+            <motion.div
+              variants={fadeUp}
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+              className="rounded-2xl border border-indigo-500/20 bg-[#12102e]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#818cf8]/50 hover:shadow-[0_8px_32px_rgba(99,102,241,0.25)]"
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/15 text-[#818cf8] border border-indigo-500/30">
+                  <Terminal size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#818cf8]">
+                    DevOps &amp; Tools
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
+                Production containerization, reverse proxy configs, and CI/CD pipelines.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["Docker", "Nginx", "Git", "GitHub", "AWS S3"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-md border border-indigo-500/25 bg-[#1a1740]/80 px-2 py-0.5 text-[11px] font-mono text-[#c7d2fe]"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+
+
+          {/* ── Middle: Centerpiece Skill Honeycomb Component ── */}
+          <div className="lg:col-span-6 flex flex-col items-center justify-center order-1 lg:order-2 py-6 relative">
+
+            {/* Glowing ambient celestial backdrop */}
+            <div
+              className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full opacity-35 blur-3xl"
+              style={{
+                background: "radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, rgba(99, 102, 241, 0.22) 35%, rgba(168, 85, 247, 0.12) 65%, transparent 75%)",
+              }}
+            />
+
+            <motion.div
+              variants={fadeUp}
+              className="relative z-10 flex flex-col items-center gap-3 sm:gap-4.5"
+            >
+              {SKILL_ROWS.map((row, rowIndex) => (
+                <motion.div
+                  key={`row-${rowIndex}`}
+                  variants={{
+                    hidden: {},
+                    show: {
+                      transition: { staggerChildren: 0.06, delayChildren: rowIndex * 0.07 },
+                    },
+                  }}
+                  className="flex flex-wrap items-center justify-center gap-3 sm:gap-4.5"
+                >
+                  {row.map((skill) => (
+                    <SkillOrb key={skill.name} skill={skill} />
+                  ))}
+                </motion.div>
+              ))}
+            </motion.div>
+
+          </div>
+
+          {/* ── Right Floating Cards (Backend & Database) ── */}
+          <div className="lg:col-span-3 flex flex-col gap-6 order-3">
+            {/* Card 3: Backend & APIs - Mint Emerald Theme */}
+            <motion.div
+              variants={fadeUp}
+              animate={{ y: [0, -9, 0] }}
+              transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              className="rounded-2xl border border-indigo-500/20 bg-[#12102e]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#818cf8]/50 hover:shadow-[0_8px_32px_rgba(99,102,241,0.25)]"
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/15 text-[#818cf8] border border-indigo-500/30">
+                  <Server size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#818cf8]">
+                    Backend &amp; APIs
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
+                Scalable REST microservices, authentication security, and business logic.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["Node.js", "Express.js", "Django", "DRF", "REST APIs"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-md border border-indigo-500/25 bg-[#1a1740]/80 px-2 py-0.5 text-[11px] font-mono text-[#c7d2fe]"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Card 4: Databases & Languages - Royal Indigo Theme */}
+            <motion.div
+              variants={fadeUp}
+              animate={{ y: [0, 7, 0] }}
+              transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+              className="rounded-2xl border border-sky-500/20 bg-[#081528]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#38bdf8]/50 hover:shadow-[0_8px_32px_rgba(56,189,248,0.25)]"
+            >
+              <div className="flex items-center gap-2.5 mb-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500/15 text-[#38bdf8] border border-sky-500/30">
+                  <Database size={16} />
+                </div>
+                <div>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#38bdf8]">
+                    Data &amp; Core Tech
+                  </span>
+                </div>
+              </div>
+              <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
+                High-performance query design, NoSQL schema, and algorithmic logic.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {["PostgreSQL", "MongoDB", "Firebase", "Python", "C/C++"].map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-md border border-sky-500/25 bg-[#0b203c]/80 px-2 py-0.5 text-[11px] font-mono text-[#bae6fd]"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
 
         </div>
 
-        {/* ── Right Floating Cards (Backend & Database) ── */}
-        <div className="lg:col-span-3 flex flex-col gap-6 order-3">
-          {/* Card 3: Backend & APIs - Mint Emerald Theme */}
-          <motion.div
-            variants={fadeUp}
-            animate={{ y: [0, -9, 0] }}
-            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            className="rounded-2xl border border-emerald-500/20 bg-[#061e16]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#10b981]/50 hover:shadow-[0_8px_32px_rgba(16,185,129,0.25)]"
-          >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15 text-[#10b981] border border-emerald-500/30">
-                <Server size={16} />
-              </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#10b981]">
-                  Backend &amp; APIs
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
-              Scalable REST microservices, authentication security, and business logic.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["Node.js", "Express.js", "Django", "DRF", "REST APIs"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-emerald-500/25 bg-[#092b1e]/80 px-2 py-0.5 text-[11px] font-mono text-[#a7f3d0]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          </motion.div>
 
-          {/* Card 4: Databases & Languages - Royal Indigo Theme */}
-          <motion.div
-            variants={fadeUp}
-            animate={{ y: [0, 7, 0] }}
-            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-            className="rounded-2xl border border-indigo-500/20 bg-[#12102e]/70 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#818cf8]/50 hover:shadow-[0_8px_32px_rgba(99,102,241,0.25)]"
-          >
-            <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-500/15 text-[#818cf8] border border-indigo-500/30">
-                <Database size={16} />
-              </div>
-              <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#818cf8]">
-                  Data &amp; Core Tech
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
-              High-performance query design, NoSQL schema, and algorithmic logic.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {["PostgreSQL", "MongoDB", "Firebase", "Python", "C/C++"].map((s) => (
-                <span
-                  key={s}
-                  className="rounded-md border border-indigo-500/25 bg-[#1a1740]/80 px-2 py-0.5 text-[11px] font-mono text-[#c7d2fe]"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-      </div>
-
-
-    </motion.section>
-
+      </motion.div>
+    </section>
   );
 }

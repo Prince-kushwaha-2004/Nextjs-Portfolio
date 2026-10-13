@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, FileText, ArrowUpRight } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "About", href: "#about" },
@@ -88,8 +88,35 @@ export default function Navbar({ animate }) {
               ))}
             </nav>
 
-            {/* Controls / Mobile hamburger */}
-            <div className="flex gap-2">
+            {/* Controls / Desktop Resume / Mobile hamburger */}
+            <div className="flex items-center gap-2.5">
+              <Link
+                href="/Prince Kushwaha.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:inline-flex items-center gap-1.5 rounded-xl border px-3.5 py-1 text-[12px] font-medium transition-all duration-200"
+                style={{
+                  borderColor: "rgba(56, 189, 248, 0.30)",
+                  background: "rgba(56, 189, 248, 0.10)",
+                  color: "#38bdf8",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(56, 189, 248, 0.20)";
+                  e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.60)";
+                  e.currentTarget.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.30)";
+                  e.currentTarget.style.color = "#ffffff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(56, 189, 248, 0.10)";
+                  e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.30)";
+                  e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.color = "#38bdf8";
+                }}
+              >
+                <FileText size={13} />
+                <span>Resume</span>
+              </Link>
+
               <button
                 className="flex h-8 w-8 items-center justify-center rounded-xl md:hidden"
                 style={{ background: "rgba(56, 189, 248, 0.12)", color: "#38bdf8", border: "1px solid rgba(56, 189, 248, 0.25)" }}
@@ -139,6 +166,25 @@ export default function Navbar({ animate }) {
                   {link.label}
                 </a>
               ))}
+
+              <Link
+                href="/Prince Kushwaha.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="mt-1 flex items-center justify-between rounded-xl border px-4 py-2.5 text-sm font-medium transition"
+                style={{
+                  borderColor: "rgba(56, 189, 248, 0.30)",
+                  background: "rgba(56, 189, 248, 0.12)",
+                  color: "#38bdf8",
+                }}
+              >
+                <span className="flex items-center gap-2">
+                  <FileText size={15} />
+                  Resume
+                </span>
+                <ArrowUpRight size={15} />
+              </Link>
             </div>
           </motion.div>
         )}

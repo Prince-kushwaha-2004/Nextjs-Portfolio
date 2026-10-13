@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Star, GitFork, Users, GitCommit, Zap, Shield, TrendingUp } from "lucide-react";
 import { fadeUp, stagger } from "@/data/constants";
+import CodeDecoration from "@/components/ui/CodeDecoration";
 
 const GITHUB_USERNAME = "Prince-kushwaha-2004";
 
@@ -19,15 +20,6 @@ const HIGHLIGHTS = [
     glow: "rgba(56, 189, 248, 0.25)",
   },
   {
-    icon: Shield,
-    title: "Production Ready",
-    desc: "Auth, rate limiting, error handling, and deployment baked in from day one.",
-    color: "#10b981",
-    bg: "rgba(16, 185, 129, 0.12)",
-    border: "rgba(16, 185, 129, 0.25)",
-    glow: "rgba(16, 185, 129, 0.25)",
-  },
-  {
     icon: TrendingUp,
     title: "Scalable by Design",
     desc: "Clean, modular code that grows with your product and is easy for teams to maintain.",
@@ -36,6 +28,16 @@ const HIGHLIGHTS = [
     border: "rgba(245, 158, 11, 0.25)",
     glow: "rgba(245, 158, 11, 0.25)",
   },
+  {
+    icon: Shield,
+    title: "Production Ready",
+    desc: "Auth, rate limiting, error handling, and deployment baked in from day one.",
+    color: "#10b981",
+    bg: "rgba(16, 185, 129, 0.12)",
+    border: "rgba(16, 185, 129, 0.25)",
+    glow: "rgba(16, 185, 129, 0.25)",
+  },
+
 ];
 
 function GithubStats() {
@@ -78,9 +80,10 @@ function GithubStats() {
 
   const stats = [
     { icon: GitFork, label: "Public Repos", value: data?.repos ?? "37", color: "#38bdf8", bg: "rgba(56, 189, 248, 0.12)" },
-    { icon: GitCommit, label: "Total Commits", value: data?.commits ?? "500+", color: "#10b981", bg: "rgba(16, 185, 129, 0.12)" },
-    { icon: Users, label: "Pull Requests", value: data?.prs ?? "12", color: "#818cf8", bg: "rgba(99, 102, 241, 0.12)" },
     { icon: Star, label: "Followers", value: data?.followers ?? "9", color: "#fbbf24", bg: "rgba(245, 158, 11, 0.12)" },
+    { icon: Users, label: "Pull Requests", value: data?.prs ?? "34", color: "#818cf8", bg: "rgba(99, 102, 241, 0.12)" },
+    { icon: GitCommit, label: "Total Commits", value: data?.commits ?? "500+", color: "#10b981", bg: "rgba(16, 185, 129, 0.12)" },
+
   ];
 
   return (
@@ -123,105 +126,129 @@ export default function FeaturesSection() {
   const calendarTheme = CALENDAR_THEME;
 
   return (
-    <motion.section
+    <section
       id="about"
-      variants={stagger}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.05 }}
-      className="section-container"
+      className="relative w-full overflow-hidden"
     >
-      {/* Section header */}
-      <motion.div variants={fadeUp}>
-        <p className="section-label">About</p>
-        <h2 className="mt-4 text-3xl font-bold sm:text-4xl text-[#f8fafc]">
-          Why work with me?
-        </h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          I write clean, maintainable code and care deeply about both the product and the user experience.
-        </p>
-      </motion.div>
+      {/* Floating code decorations — left and right */}
+      <CodeDecoration
+        symbol="{ }"
+        side="left"
+        top="20%"
+        size="text-5xl"
+        color="cyan"
+        duration={6.0}
+        delay={0.4}
+      />
+      <CodeDecoration
+        symbol="//"
+        side="right"
+        top="85%"
+        size="text-4xl"
+        color="emerald"
+        duration={5.4}
+        delay={1.2}
+      />
 
-      {/* Feature cards */}
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        {HIGHLIGHTS.map((h) => {
-          const Icon = h.icon;
-          return (
-            <motion.div
-              key={h.title}
-              variants={fadeUp}
-              className="card card-lift rounded-xl p-5 transition-all duration-300"
-              style={{
-                borderColor: h.border,
-                background: "rgba(11, 18, 33, 0.65)",
-              }}
-              whileHover={{
-                boxShadow: `0 12px 36px -8px ${h.glow}, inset 0 1px 1px rgba(255, 255, 255, 0.15)`,
-                borderColor: h.color,
-              }}
-            >
-              <div
-                className="flex h-9 w-9 items-center justify-center rounded-lg border"
-                style={{ background: h.bg, color: h.color, borderColor: `${h.color}40` }}
-              >
-                <Icon size={18} />
-              </div>
-              <h3 className="mt-4 text-sm font-semibold text-[#f8fafc]">
-                {h.title}
-              </h3>
-              <p className="mt-1.5 text-xs leading-relaxed text-[#94a3b8]">
-                {h.desc}
-              </p>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* GitHub contribution graph */}
       <motion.div
-        variants={fadeUp}
-        className="mt-12"
+        variants={stagger}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+        className="section-container relative z-10"
       >
-        <div className="flex items-center justify-between mb-5">
-          <p className="section-label">GitHub Activity</p>
-          <a
-            href={`https://github.com/${GITHUB_USERNAME}`}
-            target="_blank"
-            rel="noreferrer"
-            className="text-xs font-medium transition hover:text-[#38bdf8] flex items-center gap-1.5 text-[#38bdf8]"
-          >
-            @{GITHUB_USERNAME} →
-          </a>
+        {/* Section header */}
+        <motion.div variants={fadeUp}>
+          <p className="section-label">About</p>
+          <h2 className="mt-4 text-3xl font-bold sm:text-4xl text-[#f8fafc]">
+            Why work with me?
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            I write clean, maintainable code and care deeply about both the product and the user experience.
+          </p>
+        </motion.div>
+
+        {/* Feature cards */}
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {HIGHLIGHTS.map((h) => {
+            const Icon = h.icon;
+            return (
+              <motion.div
+                key={h.title}
+                variants={fadeUp}
+                className="card card-lift rounded-xl p-5 transition-all duration-300"
+                style={{
+                  borderColor: h.border,
+                  background: "rgba(11, 18, 33, 0.65)",
+                }}
+                whileHover={{
+                  boxShadow: `0 12px 36px -8px ${h.glow}, inset 0 1px 1px rgba(255, 255, 255, 0.15)`,
+                  borderColor: h.color,
+                }}
+              >
+                <div
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border"
+                  style={{ background: h.bg, color: h.color, borderColor: `${h.color}40` }}
+                >
+                  <Icon size={18} />
+                </div>
+                <h3 className="mt-4 text-sm font-semibold text-[#f8fafc]">
+                  {h.title}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-[#94a3b8]">
+                  {h.desc}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <div
-          className="card github-calendar-card rounded-xl p-5"
-          style={{
-            overflowX: "auto",
-            background: "rgba(10, 16, 32, 0.70)",
-            borderColor: "rgba(56, 189, 248, 0.18)",
-          }}
+        {/* GitHub contribution graph */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-12"
         >
-          {mounted ? (
-            <GitHubCalendar
-              username={GITHUB_USERNAME}
-              theme={calendarTheme}
-              colorScheme="dark"
-              blockSize={14}
-              blockMargin={4}
-              fontSize={12}
-              labels={{
-                totalCount: "{{count}} contributions in the last year",
-              }}
-              style={{ width: "100%" }}
-            />
-          ) : (
-            <div className="h-32 w-full shimmer rounded-lg" />
-          )}
-        </div>
+          <div className="flex items-center justify-between mb-5">
+            <p className="section-label">GitHub Activity</p>
+            <a
+              href={`https://github.com/${GITHUB_USERNAME}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-xs font-medium transition hover:text-[#38bdf8] flex items-center gap-1.5 text-[#38bdf8]"
+            >
+              @{GITHUB_USERNAME} →
+            </a>
+          </div>
 
-        <GithubStats />
+          <div
+            className="card github-calendar-card rounded-xl p-5"
+            style={{
+              overflowX: "auto",
+              background: "rgba(10, 16, 32, 0.70)",
+              borderColor: "rgba(56, 189, 248, 0.18)",
+            }}
+          >
+            {mounted ? (
+              <GitHubCalendar
+                username={GITHUB_USERNAME}
+                theme={calendarTheme}
+                colorScheme="dark"
+                blockSize={14}
+                blockMargin={4}
+                fontSize={12}
+                labels={{
+                  totalCount: "{{count}} contributions in the last year",
+                }}
+                style={{ width: "100%" }}
+              />
+            ) : (
+              <div className="h-32 w-full shimmer rounded-lg" />
+            )}
+          </div>
+
+          <GithubStats />
+        </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }

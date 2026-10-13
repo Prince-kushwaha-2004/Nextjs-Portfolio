@@ -72,10 +72,10 @@ function TypingRole() {
 
 /* ── GitHub stats with fallback cache ────────────────────── */
 function useGithubStats() {
-  const [s, setS] = useState({ repos: "37", commits: "500+", followers: "9" });
+  const [s, setS] = useState({ repos: "37", commits: "500+", prs: "34" });
 
   useEffect(() => {
-    const CACHE_KEY = "gh_stats_v2";
+    const CACHE_KEY = "gh_stats_v3";
     const CACHE_TTL = 15 * 60 * 1000;
 
     try {
@@ -96,7 +96,18 @@ function useGithubStats() {
         });
         const u = await uR.json();
         const repos = u.public_repos ?? "37";
-        const followers = u.followers ?? "9";
+
+        let prs = "34";
+        try {
+          const prR = await fetch(
+            `https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr&per_page=1`,
+            { headers: { Accept: "application/vnd.github+json" } }
+          );
+          const pr = await prR.json();
+          if (typeof pr.total_count === "number") {
+            prs = String(pr.total_count);
+          }
+        } catch { /* use default */ }
 
         let commits = "500+";
         try {
@@ -110,14 +121,14 @@ function useGithubStats() {
           }
         } catch { /* use default */ }
 
-        const data = { repos: String(repos), followers: String(followers), commits: String(commits) };
+        const data = { repos: String(repos), prs: String(prs), commits: String(commits) };
         setS(data);
         try {
           sessionStorage.setItem(CACHE_KEY, JSON.stringify({ data, ts: Date.now() }));
         } catch { /* ignore */ }
       } catch {
         // Fallback default stats so it never shows blank or broken dashes
-        setS({ repos: "37", commits: "500+", followers: "9" });
+        setS({ repos: "37", commits: "500+", prs: "34" });
       }
     })();
   }, []);
@@ -132,7 +143,7 @@ export default function HeroSection() {
   const statItems = [
     { label: "Repos", value: stats.repos },
     { label: "Commits", value: stats.commits },
-    { label: "Followers", value: stats.followers },
+    { label: "Pull Requests", value: stats.prs },
   ];
 
   return (
@@ -141,8 +152,8 @@ export default function HeroSection() {
       className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden"
     >
       {/* ── Static Glowing Horizon Bloom Background ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <HorizonBloom idPrefix="hero" />
+      <div className="absolute  inset-0 z-0 pointer-events-none">
+        <HorizonBloom idPrefix="hero" positionClass="translate-y-48 sm:translate-y-32" />
       </div>
 
       {/* Floating code decorations — right side */}
@@ -182,12 +193,19 @@ export default function HeroSection() {
             }}
           >
             <span style={{ color: "#38bdf8" }}>const </span>
-            <span style={{ color: "#818cf8" }}>dev</span>
-            <span style={{ color: "#f8fafc" }}> = () ={">"} {"{"}</span>
+            <span style={{ color: "#818cf8" }}>contact</span>
+            <span style={{ color: "#f8fafc" }}> =  {"{"}</span>
             <br />
             <span>&nbsp;&nbsp;</span>
-            <span style={{ color: "#38bdf8" }}>return </span>
-            <span style={{ color: "#34d399" }}>&quot;🚀 value&quot;</span>;
+            <span style={{ color: "#a5b4fc" }}>{"  email: "}</span>
+            <span style={{ color: "#34d399" }}>&quot;princekk102004@gmail.com&quot;</span>
+            <span style={{ color: "#94a3b8" }}>,</span>
+            <br />
+            <span>&nbsp;&nbsp;</span>
+
+            <span style={{ color: "#a5b4fc" }}>{"  status: "}</span>
+            <span style={{ color: "#34d399" }}>&quot;open_to_work&quot;</span>
+
             <br />
             <span style={{ color: "#f8fafc" }}>{"}"}</span>
           </motion.div>
