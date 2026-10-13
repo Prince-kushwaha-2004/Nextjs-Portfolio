@@ -76,8 +76,7 @@ function GithubStats() {
       {stats.map(({ icon: Icon, label, value }) => (
         <div
           key={label}
-          className="card rounded-xl p-4 text-center"
-          style={{ background: "var(--bg-subtle)" }}
+          className="card card-lift rounded-xl p-4 text-center"
         >
           <div
             className="mx-auto mb-2 flex h-8 w-8 items-center justify-center rounded-lg"
@@ -100,10 +99,8 @@ function GithubStats() {
   );
 }
 
-
-
 const CALENDAR_THEME = {
-  dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+  dark: ["#120824", "#3b1764", "#6b21a8", "#a855f7", "#c084fc"],
 };
 
 export default function FeaturesSection() {

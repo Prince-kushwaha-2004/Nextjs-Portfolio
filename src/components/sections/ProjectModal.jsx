@@ -40,7 +40,7 @@ export default function ProjectModal({ project, onClose }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(6px)" }}
+          style={{ background: "rgba(1, 0, 3, 0.75)", backdropFilter: "blur(12px)" }}
           onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
         >
           <motion.div
@@ -48,8 +48,13 @@ export default function ProjectModal({ project, onClose }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-xl border shadow-2xl"
-            style={{ background: "var(--bg-card)", borderColor: "var(--border)" }}
+            className="max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-2xl border shadow-2xl"
+            style={{
+              background: "rgba(15, 8, 30, 0.92)",
+              backdropFilter: "blur(20px)",
+              borderColor: "rgba(168, 85, 247, 0.25)",
+              boxShadow: "0 16px 48px rgba(0, 0, 0, 0.7), 0 0 24px rgba(168, 85, 247, 0.2)",
+            }}
           >
             {/* Header */}
             <div

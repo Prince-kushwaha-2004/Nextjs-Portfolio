@@ -10,9 +10,9 @@ import {
 } from "framer-motion";
 import { useRef, useEffect, useCallback, useState } from "react";
 import { SKILL_ROWS, fadeUp, stagger } from "@/data/constants";
-import { Code2, Server, Database, Terminal, Cpu } from "lucide-react";
+import { Code2, Server, Database, Terminal } from "lucide-react";
 
-/* ── Burst particles ── */
+/* ── Burst particles in Horizon purple/violet ── */
 const PARTICLE_COUNT = 10;
 function generateParticles() {
   return Array.from({ length: PARTICLE_COUNT }, (_, i) => {
@@ -46,8 +46,8 @@ function BurstParticles({ onComplete }) {
             height: p.size,
             marginLeft: -p.size / 2,
             marginTop: -p.size / 2,
-            background: "rgba(88,166,255,0.9)",
-            boxShadow: "0 0 8px rgba(88,166,255,0.8)",
+            background: "rgba(192, 132, 252, 0.95)",
+            boxShadow: "0 0 10px rgba(168, 85, 247, 0.8)",
           }}
         />
       ))}
@@ -143,7 +143,7 @@ function SkillOrb({ skill }) {
             ? { scale: 0, opacity: 0, transition: { duration: 0.18 } }
             : { scale: 1, opacity: 1, transition: { type: "spring", stiffness: 260, damping: 14, delay: 0.05 } }
         }
-        className="relative flex h-[52px] w-[52px] sm:h-[60px] sm:w-[60px] lg:h-[64px] lg:w-[64px] items-center justify-center rounded-full border border-[#30363d] bg-[#161b22]/90 shadow-md backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:border-[#58a6ff] group-hover:shadow-[0_0_20px_rgba(88,166,255,0.35)] group-hover:-translate-y-1"
+        className="relative flex h-[52px] w-[52px] sm:h-[60px] sm:w-[60px] lg:h-[64px] lg:w-[64px] items-center justify-center rounded-full border border-purple-500/25 bg-[#0f081e]/85 shadow-md backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:border-[#c084fc] group-hover:shadow-[0_0_20px_rgba(192,132,252,0.4)] group-hover:-translate-y-1"
       >
         <Image
           src={`/skills/${skill.file}`}
@@ -156,7 +156,7 @@ function SkillOrb({ skill }) {
 
       {/* Hover tooltip tag */}
       <span
-        className="pointer-events-none absolute -bottom-6 z-30 whitespace-nowrap rounded-md border border-[#30363d] bg-[#0d1117]/95 px-2 py-0.5 text-[10px] font-medium text-[#c9d1d9] opacity-0 shadow-lg backdrop-blur-md transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-1"
+        className="pointer-events-none absolute -bottom-6 z-30 whitespace-nowrap rounded-md border border-purple-500/30 bg-[#070312]/95 px-2 py-0.5 text-[10px] font-medium text-[#f5eeff] opacity-0 shadow-lg backdrop-blur-md transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-1"
         style={{ fontFamily: "'JetBrains Mono', monospace" }}
       >
         {skill.name}
@@ -178,15 +178,15 @@ export default function SkillsSection() {
       {/* Header */}
       <motion.div variants={fadeUp} className="text-center md:text-left mb-12">
         <p className="section-label">Tech Stack</p>
-        <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-[#e6edf3]">
+        <h2 className="mt-3 text-3xl font-bold sm:text-4xl text-[#f5eeff]">
           Skills &amp; Technologies
         </h2>
-        <p className="mt-2 text-sm text-[#8d96a0] max-w-xl">
+        <p className="mt-2 text-sm text-[#948ba8] max-w-xl">
           A comprehensive ecosystem of modern frameworks, robust backends, scalable databases, and DevOps tools.
         </p>
       </motion.div>
 
-      {/* Main layout: Floating skill cards around the centerpiece */}
+      {/* Main layout: Floating glass skill cards around the centerpiece */}
       <div className="relative mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
         {/* ── Left Floating Cards (Frontend & DevOps) ── */}
@@ -196,26 +196,26 @@ export default function SkillsSection() {
             variants={fadeUp}
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#58a6ff]/50 hover:shadow-[0_4px_24px_rgba(88,166,255,0.15)]"
+            className="rounded-2xl border border-purple-500/20 bg-[#0f081e]/65 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#c084fc]/50 hover:shadow-[0_8px_32px_rgba(168,85,247,0.25)]"
           >
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#58a6ff]/10 text-[#58a6ff]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500/15 text-[#c084fc]">
                 <Code2 size={16} />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#58a6ff]">
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#c084fc]">
                   Frontend &amp; UI
                 </span>
               </div>
             </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
+            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
               Fast, reactive, and responsive user interfaces with component modularity.
             </p>
             <div className="flex flex-wrap gap-1.5">
               {["React", "Next.js", "Tailwind", "JavaScript", "Angular"].map((s) => (
                 <span
                   key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
+                  className="rounded-md border border-purple-500/20 bg-[#160d2e]/80 px-2 py-0.5 text-[11px] font-mono text-[#d8b4fe]"
                 >
                   {s}
                 </span>
@@ -228,26 +228,26 @@ export default function SkillsSection() {
             variants={fadeUp}
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#e3b341]/50 hover:shadow-[0_4px_24px_rgba(227,179,65,0.15)]"
+            className="rounded-2xl border border-purple-500/20 bg-[#0f081e]/65 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#d8b4fe]/50 hover:shadow-[0_8px_32px_rgba(192,132,252,0.25)]"
           >
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#e3b341]/10 text-[#e3b341]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-400/15 text-[#d8b4fe]">
                 <Terminal size={16} />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#e3b341]">
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#d8b4fe]">
                   DevOps &amp; Tools
                 </span>
               </div>
             </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
+            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
               Production containerization, reverse proxy configs, and CI/CD pipelines.
             </p>
             <div className="flex flex-wrap gap-1.5">
               {["Docker", "Nginx", "Git", "GitHub", "AWS S3"].map((s) => (
                 <span
                   key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
+                  className="rounded-md border border-purple-500/20 bg-[#160d2e]/80 px-2 py-0.5 text-[11px] font-mono text-[#d8b4fe]"
                 >
                   {s}
                 </span>
@@ -259,11 +259,11 @@ export default function SkillsSection() {
         {/* ── Middle: Centerpiece Skill Honeycomb Component ── */}
         <div className="lg:col-span-6 flex flex-col items-center justify-center order-1 lg:order-2 py-6 relative">
 
-          {/* Subtle glowing ambient backdrop */}
+          {/* Glowing ambient backdrop */}
           <div
-            className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full opacity-25 blur-3xl"
+            className="pointer-events-none absolute h-[320px] w-[320px] sm:h-[420px] sm:w-[420px] rounded-full opacity-30 blur-3xl"
             style={{
-              background: "radial-gradient(circle, #58a6ff 0%, #a371f7 30%, transparent 50%)",
+              background: "radial-gradient(circle, #a855f7 0%, #7e22ce 35%, transparent 65%)",
             }}
           />
 
@@ -298,26 +298,26 @@ export default function SkillsSection() {
             variants={fadeUp}
             animate={{ y: [0, -9, 0] }}
             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#3fb950]/50 hover:shadow-[0_4px_24px_rgba(63,185,80,0.15)]"
+            className="rounded-2xl border border-purple-500/20 bg-[#0f081e]/65 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#c084fc]/50 hover:shadow-[0_8px_32px_rgba(168,85,247,0.25)]"
           >
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#3fb950]/10 text-[#3fb950]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-500/15 text-[#c084fc]">
                 <Server size={16} />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#3fb950]">
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#c084fc]">
                   Backend &amp; APIs
                 </span>
               </div>
             </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
+            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
               Scalable REST microservices, authentication security, and business logic.
             </p>
             <div className="flex flex-wrap gap-1.5">
               {["Node.js", "Express.js", "Django", "DRF", "REST APIs"].map((s) => (
                 <span
                   key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
+                  className="rounded-md border border-purple-500/20 bg-[#160d2e]/80 px-2 py-0.5 text-[11px] font-mono text-[#d8b4fe]"
                 >
                   {s}
                 </span>
@@ -330,26 +330,26 @@ export default function SkillsSection() {
             variants={fadeUp}
             animate={{ y: [0, 7, 0] }}
             transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-            className="rounded-2xl border border-[#30363d] bg-[#161b22]/75 p-5 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#bc8cff]/50 hover:shadow-[0_4px_24px_rgba(188,140,255,0.15)]"
+            className="rounded-2xl border border-purple-500/20 bg-[#0f081e]/65 p-5 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-[#a855f7]/50 hover:shadow-[0_8px_32px_rgba(168,85,247,0.25)]"
           >
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#bc8cff]/10 text-[#bc8cff]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-600/15 text-[#a855f7]">
                 <Database size={16} />
               </div>
               <div>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#bc8cff]">
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#a855f7]">
                   Data &amp; Core Tech
                 </span>
               </div>
             </div>
-            <p className="text-xs text-[#8d96a0] leading-relaxed mb-3">
+            <p className="text-xs text-[#948ba8] leading-relaxed mb-3">
               High-performance query design, NoSQL schema, and algorithmic logic.
             </p>
             <div className="flex flex-wrap gap-1.5">
               {["PostgreSQL", "MongoDB", "Firebase", "Python", "C/C++"].map((s) => (
                 <span
                   key={s}
-                  className="rounded-md border border-[#30363d] bg-[#0d1117] px-2 py-0.5 text-[11px] font-mono text-[#c9d1d9]"
+                  className="rounded-md border border-purple-500/20 bg-[#160d2e]/80 px-2 py-0.5 text-[11px] font-mono text-[#d8b4fe]"
                 >
                   {s}
                 </span>

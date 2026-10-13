@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, FileText, MapPin } from "lucide-react";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { XIcon } from "@/data/constants";
+import HorizonBloom from "@/components/HorizonBloom";
 
 const GITHUB_USERNAME = "Prince-kushwaha-2004";
 
@@ -57,11 +58,12 @@ function TypingRole() {
           display: "inline-block",
           width: 2,
           height: "1.1em",
-          background: "#58a6ff",
+          background: "#c084fc",
           marginLeft: 3,
           verticalAlign: "text-bottom",
           borderRadius: 1,
           animation: "blink 1s step-end infinite",
+          boxShadow: "0 0 8px #c084fc",
         }}
       />
     </span>
@@ -123,34 +125,6 @@ function useGithubStats() {
   return s;
 }
 
-/* ── Dot grid background ────────────────────────────────────────── */
-function DotGrid() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {/* Dot pattern */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "radial-gradient(circle, rgba(88,166,255,0.18) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          maskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 50%, black 40%, transparent 100%)",
-        }}
-      />
-      {/* Blue top-left glow */}
-      <div
-        className="absolute left-0 top-0 h-[600px] w-[600px] -translate-x-1/3 -translate-y-1/3 rounded-full opacity-[0.12]"
-        style={{ background: "radial-gradient(circle, #58a6ff, transparent 70%)" }}
-      />
-      {/* Purple bottom-right glow */}
-      <div
-        className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/3 translate-y-1/3 rounded-full opacity-[0.10]"
-        style={{ background: "radial-gradient(circle, #a371f7, transparent 70%)" }}
-      />
-    </div>
-  );
-}
-
 /* ── Hero section ───────────────────────────────────────────────── */
 export default function HeroSection() {
   const stats = useGithubStats();
@@ -166,7 +140,10 @@ export default function HeroSection() {
       id="home"
       className="relative flex min-h-screen w-full flex-col justify-center overflow-hidden"
     >
-      <DotGrid />
+      {/* ── Static Glowing Horizon Bloom Background ── */}
+      <div className="absolute  inset-0 z-0 pointer-events-none">
+        <HorizonBloom />
+      </div>
 
       {/* Floating code decorations — right side */}
       <div className="pointer-events-none absolute right-[6%] top-[22%] hidden md:block">
@@ -179,7 +156,7 @@ export default function HeroSection() {
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             className="font-mono text-5xl font-bold select-none"
-            style={{ color: "rgba(88,166,255,0.12)" }}
+            style={{ color: "rgba(168,85,247,0.18)" }}
           >
             {"{ }"}
           </motion.div>
@@ -197,21 +174,22 @@ export default function HeroSection() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="rounded-xl border px-5 py-3.5 font-mono text-xs leading-6 select-none shadow-2xl"
             style={{
-              borderColor: "#30363d",
-              background: "rgba(22,27,34,0.75)",
-              backdropFilter: "blur(12px)",
-              color: "#8d96a0",
+              borderColor: "rgba(168,85,247,0.22)",
+              background: "rgba(15,8,30,0.65)",
+              backdropFilter: "blur(16px)",
+              color: "#c4b5fd",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.5), 0 0 16px rgba(168,85,247,0.12)",
             }}
           >
-            <span style={{ color: "#ff7b72" }}>const </span>
-            <span style={{ color: "#79c0ff" }}>dev</span>
-            <span style={{ color: "#e6edf3" }}> = () ={">"} {"{"}</span>
+            <span style={{ color: "#f472b6" }}>const </span>
+            <span style={{ color: "#c084fc" }}>dev</span>
+            <span style={{ color: "#f5eeff" }}> = () ={">"} {"{"}</span>
             <br />
             <span>&nbsp;&nbsp;</span>
-            <span style={{ color: "#ff7b72" }}>return </span>
-            <span style={{ color: "#a5d6ff" }}>&quot;🚀 value&quot;</span>;
+            <span style={{ color: "#f472b6" }}>return </span>
+            <span style={{ color: "#d8b4fe" }}>&quot;🚀 value&quot;</span>;
             <br />
-            <span style={{ color: "#e6edf3" }}>{"}"}</span>
+            <span style={{ color: "#f5eeff" }}>{"}"}</span>
           </motion.div>
         </motion.div>
       </div>
@@ -226,7 +204,7 @@ export default function HeroSection() {
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             className="font-mono text-3xl font-bold select-none"
-            style={{ color: "rgba(163,113,247,0.15)" }}
+            style={{ color: "rgba(192,132,252,0.22)" }}
           >
             {"</>"}
           </motion.div>
@@ -237,191 +215,215 @@ export default function HeroSection() {
       <div className="section-container relative z-10 w-full flex flex-col items-start justify-center pt-28 pb-16">
         <div className="w-full max-w-3xl">
 
-        {/* Available badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-md"
-          style={{
-            borderColor: "rgba(63,185,80,0.4)",
-            background: "rgba(63,185,80,0.08)",
-          }}
-        >
-          <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#3fb950" }} />
-          <span className="font-mono text-xs font-semibold" style={{ color: "#3fb950" }}>
-            Open to Work · Remote OK
-          </span>
-        </motion.div>
-
-        {/* Name - Clear, high-contrast, perfectly visible */}
-        <div className="mb-6">
+          {/* Available badge */}
           <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-md"
+            style={{
+              borderColor: "rgba(192,132,252,0.30)",
+              background: "rgba(168,85,247,0.12)",
+              boxShadow: "0 0 16px rgba(168,85,247,0.15)",
+            }}
           >
-            <h1 className="tracking-tight font-extrabold select-none">
-              <span
-                className=" text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#e6edf3]"
-                style={{ lineHeight: 1.1 }}
-              >
-                Prince
-              </span>
-              <span
-                className=" text-4xl mx-4 sm:text-4xl md:text-5xl lg:text-7xl   tracking-tight text-[#e6edf3]"
-                style={{ lineHeight: 1.05 }}
-              >
-                Kushwaha
-              </span>
-            </h1>
+            <span className="h-2 w-2 animate-pulse rounded-full" style={{ background: "#c084fc", boxShadow: "0 0 8px #c084fc" }} />
+            <span className="font-mono text-xs font-semibold" style={{ color: "#d8b4fe" }}>
+              Open to Work · Remote OK
+            </span>
           </motion.div>
-        </div>
 
-        {/* Accent line */}
-        <motion.div
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
-          className="mb-6 h-[2px] w-24 origin-left rounded-full"
-          style={{ background: "linear-gradient(to right, #58a6ff, #a371f7, transparent)" }}
-        />
+          {/* Name - Clear, high-contrast, perfectly visible */}
+          <div className="mb-6">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            >
+              <h1 className="tracking-tight font-extrabold select-none">
+                <span
+                  className="text-4xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-[#f5eeff]"
+                  style={{ lineHeight: 1.1 }}
+                >
+                  Prince
+                </span>
+                <span
+                  className="text-4xl mx-4 sm:text-4xl md:text-5xl lg:text-7xl tracking-tight text-[#f5eeff]"
+                  style={{ lineHeight: 1.05 }}
+                >
+                  Kushwaha
+                </span>
+              </h1>
+            </motion.div>
+          </div>
 
-        {/* Typing role */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.4 }}
-          className="mb-5 flex items-center gap-2"
-        >
-          <span className="font-mono text-sm" style={{ color: "#484f58" }}>~/&nbsp;</span>
-          <span className="font-mono text-base md:text-lg" style={{ color: "#8d96a0" }}>
-            I&apos;m a <TypingRole />
-          </span>
-        </motion.div>
-
-        {/* Bio */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75, duration: 0.5 }}
-          className="mb-2 max-w-lg text-[15px] leading-7"
-          style={{ color: "#8d96a0" }}
-        >
-          I build fast, scalable web applications —
-          {" "}<span style={{ color: "#c9d1d9" }}>clean UI, solid backend, production-ready.</span>
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mb-8 flex items-center gap-1.5 font-mono text-xs"
-          style={{ color: "#484f58" }}
-        >
-          <MapPin size={11} /> India
-        </motion.div>
-
-        {/* Live stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.5 }}
-          className="mb-8 flex flex-wrap gap-8"
-        >
-          {statItems.map((s) => (
-            <div key={s.label}>
-              <p
-                className="text-2xl font-bold tabular-nums text-[#e6edf3] font-mono"
-              >
-                {s.value}
-              </p>
-              <p className="text-[11px] font-mono uppercase tracking-widest mt-0.5 text-[#6e7681]">
-                {s.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* CTA row */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-          className="mb-8 flex flex-wrap items-center gap-4"
-        >
-          <a
-            href="#projects"
-            className="group inline-flex items-center gap-2 rounded-xl px-7 py-3 text-[14px] font-semibold text-white"
+          {/* Accent line */}
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.7, ease: "easeOut" }}
+            className="mb-6 h-[2px] w-24 origin-left rounded-full"
             style={{
-              background: "linear-gradient(135deg, #1f6feb, #388bfd)",
-              boxShadow: "0 4px 24px rgba(88,166,255,0.35)",
-              transition: "transform 0.2s, box-shadow 0.2s",
+              background: "linear-gradient(to right, #c084fc, #a855f7, transparent)",
+              boxShadow: "0 0 10px rgba(192,132,252,0.6)",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
-          >
-            View Projects <ArrowRight size={15} />
-          </a>
-          <Link
-            href="/Prince Kushwaha.pdf"
-            target="_blank"
-            className="inline-flex items-center gap-2 rounded-xl border px-7 py-3 text-[14px] font-semibold"
-            style={{
-              borderColor: "#30363d",
-              background: "rgba(22,27,34,0.8)",
-              color: "#e6edf3",
-              transition: "transform 0.2s",
-            }}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; }}
-          >
-            <FileText size={14} /> Resume
-          </Link>
-          <a href="#contact" style={{ color: "#58a6ff", fontSize: 14 }}>
-            Let&apos;s talk →
-          </a>
-        </motion.div>
+          />
 
-        {/* Socials */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.0, duration: 0.5 }}
-          className="flex flex-wrap items-center gap-2.5"
-        >
-          <span className="mr-2 text-xs uppercase tracking-widest text-[#484f58] font-mono">
-            Find me
-          </span>
-          {SOCIAL.map(({ icon: Icon, href, label }) => (
+          {/* Typing role */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.4 }}
+            className="mb-5 flex items-center gap-2"
+          >
+            <span className="font-mono text-sm" style={{ color: "#7e6d9b" }}>~/&nbsp;</span>
+            <span className="font-mono text-base md:text-lg" style={{ color: "#c4b5fd" }}>
+              I&apos;m a <TypingRole />
+            </span>
+          </motion.div>
+
+          {/* Bio */}
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.5 }}
+            className="mb-2 max-w-lg text-[15px] leading-7"
+            style={{ color: "#948ba8" }}
+          >
+            I build fast, scalable web applications —
+            {" "}<span style={{ color: "#f5eeff" }}>clean UI, solid backend, production-ready.</span>
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="mb-8 flex items-center gap-1.5 font-mono text-xs"
+            style={{ color: "#7e6d9b" }}
+          >
+            <MapPin size={11} /> India
+          </motion.div>
+
+          {/* Live stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85, duration: 0.5 }}
+            className="mb-8 flex flex-wrap gap-8"
+          >
+            {statItems.map((s) => (
+              <div key={s.label}>
+                <p
+                  className="text-2xl font-bold tabular-nums text-[#f5eeff] font-mono"
+                >
+                  {s.value}
+                </p>
+                <p className="text-[11px] font-mono uppercase tracking-widest mt-0.5 text-[#948ba8]">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* CTA row */}
+          <motion.div
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+            className="mb-8 flex flex-wrap items-center gap-4"
+          >
             <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noreferrer"
-              title={label}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border"
+              href="#projects"
+              className="group inline-flex items-center gap-2 rounded-xl px-7 py-3 text-[14px] font-semibold text-white transition-all duration-300"
               style={{
-                borderColor: "#30363d",
-                background: "rgba(22,27,34,0.8)",
-                color: "#8d96a0",
-                transition: "transform 0.2s, border-color 0.2s, color 0.2s",
+                background: "linear-gradient(135deg, #7e22ce, #a855f7, #c084fc)",
+                boxShadow: "0 4px 24px rgba(168,85,247,0.45)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.borderColor = "#58a6ff";
-                e.currentTarget.style.color = "#58a6ff";
+                e.currentTarget.style.boxShadow = "0 6px 30px rgba(192,132,252,0.6)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.borderColor = "#30363d";
-                e.currentTarget.style.color = "#8d96a0";
+                e.currentTarget.style.boxShadow = "0 4px 24px rgba(168,85,247,0.45)";
               }}
             >
-              <Icon size={16} />
+              View Projects <ArrowRight size={15} />
             </a>
-          ))}
-        </motion.div>
+            <Link
+              href="/Prince Kushwaha.pdf"
+              target="_blank"
+              className="inline-flex items-center gap-2 rounded-xl border px-7 py-3 text-[14px] font-semibold transition-all duration-200"
+              style={{
+                borderColor: "rgba(168,85,247,0.25)",
+                background: "rgba(15,8,30,0.65)",
+                backdropFilter: "blur(12px)",
+                color: "#f5eeff",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.borderColor = "rgba(192,132,252,0.5)";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(168,85,247,0.2)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "rgba(168,85,247,0.25)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <FileText size={14} /> Resume
+            </Link>
+            <a
+              href="#contact"
+              className="text-sm font-medium transition hover:opacity-80"
+              style={{ color: "#c084fc" }}
+            >
+              Let&apos;s talk →
+            </a>
+          </motion.div>
+
+          {/* Socials */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
+            className="flex flex-wrap items-center gap-2.5"
+          >
+            <span className="mr-2 text-xs uppercase tracking-widest text-[#7e6d9b] font-mono">
+              Find me
+            </span>
+            {SOCIAL.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                title={label}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border"
+                style={{
+                  borderColor: "rgba(168,85,247,0.20)",
+                  background: "rgba(15,8,30,0.65)",
+                  backdropFilter: "blur(12px)",
+                  color: "#c4b5fd",
+                  transition: "transform 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.borderColor = "#c084fc";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.boxShadow = "0 0 14px rgba(192,132,252,0.35)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.borderColor = "rgba(168,85,247,0.20)";
+                  e.currentTarget.style.color = "#c4b5fd";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <Icon size={16} />
+              </a>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export default function ExperienceSection() {
         {/* Vertical line */}
         <div
           className="absolute left-0 top-2 h-[calc(100%-16px)] w-0.5"
-          style={{ background: "linear-gradient(to bottom, var(--accent), var(--border-muted))" }}
+          style={{ background: "linear-gradient(to bottom, var(--accent), rgba(168, 85, 247, 0.2))" }}
         />
 
         <div className="flex flex-col gap-0">
@@ -38,10 +38,11 @@ export default function ExperienceSection() {
             >
               {/* Timeline dot */}
               <div
-                className="absolute -left-[30.5px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2 shadow-sm"
+                className="absolute -left-[30.5px] top-1.5 flex h-4 w-4 items-center justify-center rounded-full border-2"
                 style={{
-                  background: "var(--bg-card)",
+                  background: "var(--bg-page)",
                   borderColor: "var(--accent)",
+                  boxShadow: "0 0 10px rgba(192, 132, 252, 0.6)",
                 }}
               >
                 {/* <Briefcase size={11} style={{ color: "var(--accent)" }} /> */}
@@ -61,8 +62,8 @@ export default function ExperienceSection() {
                       <span
                         className="rounded-full border px-2.5 py-0.5 text-[11px] font-semibold"
                         style={{
-                          background: "var(--accent-subtle)",
-                          borderColor: "var(--accent)",
+                          background: "rgba(168, 85, 247, 0.12)",
+                          borderColor: "rgba(192, 132, 252, 0.35)",
                           color: "var(--accent)",
                           fontFamily: "'JetBrains Mono', monospace",
                         }}

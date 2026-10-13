@@ -34,6 +34,7 @@ export default function FaqSection() {
               className="card overflow-hidden rounded-xl"
               style={{
                 borderColor: isOpen ? "var(--accent)" : "var(--border)",
+                boxShadow: isOpen ? "0 8px 32px rgba(168, 85, 247, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.12)" : undefined,
               }}
             >
               <button

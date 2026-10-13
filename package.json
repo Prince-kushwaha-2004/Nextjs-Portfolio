@@ -10,6 +10,7 @@
     "postinstall": "flowbite-react patch"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@react-spring/web": "^9.7.5",
     "@tabler/icons-react": "^3.29.0",
     "@tsparticles/engine": "^3.8.0",
@@ -19,6 +20,7 @@
     "clsx": "^2.1.1",
     "flowbite-react": "^0.11.3",
     "framer-motion": "^12.4.2",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.474.0",
     "motion": "^12.0.6",
     "next": "15.1.11",

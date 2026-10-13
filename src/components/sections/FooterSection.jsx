@@ -38,9 +38,10 @@ export default function FooterSection() {
     }
   };
 
-  const inputClass = "w-full rounded-lg border px-4 py-3 text-sm outline-none transition";
+  const inputClass = "w-full rounded-xl border px-4 py-3 text-sm outline-none transition-all duration-200";
   const inputStyle = {
-    background: "var(--bg-subtle)",
+    background: "rgba(15, 8, 30, 0.65)",
+    backdropFilter: "blur(12px)",
     borderColor: "var(--border)",
     color: "var(--text-primary)",
   };
@@ -155,8 +156,7 @@ export default function FooterSection() {
           {/* Right: form */}
           <form
             onSubmit={handleSubmit}
-            className="card rounded-xl p-6"
-            style={{ background: "var(--bg-card)" }}
+            className="card rounded-2xl p-6"
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
@@ -175,8 +175,14 @@ export default function FooterSection() {
                   placeholder="Your name"
                   className={inputClass}
                   style={inputStyle}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "var(--accent)";
+                    e.currentTarget.style.boxShadow = "0 0 14px rgba(192, 132, 252, 0.25)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "var(--border)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
               <div>
@@ -195,8 +201,14 @@ export default function FooterSection() {
                   placeholder="your@email.com"
                   className={inputClass}
                   style={inputStyle}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = "var(--accent)";
+                    e.currentTarget.style.boxShadow = "0 0 14px rgba(192, 132, 252, 0.25)";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = "var(--border)";
+                    e.currentTarget.style.boxShadow = "none";
+                  }}
                 />
               </div>
             </div>
@@ -217,8 +229,14 @@ export default function FooterSection() {
                 placeholder="Tell me about your project..."
                 className={inputClass}
                 style={inputStyle}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.boxShadow = "0 0 14px rgba(192, 132, 252, 0.25)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
               />
             </div>
 
@@ -226,8 +244,11 @@ export default function FooterSection() {
               type="submit"
               disabled={sending}
               id="contact-submit-btn"
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-              style={{ background: "var(--accent)" }}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60 shadow-lg"
+              style={{
+                background: "linear-gradient(135deg, #7e22ce, #a855f7, #c084fc)",
+                boxShadow: "0 4px 20px rgba(168, 85, 247, 0.35)",
+              }}
             >
               <Send size={14} />
               {sending ? "Sending..." : "Send Message"}
